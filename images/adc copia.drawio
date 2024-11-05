@@ -40,13 +40,13 @@
         <mxCell id="VcJqcnLsOQrIhggOGcuT-11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="VcJqcnLsOQrIhggOGcuT-10" target="VcJqcnLsOQrIhggOGcuT-1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="VcJqcnLsOQrIhggOGcuT-10" value="$$f_s/2$$" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=27;fontColor=#FF0000;" vertex="1" parent="1">
+        <mxCell id="VcJqcnLsOQrIhggOGcuT-10" value="$$F_s/2$$" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=27;fontColor=#FF0000;" vertex="1" parent="1">
           <mxGeometry x="230" y="510" width="60" height="20" as="geometry" />
         </mxCell>
         <mxCell id="VcJqcnLsOQrIhggOGcuT-14" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="VcJqcnLsOQrIhggOGcuT-13" target="VcJqcnLsOQrIhggOGcuT-2">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="VcJqcnLsOQrIhggOGcuT-13" value="$$f_s$$" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=27;fontColor=#FF0000;" vertex="1" parent="1">
+        <mxCell id="VcJqcnLsOQrIhggOGcuT-13" value="$$F_s$$" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=27;fontColor=#FF0000;" vertex="1" parent="1">
           <mxGeometry x="470" y="505" width="60" height="30" as="geometry" />
         </mxCell>
         <mxCell id="VcJqcnLsOQrIhggOGcuT-16" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="VcJqcnLsOQrIhggOGcuT-15" target="VcJqcnLsOQrIhggOGcuT-3">

@@ -4,7 +4,13 @@ Il suono
 
 ##### Introduzione
 
+Il suono è una parte integrante della nostra vita. È uno dei modi più importanti per percepire il mondo che ci circonda. Inoltre, è fondamentale per la nostra comunicazione con l’ambiente e con gli altri esseri umani. È anche un mezzo di espressione e di esperienza artistica, sotto forma, ad esempio, di musica. Per la maggior parte di noi, sarebbe difficile immaginare una vita senza suono.
 
+Il suono viene spesso definito come una sensazione uditiva o come la perturbazione in un mezzo che provoca tale sensazione. Come fenomeno fisico, che è il modo in cui lo considereremo qui, il suono si riferisce a onde che originano in un punto e si propagano attraverso un mezzo fino a raggiungere un altro punto, dove possono essere udite o misurate. Queste onde sonore viaggiano in solidi, liquidi e gas, e si presentano in due forme: longitudinali e trasversali. Nelle onde longitudinali, lo spostamento del mezzo avviene nella direzione di propagazione dell’onda, mentre nelle onde trasversali, lo spostamento è ortogonale alla direzione di propagazione. Entrambi i tipi di onde causano variazioni di pressione, misurate in un singolo punto, che possono provocare una sensazione uditiva. Le onde sonore possono essere generate da corpi in vibrazione, cambiamenti nel flusso d’aria, fonti di calore, ecc. È chiaro quindi che nella creazione e propagazione del suono sono coinvolti alcuni principi fisici.
+
+I capitoli seguenti trattano ciò che viene chiamato elaborazione audio, ovvero la teoria e i metodi per l’elaborazione dei segnali audio. I segnali audio si riferiscono semplicemente a segnali sonori udibili, mentre un segnale è qualcosa che viene misurato nel tempo (e/o nello spazio). Questo qualcosa, in questo contesto, è la pressione, perché ciò che percepiamo con le nostre orecchie sono variazioni di pressione. Cosa significa allora elaborazione? L’elaborazione si riferisce a qualsiasi operazione che possiamo voler fare con o sui segnali audio. Potremmo voler manipolare i segnali audio per scopi artistici, per creare musica; potremmo voler comprimere i segnali di parlato o musicali per consentirne la trasmissione (come in Skype o nei nostri smartphone) o per immagazzinarli in modo efficiente (come nei formati mp3, OGG o AAC); potremmo voler identificare chi sta parlando o cosa sta dicendo, determinare da dove proviene un suono, e così via. Nella tecnologia dei media, un esempio di elaborazione audio potrebbe essere un metodo per far sì che un parlato registrato per un videogioco suoni come se fosse pronunciato in un determinato ambiente acustico o da una certa angolazione. Potrebbe anche includere metodi per generare automaticamente contenuti, come musica di sottofondo e suoni ambientali, per un videogioco, oppure effetti audio per performance musicali dal vivo o strumenti per registrare e produrre musica.
+
+Prima di approfondire l’elaborazione audio, è importante comprendere la natura dei segnali audio. Inizieremo quindi con l'esplorazione del suono come fenomeno fisico.
 
 ## La fisica del suono
 
@@ -17,7 +23,7 @@ Sul piano percettivo, il suono è una sensazione uditiva provocata da una variaz
 
 Della natura delle vibrazioni e delle onde sonore e della loro propagazione nel mezzo si occupa la `acustica fisica`, del rapporto tra onda sonora e il ricevente (il sistema orecchio – cervello), e quindi di come l’uomo interpreta i segnali acustici, si occupa la `psicoacustica`.
 
-##### La natura fisica del suono
+##### La trasmissione del suono
 
 Il suono è un’onda meccanica che si propaga attraverso un `mezzo`, sia esso solido, liquido o gassoso. A differenza delle onde elettromagnetiche, come la luce, le onde sonore hanno bisogno di un mezzo per spostarsi e non possono propagarsi nel vuoto. La propagazione del suono avviene per mezzo di `vibrazioni` che si trasmettono da una particella all’altra all’interno del mezzo: quando un oggetto vibra, genera una serie di `compressioni` e `rarefazioni` nell’aria circostante (o in altri mezzi), producendo l’onda sonora.
 

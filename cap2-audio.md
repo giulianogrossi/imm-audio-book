@@ -29,26 +29,17 @@ Un computer può memorizzare solo un numero finito di valori numerici, e tali va
 
 In termini hardware, un convertitore analogico-digitale (ADC) è un dispositivo, o chip, che converte segnali da analogici a digitali tramite campionamento e quantizzazione, mentre un convertitore digitale-analogico (DAC) converte i segnali digitali in analogici tramite ricostruzione. Nella Figura è mostrato un esempio di sistema di elaborazione audio.
 
-```{image} images/sistema.png
-:alt: long
-:class: bg-primary mb-1
-:width: 700px
-:align: center
-```
+![sys](images/sistema.png)
+
 Le vibrazioni nell’aria, rappresentate dal segnale analogico, vengono convertite da un segnale di pressione a uno elettrico dal microfono. Il segnale analogico dal microfono viene poi trasformato in uno digitale tramite l’ADC, dopodiché il segnale digitale può essere elaborato da un computer. Il segnale digitale elaborato può quindi essere convertito in uno analogico tramite il DAC e, infine, riconvertito in un segnale di pressione da inviare, per esempio, ad un altoparlante attivo.
 
 Per quanto riguarda il motivo per cui preferiamo elaborare segnali digitali piuttosto che analogici, ci sono molte ragioni tecniche; le più importanti sono che i computer sono flessibili, possono fare cose che potremmo solo sognare con l’hardware analogico e sono generalmente molto più economici rispetto alla corrispondente soluzione analogica. 
 
 La rappresentazione digitale di un segnale audio analogico come sequenza di numeri è ottenuta tramite un convertitore analogico-digitale (ADC). L’ADC esegue il campionamento delle ampiezze del segnale analogico $x(t)$ su una griglia equidistante lungo l’asse orizzontale del tempo e la quantizzazione delle ampiezze in campioni fissi rappresentati da numeri $x(n)$ lungo l’asse verticale dell’ampiezza (come in figura). 
 
-```{image} images/DAFX.png
-:alt: long
-:class: bg-primary mb-1
-:width: 700px
-:align: center
-```
+![DAFX](images/DAFX.png)
 
-I campioni sono mostrati come linee verticali con punti in alto. Il segnale analogico $x(t)$ indica l’ampiezza del segnale su un tempo continuo $t$￼in microsecondi. A seguito dell’ADC, il segnale digitale (tempo discreto e ampiezza quantizzata) è una sequenza (flusso) di campioni $x(n)$ rappresentati da numeri sull'indice di tempo discreto $n$. La distanza temporale tra due campioni consecutivi è chiamata intervallo di campionamento $T$ (periodo di campionamento) e il reciproco è la frequenza di campionamento.
+I campioni sono mostrati come linee verticali con punti in alto. Il segnale analogico $x(t)$ indica l’ampiezza del segnale su un tempo continuo $t$￼in microsecondi. A seguito dell’ADC, il segnale digitale (tempo discreto e ampiezza quantizzata) è una sequenza (flusso) di campioni $x(n)$ rappresentati da numeri sull'indice di tempo discreto $n$. La distanza temporale tra due campioni consecutivi è chiamata intervallo di campionamento $T_s$ (periodo di campionamento) e il reciproco è la frequenza di campionamento $F_s$.
 
 In questo capitolo, spiegheremo cosa sono il campionamento e la quantizzazione, come funzionano e anche come possiamo ricostruire segnali analogici partendo da quelli digitali.
 
@@ -57,16 +48,19 @@ In questo capitolo, spiegheremo cosa sono il campionamento e la quantizzazione, 
 Il processo di campionamento trasforma un segnale analogico in un segnale discreto, raccogliendo valori a intervalli di tempo regolari. In linea di principio, il teorema di campionamento di Nyquist-Shannon afferma che, affinché un segnale possa essere rappresentato senza ambiguità, la frequenza di campionamento ￼deve essere almeno il doppio della frequenza massima del segnale originale. 
 
 Supponiamo di avere un segnale nel tempo continuo, $x(t)$, definito per ogni valore reale di $t$ e che vogliamo elaborare con un DSP. Il processo di campionamento comporta la misurazione del valore di questa funzione in istanti di tempo specifici, $t_n$, indicizzati da $n= 0,1,2,\dots$, per ottenere il segnale $x(n)=x(t_n)$, che chiamiamo `segnale a tempo discreto`. Il modo più semplice e comune di campionare è il campionamento uniforme, che significa campionare a punti equidistanti, cioè,
+
 $$t_n = T_s n, \qquad n = 0,1,2,\dots$$
+
 dove $T_s$ è il tempo (in secondi) tra due campioni consecutivi ed è chiamato `periodo di campionamento`. Possiamo osservare che un segnale campionato, o digitale, è in realtà solo una sequenza ordinata di numeri. Più piccolo è $T_s$, più finemente campioniamo il segnale continuo originale, $x(t)$. Possiamo rappresentare il numero di campioni ottenuti per secondo utilizzando la `frequenza di campionamento`, definita come
-$$f_s=\frac{1}{T_s}.$$
+
+$$F_s=\frac{1}{T_s}.$$
 
 La frequenza di campionamento è misurata in Hertz (Hz). L’audio viene solitamente campionato a $44.1$ kHz e oltre, mentre la voce può essere campionata fino a $8$ kHz, il che risulta in segnali comprensibili ma certamente non di alta qualità. Nella figura, il processo di campionamento è esemplificato da un segnale continuo, $x(t)$ (blu), che viene campionato per ottenere il segnale a tempo discreto $x(n)$ (rosso).
 
 ```{image} images/sampling.png
 :alt: long
 :class: bg-primary mb-1
-:width: 400px
+:width: 350px
 :align: center
 ```
 
@@ -78,52 +72,44 @@ x(t)=\sin\left( 2\pi ft \right).
 
 Usando la definizione di frequenza di campionamento, otteniamo 
 
-$$x(n)=\sin\left( 2\pi \frac{f}{f_s}n \right)$$
+$$x(n)=\sin\left( 2\pi \frac{f}{F_s}n \right)$$
 
-da cui possiamo definire la seguente quantità
+da cui possiamo definire le seguente quantità
 
-$$\omega=2\pi \frac{f}{f_s}$$
+$$\omega=2\pi \frac{f}{F_s}$$
 
-che chiamiamo `frequenza digitale`. Essa esprime il numero di radianti per campione. Da una tale frequenza digitale da sola, quindi, non possiamo determinare quale sarebbe la frequenza in Hertz, a meno che non conosciamo la frequenza di campionamento. Una frequenza digitale di $\omega=2\pi$ corrisponde alla frequenza di campionamento, indipendentemente dal valore che essa assume. Questo spiega intuitivamente il fatto che un segnale digitale è semplicemente una sequenza di numeri; quindi, senza ulteriori conoscenze, non avremmo modo di dedurre nulla riguardo alla frequenza di campionamento.
+che chiamiamo `frequenza digitale`. Essa esprime il numero di radianti per campione [rad/sample], mentre il rapporto $f/F_s$ esprime il numero di cicli per campione [cycle/sample]. Da una tale frequenza digitale da sola, quindi, non possiamo determinare quale sarebbe la frequenza in Hertz, a meno che non conosciamo la frequenza di campionamento. Una frequenza digitale di $\omega=2\pi$ corrisponde alla frequenza di campionamento, indipendentemente dal valore che essa assume. Questo spiega intuitivamente il fatto che un segnale digitale è semplicemente una sequenza di numeri; quindi, senza ulteriori conoscenze, non avremmo modo di dedurre nulla riguardo alla frequenza di campionamento.
 
 Ora, la domanda fondamentale che dovremmo porci è questa: quale frequenza di campionamento dobbiamo scegliere per campionare il seno nell’equazione {eq}`eq1`? Parlando tecnicamente, ciò di cui ci preoccupiamo quando campioniamo è se lo spettro, ossia i contenuti in frequenza, del segnale campionato è lo stesso di quello del segnale continuo originale. Se lo è, significa che abbiamo una rappresentazione digitale perfetta del segnale analogico. Si può dimostrare che se campioniamo il segnale con una frequenza di campionamento che è più del doppio della frequenza del seno, il segnale campionato avrà lo stesso spettro dell’originale. Ora, sorgono un paio di domande. In primo luogo, come generalizziamo questo risultato a qualsiasi segnale, non solo ai seni? La risposta a questa domanda è che, come abbiamo già accennato, (quasi) qualsiasi segnale può essere considerato composto da un numero di seni, e possiamo utilizzare il principio di prima, secondo cui la frequenza di campionamento deve essere più del doppio delle frequenze dei seni. Quindi, se la frequenza più alta di un seno in un segnale è ￼, allora la frequenza di campionamento dovrebbe rispettare
 
-$$f_s>2f_{max}.$$
+$$F_s>2f_{max}.$$
 
-Questo è conosciuto come il `teorema di campionamento`. A volte, a seconda del campo, è attribuito e denominato in base a diverse persone, tra cui Nyquist, Shannon, Whittaker e Kotelnikov. La seconda domanda è: come possiamo sapere qual è la frequenza massima dei seni nel nostro segnale? La risposta a questa domanda è che generalmente non lo sappiamo. Invece, possiamo semplicemente assicurarci che, per una frequenza di campionamento selezionata, $f_s$, per il nostro sistema audio, rimuoveremo tutti i contenuti superiormente da $f_s/2$! Questo viene fatto con un cosiddetto `filtro anti-aliasing`, che è semplicemente un filtro passa-basso analogico con una frequenza di stop pari a $f_s/2$, il che significa che tutte le frequenze al di sopra della frequenza di stop vengono rimosse o attenuate. Questo è illustrato in figura.
+Questo è conosciuto come il `teorema di campionamento`. A volte, a seconda del campo, è attribuito e denominato in base a diverse persone, tra cui Nyquist, Shannon, Whittaker e Kotelnikov. La seconda domanda è: come possiamo sapere qual è la frequenza massima dei seni nel nostro segnale? La risposta a questa domanda è che generalmente non lo sappiamo. Invece, possiamo semplicemente assicurarci che, per una frequenza di campionamento selezionata, $F_s$, per il nostro sistema audio, rimuoveremo tutti i contenuti superiormente da $F_s/2$! Questo viene fatto con un cosiddetto `filtro anti-aliasing`, che è semplicemente un filtro passa-basso analogico con una frequenza di stop pari a $F_s/2$, il che significa che tutte le frequenze al di sopra della frequenza di stop vengono rimosse o attenuate. Questo è illustrato in figura.
 
-```{image} images/antialiasing.png
-:alt: long
-:class: bg-primary mb-1
-:width: 700px
-:align: center
-```
+![aalias](images/antialiasing.png)
+
 ##### Aliasing
 
-Diciamo che il segnale è quindi a banda limitata. `L’aliasing` si riferisce al fenomeno che si verifica quando non rispettiamo il teorema di campionamento. Quando campioniamo a una frequenza di campionamento che è inferiore al doppio della frequenza massima, ciò che accade è che le parti dello spettro al di sopra della metà della frequenza di campionamento si ripiegano attorno alla metà della frequenza di campionamento e appaiono nello spettro inferiore come immagini speculari di sorta. Poiché queste immagini speculari si mescolano con i contenuti in frequenza e non possono essere recuperate o rimosse, abbiamo distorto il nostro segnale. Ad esempio, tornando all’esempio in cui il segnale è un singolo seno, un seno di 5 Hz campionato a 4 Hz subirebbe aliasing e il segnale campionato sarebbe identico a un seno di 1 Hz!, come si nota anche dallo spettro nella figura. 
-```{image} images/alias.png
-:alt: alias
-:class: bg-primary mb-1
-:width: 700px
-:align: center
-```
-La frequenza $f_s/2$ è molto importante, ed è chiamata `frequenza di Nyquist`. Nella successiva figura, è invece mostrato un esempio di un segnale continuo e del segnale digitale risultante. Il segnale continuo è un seno con una frequenza di 2 Hz ed è campionato a una frequenza di 5 Hz. In quel caso, il teorema di campionamento è soddisfatto, e possiamo vedere che i campioni rappresentano bene il segnale. 
+Diciamo che il segnale è quindi a banda limitata. `L’aliasing` si riferisce al fenomeno che si verifica quando non rispettiamo il teorema di campionamento. Quando campioniamo a una frequenza di campionamento che è inferiore al doppio della frequenza massima ciò che accade è che le parti dello spettro al di sopra della metà della frequenza di campionamento si ripiegano attorno alla metà della frequenza di campionamento e appaiono nello spettro inferiore come immagini speculari di sorta. Poiché queste immagini speculari si mescolano con i contenuti in frequenza e non possono essere recuperate o rimosse, abbiamo distorto il nostro segnale. Ad esempio, tornando all’esempio in cui il segnale è un singolo seno di 5 Hz ma campionato a 4 Hz, il segnale campionato subirebbe aliasing risultando identico a un seno di 1 Hz!, come si nota anche dallo spettro nella figura. 
 
-```{image} images/noalias.png
+![aalias](images/alias.png)
+
+La frequenza $F_s/2$ è molto importante, ed è chiamata `frequenza di Nyquist`. Nella successiva figura, è invece mostrato un esempio di un segnale continuo e del segnale digitale risultante. Il segnale continuo è un seno con una frequenza di 2 Hz ed è campionato a una frequenza di 5 Hz. In quel caso, il teorema di campionamento è soddisfatto, e possiamo vedere che i campioni rappresentano bene il segnale. 
+
+![noalias](images/noalias.png)
+
+Una regola semplice che definisce quali frequenze spurie compariranno nello spettro per effetto dell'aliasing è la seguente: ogni frequenza $f\in [-F_s/2, 𝐹_s/2]+ k 𝐹_𝑠$, con  $k\in\mathbb{N}$, ha un unico valore corrispondente che si trova all'interno dell'intervallo di Nyquist $[-F_s/2, 𝐹_s/2]$ e si ottiene aggiungendo o sottraendo da $f$ un numero pari a $k$ multipli di $F_s$, fino a quando non cade all'interno dell'intervallo di Nyquist. L'operazione è un'operazione modulare come riportata in figura qui sotto.
+
+```{image} images/mod_alias.png
 :alt: long
 :class: bg-primary mb-1
-:width: 700px
+:width: 600px
 :align: center
 ```
 
 Per riassumere le frequenze in gioco nel processo di campionamento, riportiamo in tabella di seguito le principali definizioni e in particolare la loro relazione con l'intervallo di Nyquist. 
 
-```{image} images/tabella_freq.png
-:alt: freq
-:class: bg-primary mb-1
-:width: 700px
-:align: center
-```
+![tab](images/tabella_freq.png)
 
 Nella Tabella sotto sono elencate alcune delle frequenze di campionamento audio più comuni e le loro applicazioni. Le moderne schede audio supportano solitamente un’ampia gamma di frequenze di campionamento e sono quindi piuttosto flessibili. È importante notare che, per ragioni tecniche, è spesso vantaggioso utilizzare una frequenza di campionamento più alta nella registrazione originale e durante l’elaborazione rispetto a quella che verrà utilizzata nel prodotto finale, come un CD. Accenniamo brevemente al fatto che il processo di passaggio da una frequenza di campionamento a un’altra, un’operazione comune in molti sistemi audio, si chiama ricampionamento.
 
@@ -316,13 +302,14 @@ Ecco i dettagli chiave su come funziona e perché è utile:
    - Immagina un sistema che acquisisce un segnale audio. Un ADC bipolare può convertire l’intero segnale, senza troncare o saturare valori negativi. Se il segnale va da $ -2.5 \, \text{V} $ a $ +2.5 \, \text{V} $ e il sistema ha un ADC a 10 bit con riferimento di $ 2.5 \, \text{V} $, ogni valore digitale rappresenta un piccolo intervallo uniforme di tensione (passo di quantizzazione) su tutto l’intervallo bipolare.
 
 In sintesi, un ADC bipolare è ideale per applicazioni in cui il segnale analogico è bilaterale, garantendo una rappresentazione digitale precisa ed efficiente dei segnali a polarità variabile. In figura si mostra lo schema di funzionamento di un ADC caratterizzato da un full-scale range $𝑅$ diviso equamente (per un quantizzatore uniforme) in $l=2^𝑞$ livelli di quantizzazione. La spaziatura tra i livelli è chiamata `Risoluzione del quantizzatore` ed è pari a $Q=𝑅/2^𝑞$.
+
 ![bipolare](images/ADC-bipolare.png)
 
 In figura si mostra un modello di convertitore ADC Sample and Hold (S&H) a $q+1$ bit di risoluzione, che è un elemento fondamentale nei sistemi di conversione.
 
 ![SAM-HOLD.png](images/SAM-HOLD.png) 
 
- Questo modello consente di “campionare” un segnale analogico in un determinato istante di tempo e di mantenere, o “tenere”, il valore del segnale fino al campionamento successivo, rendendolo disponibile per l’ADC e garantendo una conversione precisa. Questo è essenziale perché il processo di conversione richiede un certo tempo e il segnale può variare rapidamente. In ogni ciclo di campionamento, il circuito S&H esegue due operazioni: la fase di campionamento (Sample) e la fase di mantenimento (Hold). Nella fase di campionamento (Sample) il circuito chiude un interruttore per un breve periodo, consentendo al condensatore (il componente principale per mantenere la tensione) di caricare il valore istantaneo del segnale analogico. Nella fase di mantenimento (Hold) l’interruttore si apre, isolando il condensatore dal segnale in ingresso. Il condensatore ora mantiene (o trattiene) il valore della tensione catturata finché non avviene il campionamento successivo. Le componenti principali sono:
+Questo modello consente di “campionare” un segnale analogico in un determinato istante di tempo e di mantenere, o “tenere”, il valore del segnale fino al campionamento successivo, rendendolo disponibile per l’ADC e garantendo una conversione precisa. Questo è essenziale perché il processo di conversione richiede un certo tempo e il segnale può variare rapidamente. In ogni ciclo di campionamento, il circuito S&H esegue due operazioni: la fase di campionamento (Sample) e la fase di mantenimento (Hold). Nella fase di campionamento (Sample) il circuito chiude un interruttore per un breve periodo, consentendo al condensatore (il componente principale per mantenere la tensione) di caricare il valore istantaneo del segnale analogico. Nella fase di mantenimento (Hold) l’interruttore si apre, isolando il condensatore dal segnale in ingresso. Il condensatore ora mantiene (o trattiene) il valore della tensione catturata finché non avviene il campionamento successivo. Le componenti principali sono:
 - Interruttore: Generalmente realizzato con un transistor MOSFET o un interruttore elettronico, che si apre e chiude per controllare il flusso del segnale al condensatore.
 - Condensatore: Memorizza la tensione campionata, trattenendola durante la fase di mantenimento. La capacità del condensatore influenza il tempo di mantenimento e la precisione.
 - Buffer: Spesso è presente un buffer (come un amplificatore operazionale) tra il condensatore e il carico, per evitare che il segnale decada a causa della scarica del condensatore.
@@ -333,11 +320,6 @@ Lo schema del circuito  è mostrato sotto e lo scopo è quello di acquisire la t
 
 In sintesi, il modello Sample and Hold è cruciale per isolare e trattenere il segnale analogico prima della conversione digitale, riducendo errori di quantizzazione e migliorando la fedeltà dei dati digitali.
 
-
-
-
-
-
 ## Conversione Digitale-Analogica (DAC)
 
 Un convertitore DAC (Digital-to-Analog Converter) è un dispositivo che trasforma segnali digitali in segnali analogici. Questa conversione è fondamentale per applicazioni in cui segnali digitali devono essere presentati o utilizzati in un ambiente analogico, come in dispositivi audio, video, comunicazioni, e attuatori di controllo. Il Principio di Funzionamento di un DAC è il seguente.
@@ -346,7 +328,7 @@ Un convertitore DAC (Digital-to-Analog Converter) è un dispositivo che trasform
 
 La trasformazione di bit in livelli di tensione in un convertitore digitale-analogico (DAC) avviene assegnando a ogni combinazione di bit un valore di tensione corrispondente, che rispecchia l’informazione digitale in un formato analogico.
 
-###### Codifica Binaria e Livelli di Tensione
+##### Codifica Binaria e Livelli di Tensione
 
 - In un sistema digitale a $m$ bit, ogni configurazione dei bit rappresenta un valore discreto, compreso tra $0$ e $2^{m}-1$.
 - L’intervallo di tensione totale del DAC è definito dai valori di tensione $V_{\text{min}}$ e $V_{\text{max}}$, dove $V_{\text{min}}$ è il livello di tensione più basso (di solito $0$ V) e $V_{\text{max}}$ il livello più alto.
@@ -360,9 +342,9 @@ Nella conversione unipolare, il `DAC Unipolare` converte i segnali digitali in l
 
 ![alt text](images/DAC.png)
 
-
 Per ottenere la tensione in uscita $V_{out}$ per una configurazione di bit specifica $b_1,\dots,b_m$ (un valore binario tra 0 e $2^m-1$), la formula è:
 
 $$V_{out}=\frac{V_{\text{ref}}}{2^m}(𝑏_0 2^{0}+𝑏_1 2^{1}+\cdots+b_{N-1}2^{N-1})=\frac{V_{\text{ref}}}{2^m}D$$
 
 dove $D\in\{0,1,\dots,2^m-1\}$.
+
