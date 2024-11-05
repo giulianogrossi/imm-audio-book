@@ -41,7 +41,12 @@ Per quanto riguarda il motivo per cui preferiamo elaborare segnali digitali piut
 
 La rappresentazione digitale di un segnale audio analogico come sequenza di numeri è ottenuta tramite un convertitore analogico-digitale (ADC). L’ADC esegue il campionamento delle ampiezze del segnale analogico $x(t)$ su una griglia equidistante lungo l’asse orizzontale del tempo e la quantizzazione delle ampiezze in campioni fissi rappresentati da numeri $x(n)$ lungo l’asse verticale dell’ampiezza (come in figura). 
 
-![alt text](images/DAFX.png)
+```{image} images/sistema.png
+:alt: long
+:class: bg-primary mb-1
+:width: 700px
+:align: center
+```
 
 I campioni sono mostrati come linee verticali con punti in alto. Il segnale analogico $x(t)$ indica l’ampiezza del segnale su un tempo continuo $t$￼in microsecondi. A seguito dell’ADC, il segnale digitale (tempo discreto e ampiezza quantizzata) è una sequenza (flusso) di campioni $x(n)$ rappresentati da numeri sull'indice di tempo discreto $n$. La distanza temporale tra due campioni consecutivi è chiamata intervallo di campionamento $T$ (periodo di campionamento) e il reciproco è la frequenza di campionamento.
 
