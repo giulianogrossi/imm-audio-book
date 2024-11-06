@@ -348,3 +348,24 @@ $$V_{out}=\frac{V_{\text{ref}}}{2^m}(𝑏_0 2^{0}+𝑏_1 2^{1}+\cdots+b_{N-1}2^{
 
 dove $D\in\{0,1,\dots,2^m-1\}$.
 
+## Formati Audio
+
+##### Wave
+
+A livello superiore, un file Wave consiste in un singolo chunk RIFF (”RIFF”), che contiene tutti i dati del file wave. Il corpo del chunk RIFF inizia con il codice di formato “WAVE”, il quale indica che il file è un file Wave (poiché un file RIFF può contenere anche altri tipi di dati). Questo è seguito dai chunk figli, annidati all’interno del chunk principale RIFF. Come minimo, i chunk figli devono includere un chunk di formato (”fmt “) e un chunk di dati (”data”), e il chunk di formato deve precedere il chunk di dati. Di seguito elencati i significati dei campi della struttura del formato.
+
+`Codice di Formato` – Indica come i dati del campione per il file wave sono memorizzati. Il formato più comune è PCM intero, con un codice di 1. Altri formati includono PCM in virgola mobile (3), ADPCM (2), A-law (6), μ-law (7) e WaveFormatExtensible (65534).
+
+`Numero di canali` – Tipicamente, un file avrà 1 canale (mono) o 2 canali (stereo). Un file audio surround 5.1 avrà 6 canali.
+
+`Frequenza di campionamento` – Il numero di frame campione che si verificano ogni secondo. Un valore tipico è 44.100, lo stesso di un CD audio.
+
+`Bit per campione` – Per i dati PCM interi, i valori tipici sono 8, 16 o 32. Se il formato del campione non richiede questo campo, dovrebbe essere impostato a 0.
+
+`Chunk Dati PCM Intero` (Codice di formato: 1) - Questo è il formato più comune e consiste in campioni PCM grezzi come numeri interi. I campioni in un file wave PCM multicanale sono interlacciati. Cioè, in un file stereo, un campione per il canale sinistro sarà seguito da un campione per il canale destro, seguito da un altro campione per il canale sinistro, quindi destro, e così via.
+
+`Chunk Dati PCM in Virgola Mobile` (Codice di formato: 3) - In alternativa, i campioni PCM possono essere memorizzati come valori in virgola mobile. Questo è essenzialmente lo stesso del formato PCM intero (cioè codice di formato 1), tranne per il fatto che i campioni sono nel range da -1,0 a 1,0. Il campo bit per campione deve essere impostato a 32 o 64 per indicare la precisione dei valori. I frame campione devono essere disposti nello stesso modo descritto nella sezione “Chunk Dati PCM Intero” sopra. 
+
+La struttura generale del file wave è riportata in figura.
+
+![wav](images/WAVE.png)

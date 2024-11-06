@@ -21,6 +21,7 @@ project:
     - file: copertina.md
     - file: cap1-suono.md
     - file: cap2-audio.md
+    - file: cap3-spettro.md
     
 site:
   template: book-theme
