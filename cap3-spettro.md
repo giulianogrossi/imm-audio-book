@@ -86,9 +86,18 @@ I `suoni inarmonici` sono suoni in cui le componenti frequenziali (cioè le onde
 3.	Bacchette e Barre Metalliche: Colpendo una barra metallica o una bacchetta, si ottiene una vibrazione complessa che non segue le armoniche naturali. I metallofoni (strumenti a barre metalliche), come il vibrafono, generano suoni che hanno una certa componente inarmonica, specialmente quando le barre non sono accordate con precisione.
 4.	Suoni Naturali come il Rombo del Tuono o il Fruscio delle Foglie: Molti suoni naturali sono inarmonici, poiché non hanno una frequenza fondamentale dominante o un sistema regolare di armoniche.
 
-I suoni inarmonici sono percepiti dall'orecchio umano come “più ruvidi” o “disordinati” rispetto ai suoni armonici. A volte vengono descritti come privi di una nota chiara o “distonici”, poiché mancano di quella chiarezza e stabilità tipica dei suoni armonici. Tuttavia, i suoni inarmonici sono molto usati in musica, specialmente per ottenere effetti specifici di tensione, mistero o drammaticità, come nelle percussioni orchestrali o nella musica elettronica.
+I suoni inarmonici sono percepiti dall'orecchio umano come “più ruvidi” o “disordinati” rispetto ai suoni armonici. A volte vengono descritti come privi di una nota chiara o “distonici”, poiché mancano di quella chiarezza e stabilità tipica dei suoni armonici. Tuttavia, i suoni inarmonici sono molto usati in musica, specialmente per ottenere effetti specifici di tensione, mistero o drammaticità, come nelle percussioni orchestrali o nella musica elettronica. In sintesi, i suoni inarmonici sono caratterizzati dalla mancanza di armoniche regolari e hanno un timbro complesso, spesso associato a suoni metallici, percussivi o naturali che creano un senso di instabilità o di “caos musicale”.
 
-In sintesi, i suoni inarmonici sono caratterizzati dalla mancanza di armoniche regolari e hanno un timbro complesso, spesso associato a suoni metallici, percussivi o naturali che creano un senso di instabilità o di “caos musicale.”
+
+##### Rumore bianco e rosa
+
+Il `rumore bianco` è uno di questi. Con rumore bianco (in inglese: white noise ) un rumore di ampiezza mediamente costante su tutto lo spettro di frequenza. Ciò significa che questo tipo di segnale possiede tutte le frequenze disponibili nello spettro, che ogni frequenza ha ampiezza casuale con ampiezza massima fissata. In sostanza si tratta di un rumore termico solo che in questo caso si intende un rumore appositamente generato con finalità di test. Per vedere infatti il comportamento di un componente audio, per esempio di un canale di un mixer, si invia in ingresso un rumore bianco e si esamina il segnale di uscita. Generalmente l'obiettivo sarà quello di ottenere un segnale in uscita mediamente costante a tutte le frequenze, questo significherà che il componente è affidabile a tutte le frequenze. In generale il rumore bianco viene usato per i test sui componenti elettronici. Di seguito viene riportato un esempio di rumore bianco nel tempo e nelle frequenze.
+
+![](images/white_noise.png)
+
+Dato che il rumore bianco è costante a tutte le frequenze, vuol dire che l'energia associata ad ogni ottava non è costante. Per esempio l'energia compresa nella banda $20$ Hz - $40$ Hz non sarà la stessa di quella della banda $5$ KHz - $10 $KHz. Ovviamente quest'ultima banda avrà un'energia associata molto maggiore pur essendo sempre la larghezza pari a un'ottava in quanto il secondo intervallo di frequenze è molto più largo del primo; in altre parole contiene più frequenze dunque complessivamente più energia. Il `rumore rosa` (in inglese: pink noise ), usato anch'esso con finalità di test, presenta un decremento di 3dB ogni volta che una frequenza viene raddoppiata. In questo modo l'energia associata ad ogni ottava rimane costante su tutto lo spettro. Viene comunemente utilizzato per la taratura di sistemi di rinforzo sonoro dove il rumore bianco risulta essere un segnale non rappresentativo del segnale audio che alimenterà il sistema di rinforzo stesso. Questo è dovuto al fatto che un segnale audio ha un contenuto di energia sulle alte frequenze minore rispetto alle basse frequenze e dunque viene mal rappresentato dal rumore bianco in cui l'energia associata ad ogni ottava è doppia rispetto all'ottava precedente.
+
+![](images/pink_noise.png)
 
 
 ##### Inviluppo
@@ -402,12 +411,12 @@ Nel seguito, consideriamo il caso di segnali a tempo discreto e specifichiamo le
 Rispetto a questi parametri, la STFT discreta $X$ del segnale $x$ è definita da
 
 $$
-X(m, k) := \sum_{n=0}^{N-1} x(n + mH) w(n) \, \mathrm{exp}\left(-2 \pi i \frac{kn}{N}\right) \quad (2.26)
+X(m,k)=\sum_{n=0}^{N-1} w(n)x(n + mH)e^{-j \frac{2 \pi}{N}kn} 
 $$
 
 con $m \in \mathbb{Z}$ e $k \in [0 : K]$. Il numero $K=N/2$ (supponendo che $N$ sia pari) è l'indice di frequenza corrispondente alla frequenza di Nyquist. Il numero complesso $X(m, k)$ denota il $k$-esimo coefficiente di Fourier per il $m$-esimo frame temporale. Si noti che per ciascun frame temporale fisso $m$, si ottiene un vettore spettrale di dimensione $K + 1$ dato dai coefficienti $X(m, k)$ per $k \in [0 : K]$. Il calcolo di ciascun vettore spettrale di questo tipo corrisponde a una DFT di dimensione $N$ che può essere eseguita efficientemente utilizzando l'FFT.
 
-Cosa abbiamo effettivamente calcolato in (2.26) in relazione al segnale analogico originale $f$? Per quanto riguarda la dimensione temporale, ogni coefficiente di Fourier $X(m, k)$ è associato alla posizione temporale fisica
+Cosa abbiamo effettivamente calcolato in relazione al segnale analogico originale $f$? Per quanto riguarda la dimensione temporale, ogni coefficiente di Fourier $X(m, k)$ è associato alla posizione temporale fisica
 
 $$
 T_m = m \cdot \frac{H}{F_s} 
