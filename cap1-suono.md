@@ -312,3 +312,65 @@ detta fondamentale o prima armonica.Tutte le altre frequenze da $f_2$ in poi son
 :width: 100%
 Onde stazionarie, demo!
 :::
+
+--- 
+
+## L'orecchio umano
+
+L’orecchio ha il compito di tradurre in stimoli nervosi le variazioni di pressione che lo colpiscono. L’orecchio umano `e divisibile in tre parti: l’orecchio esterno, l’orecchio medio
+o timpano e l’orecchio interno o labirinto.
+
+![est](images/orecchio.png)
+
+##### L’orecchio esterno
+Esso è costituito da una parte esterna visibile di forma ovoidale, detta padiglione, fatta di cartilagine, una media, detta conca auricolare, associata alla messa a fuoco ed all’esaltazione dei suoni, e una esterna, chiamata anche elica, associata alla separazione spaziale verticale, che ci permette di poter giudicare l’altezza di una sorgente sonora. La parte centrale spedisce i suoni al canale uditorio, detto anche meato acustico. Esso è un tubo lungo circa 2.7 cm e avente diametro pari a 0.7 cm, che termina con una membrana, la
+membrana del timpano, sensibile alle onde sonore che vanno a infrangersi su di essa e che divide proprio l’orecchio esterno da quello medio. 
+
+![est](images/orecchio_esterno.png)
+
+##### L’orecchio medio
+
+La membrana del timpano è collegata a tre ossicini, i più piccoli del corpo umano: il martello, con cui è direttamente a contatto l’incudine, e la staﬀa, che è invece a contatto
+con il labirinto. Essi formano un sistema di leve di collegamento tra il timpano e una membrana che copre una piccola apertura presente nell’orecchio interno, chiamata finestra ovale. Queste tre ossa sono contenute in una cavità, la cassa del timpano, che comunica all’esterno attraverso un piccolo canale lungo 3-4 cm, la tromba di Eustachio, che sbocca
+poi nella faringe.
+
+![est](images/orecchio_medio.png)
+
+##### L’orecchio interno
+
+E\' costituito da un insieme di cavità ossee scavate nell’osso temporale, dette labirinto osseo, all’interno delle quali sono presenti altre cavità più piccole, che costituiscono il labirinto membranoso e le cui pareti risultano membranose. Tra le due porzioni di labirinto è presente un liquido, la perilinfa, mentre internamente agli organi del labirinto membranoso è presente un liquido diverso, l’endolinfa. Entrambi i labirinti possono essere a loro volta
+divisi in tre parti: una cavità centrale detta vestibolo, tre canali a forma anulare, detti canali semicircolari, che giocano un ruolo fondamentale nell’equilibrio, e un canale a
+forma di serpente detto coclea o chiocciola. Quest’ultima ha lo scopo di separare i suoni in diverse componenti di frequenza prima di trasmetterli ai nervi. La coclea, situata in
+basso e lateralmente rispetto al vestibolo, sviluppa al suo interno il canale cocleare, che inizia in corrispondenza del pavimento del vestibolo e si avvolge ad elica, formando circa
+tre giri a partire dalla cassa timpanica fino alla cupola della chiocciola. La chiocciola è formata da una lamina spirale, sottile ed ossea, che attraversa nel senso della lunghezza il dotto cocleare. Dal lato esterno della lamina partono due membrane: quella vestibolare o del Reissner e quella basilare. Entrambe raggiungono la parete laterale del dotto cocleare. L’interno della coclea è quindi diviso in uno spazio al di sopra della lamina di Reissner, che corrisponde alla rampa vestibolare, uno al di sotto della membrana basale o
+rampa timpanica ed uno situato in mezzo, chiamato rampa media. Compresa tra la cassa timpanica e la rampa si trova la finestra rotonda, chiusa da una membrana di connettivo,
+atta a regolare e a garantire la giusta pressione dell’orecchio interno quando si verificano
+vibrazioni della finestra ovale, che corrisponde alla comunicazione della cassa timpanica con
+l’orecchio interno. Sulla membrana basilare, rivestita da epitelio, si differenzia l’organo spirale o del Corti, che rappresenta l’organo acustico vero e proprio, perch´e contiene
+i recettori dell’udito, e ha una struttura cellulare fatta di un doppio ordine di cellule acustiche ciliate, interne ed esterne, in numero di circa 20000.
+
+![est](images/orecchio_interno.png)
+
+Dunque l’orecchio esterno focalizza e amplifica le onde sonore, che mettono in vibrazione il timpano auricolare, e le dirige verso l’orecchio medio. Nell’orecchio medio, l’energia di queste onde viene trasformata in vibrazioni meccaniche della struttura ossea dell’orecchio medio (energia cinetica). Uno dei tre ossicini della catena, la staﬀa, muovendosi avanti e indietro entro la finestra ovale della coclea trasmette l’impulso cinetico alla perilinfa in essa contenuta; attraverso l’endolinfa del condotto cocleare le onde vengono trasmesse dalla rampa vestibolare alla rampa timpanica (e quindi entrano in vibrazione anche le membrane che separano le rampe, o stanze, della coclea). 
+
+![est](images/coclea.png)
+
+Il segnale arriva così alla membrana basilare, che separa la rampa vestibolare da quella timpanica, e dove si trova l’organo del Corti. Le cellule acustiche in esso contenute sono in contatto con le cellule nervose che fanno parte del nervo vestibolo cocleare. Di lì il segnale, che nella coclea viene trasdotto (l’energia cinetica diventa energia elettro-chimica), giunge all’area acustica della corteccia cerebrale, e poi al lobo temporale del cervello: qui avviene la decodificazione dell’impulso elettrico, e si giunge così alla percezione del suono.
+
+![est](images/membrana_basilare.png)
+
+
+##### Limitazioni dell’orecchio umano
+In musica le frequenze sono misurate in Hertz (Hz). Lo spettro approssimativo delle frequenze che l’orecchio umano può udire va da circa 20 Hz fino a 20.000 Hz. Per frequenze al di fuori di questo intervallo non c’è risonanza nella membrana basilare. L’intensità del suono è misurata in decibel (dB). Zero decibel rappresentano un’intensità di potenza pari
+a 10−12 watt per metro quadrato, che è quindi in qualche modo il suono più debole che possiamo percepire. Aggiungere 10 dB equivale a moltiplicare l’intensità di potenza per
+un fattore 10. Viceversa moltiplicare l’intensità per un fattore b equivale ad aggiungere 2 log10(b) decibel al livello del segnale. Quindi possiamo concludere che la scala per misurare l’intensità dei suoni è logaritmica e n decibel rappresentano una densità di potenza di $10^{(n/10)^{-12}}$ watt per metro quadrato. La soglia di udibilità è il livello del suono più debole che possiamo udire. Il suo valore in decibel varia da una parte dello spettro di frequenze a un’altra. Le nostre orecchie sono più sensibili alle frequenze leggermente sopra i 2000 Hz, dove la soglia di udibilità della maggior parte delle persone è leggermente superiore a 0 dB. A 100 Hz la soglia di udibilità è di circa 50 dB e a 10 Hz è di circa 30 dB. Una conversazione normale avviene a circa 60-70 dB, mentre il bisbiglio è circa 15-20 dB, e la soglia del dolore `e a circa 130 dB.
+
+Vi è dunque una relazione stretta, anche se non un’identità, fra l’intensità del suono e la percezione di rumorosità. Il grafico seguente, che si deve a Fletcher e Munson, mostra attraverso una serie di curve il rapporto, per tutte le frequenze udibili, tra la pressione acustica e la corrispondente “rumorosità” percepita dall'orecchio, per vari gradi d’intensità, dalla soglia di udibilità a quella del dolore. L’unità di misura per la sensazione che recepiamo (cioè per la rumorosità) è il phon. L’ascoltatore regola il livello del segnale fino a quando lo si giudica di intensità pari a un’intensità standard di 1000 Hz. Il livello
+del phon è definito come livello di pressione del segnale di 1000 Hz della stessa intensità.
+
+![est](images/soglia_udito.png)
+
+
+Le curve di questo grafico sono chiamate curve isofone.
+
+![est](images/curve_isofoniche.png)

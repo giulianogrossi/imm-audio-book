@@ -212,7 +212,7 @@ Tracciamo ora i coefficienti $c_f$ rispetto ai vari parametri di frequenza $f \i
 
 ![mag](images/magnitude_C4.png)
 
-Per osservare nel dettaglio il contributo delle armoniche nell'approssimazione del segnale si osservi la figura seguente. Come detto il segnale è un segnale quasi periodico in cui si possono osservare oscillazioni che rimandano all'dea di una sovrapposizione di sinusoidi di varia frequenza ed ampiezza. Infatti si nota direttamente dal secondo grafico in figura il peso della prima armonica, o fondamentale, di frequenza $f_0$. Le creste tra segnale e fondamentale mostrano una indubbia corrispondenza. Tuttavia sono necessarie altre armoniche per ottenere migliore ricostruzione: nella seconda e nella terza immagine sono infatti riportati i grafici con rispetivamente 3 e 10 armoniche linermente combinate con i coefficienti mostrati prima. Le armoniche sono multiple della fondamentale secondo la legge $f_k=(k+1)f_0$, con $k=0,1,2,\cdots$.
+Per osservare nel dettaglio il contributo delle armoniche nell'approssimazione del segnale si osservi la figura seguente. Come detto il segnale è un segnale quasi periodico in cui si possono osservare oscillazioni che rimandano all'dea di una sovrapposizione di sinusoidi di varia frequenza ed ampiezza. Infatti si nota direttamente dal secondo grafico in figura il peso della prima armonica, o fondamentale, di frequenza $f_0$. Le creste tra segnale e fondamentale mostrano una indubbia corrispondenza. Tuttavia sono necessarie altre armoniche per ottenere migliore ricostruzione: nella seconda e nella terza immagine sono infatti riportati i grafici con rispettivamente 3 e 10 armoniche linearmente combinate con i coefficienti mostrati prima. Le armoniche sono multiple della fondamentale secondo la legge $f_k=(k+1)f_0$, con $k=0,1,2,\cdots$.
 
 ![harm](images/harmonics.png)
 
@@ -220,7 +220,225 @@ Con questo esempio, abbiamo già visto l'idea principale della trasformata di Fo
 Questa sovrapposizione ponderata viene anche chiamata rappresentazione di Fourier del segnale originale. Il segnale originale e la trasformata di Fourier contengono la stessa quantità di informazioni. Queste informazioni, tuttavia, sono rappresentate in modi diversi. Mentre il segnale visualizza le informazioni nel dominio del tempo, la trasformata di Fourier le visualizza nel dominio della frequenza. Come affermato da Hubbard [9], il segnale ci dice quando determinate note vengono suonate nel tempo, ma nasconde le informazioni sulle frequenze. Al contrario, la trasformata di Fourier della musica mostra quali note (frequenze) vengono suonate, ma nasconde le informazioni su quando le note vengono eseguite.
 
 ---
-
 ##### Trasformata di Fourier di segnali analogici
 
-Senza seguire una trattazione rigorosa, ricordiamo qui l'importante risultato relativo alla trasformata di Fourier di un segnale audio analogico. Richiamaimo poi che per calcolare lo spettro di un segnale analogico in digitale, si campiona una registrazione di durata finita del segnale e i campioni risultanti vengono trasformati nel dominio della frequenza mediante un algoritmo DFT o FFT. La frequenza di campionamento $F_s$ deve essere sufficientemente veloce da minimizzare gli effetti dialiasing. Se necessario, un prefiltro analogico antialiasing può precedere l'operazione di campionamento.
+Senza seguire una trattazione rigorosa, ricordiamo qui l'importante risultato relativo alla trasformata di Fourier di un segnale (audio) analogico. Richiamiamo poi che per calcolare lo spettro di un segnale analogico in digitale, si campiona una registrazione di durata finita del segnale e i campioni risultanti vengono trasformati nel dominio della frequenza mediante un algoritmo DFT o FFT. La frequenza di campionamento $F_s$ deve essere sufficientemente veloce da minimizzare gli effetti dell'aliasing. Se necessario, un prefiltro analogico anti-aliasing può precedere l'operazione di campionamento.
+
+Iniziamo rivedendo le principali definizioni. Un segnale analogico è descritto da una funzione del tempo $x_a(t)$. La `trasformata di Fourier` $X_a(f)$ di $x_a(t)$ è lo spettro di frequenza del segnale:
+
+$$
+X_a(f)=\int_{-\infty}^{+\infty} x(t)e^{-j2\pi f t} dt 
+$$
+
+dove $f$ è la frequenza ordinaria f in [Hertz] o [cicli/sec]. Si noti che occorre integrare su tutti i tempi da $-\infty$ a $+\infty$ anziché su un intervallo limitato e conseguentemente, dalle medie integrali relative alle diverse armoniche adesso si deve passare agli integrali. Il significato fisico di $X_a(f)$ è evidenziato dalla `trasformata di Fourier inversa`, che esprime il segnale arbitrario $x_a(t)$ come una sovrapposizione lineare di sinusoidi di diversa frequenza:
+
+$$
+x_a(t)=\frac{1}{2\pi}\int_{-\infty}^{+\infty} X_a(f)e^{+j2\pi f t} df 
+$$
+
+##### Esempi
+
+Consideriamo alcuni esempi. La figura seguente mostra la forma d'onda e la trasformata di Fourier in ampiezza per alcuni segnali audio, dove viene suonata una singola nota C4 su strumenti diversi: un pianoforte, una tromba, un violino e un flauto. Abbiamo già incontrato questo esempio in precedenza, dove abbiamo discusso l'aspetto del timbro. Ricordiamo che l'esistenza di determinati parziali e la loro forza relativa hanno un'influenza cruciale sul timbro di un tono musicale. 
+
+![](images/strumenti.png)
+
+Nel caso del tono del pianoforte, la trasformata di Fourier mostra un picco netto a 262 Hz, il che rivela che la maggior parte dell'energia del segnale è contenuta nel primo parziale o nella frequenza fondamentale della nota C4. Ulteriori picchi (anche oltre l'intervallo di frequenza mostrato da 0 a 1000 Hz) si trovano a multipli interi della frequenza fondamentale, corrispondenti ai parziali superiori. La successiva mostra che la stessa nota suonata su una tromba genera uno spettro di frequenza simile, dove i picchi appaiono nuovamente a multipli interi della frequenza fondamentale. Tuttavia, la maggior parte dell'energia è ora contenuta nel terzo parziale, e le altezze relative dei picchi sono diverse rispetto al pianoforte. Questo è uno dei motivi per cui una tromba suona diversa da un pianoforte. Per un violino, la maggior parte dell'energia è di nuovo contenuta nel primo parziale. Si noti che i picchi sono sfocati in frequenza, un risultato del vibrato. Le modulazioni di frequenza del vibrato, dipendenti dal tempo, sono mediate dalla trasformata di Fourier. In questo modo si ottiene un singolo coefficiente per ogni frequenza, indipendente dalle fluttuazioni spettro-temporali. Una spiegazione simile vale per il tono del flauto mostrato in ultimo.
+
+---
+
+##### Trasformata di Fourier a tempo discreto
+
+Assumiamo ora di effettuare il campionamento di segnali a tempo continuo, come per esempio quelli ottenuti dai suoni degli strumenti mostrati sopra.  Ricordiamo che un segnale a tempo discreto $x(n)=x_a(nT_s)$, ottenuto per campionamento con tasso $F_s$ da un segnale a tempo continuo $x_a(t)$, ha trasformata di Fourier:
+
+$$
+X_s(f)=\sum_{-\infty}^{+\infty} x(n)e^{-j2\pi f T_sn}=\sum_{-\infty}^{+\infty} x(n)e^{-j2\pi \frac{f}{F_s}n}.
+$$
+
+Questa trasformazione è nota come `Trasformata di Fourier a tempo discreto` (`DTFT`) della sequenza di campioni $x(n)=x_a(nT_s)$. La funzione $X_s(f)$ è una funzione periodica di $f$ con periodo $F_s$, quindi $X_s(f+F_s)=X_s(f)$. A causa di questa periodicità, si può restringere l'intervallo di frequenza a un solo periodo, cioè l'intervallo di Nyquist, $[-F_s/2, F_s/2]$. La periodicità in f implica che $X_s(f)$ si estenderà sull'intero asse delle frequenze, in accordo con la nostra aspettativa che il processo di campionamento introduca alte frequenze nello spettro originale. 
+
+E\' anche utile aggiungere che data la periodicità di $X_s(f)$ sì può ricostruire $x_a(nT_s)$ da $X_s(f)$ mediante la `trasformata di Fourier inversa` (`I-DTFT`):
+
+$$
+x_a(nT_s)=\frac{1}{F_s}\int_{-F_s/2}^{+F_s/2} X_s(f)e^{j2\pi f T_sn}=\frac{1}{2\pi}\int_{-\pi}^{+\pi} X_s(\omega)e^{j\omega n}
+$$
+
+dove il cambio di variabile $\omega=j2\pi f/F_s$ esprime la `frequenza digitale` definita in precedenza e che riporta la periodicità nell'intervallo $[-\pi, \pi]$.
+
+Un legame molto importante tra la trasformata a tempo continuo $X_a(f)$ e quella a tempo discreto $X_s(f)$ è che quest'ultima ci consente di calcolare in modo approssimato lo spettro del segnale analogico $x_a(t)$. Infatti, utilizzando la definizione di integrale secondo Riemann, possiamo scrivere approssimativamente
+
+$$
+X_a(f)=\int_{-\infty}^{+\infty} x(t)e^{-j2\pi f t} dt \approx
+T_s\cdot \sum_{-\infty}^{+\infty} x(n)e^{-j2\pi f T_sn}
+$$
+
+oppure 
+
+$$
+X_a(f)\approx T_s\cdot X_s(f).
+$$
+
+Questa approssimazione diventa esatta al limite del tempo continuo:
+$$
+X_a(f)=\lim_{T_s\to 0} T_s\cdot X_s(f)
+$$
+
+Anche se non giustificato qui, la periodicità in $f$ è legata alla replica periodica dello spettro originale $X_a(f)$, come si vede in figura.
+
+![](images/replica_spettro.png)
+
+--- 
+
+##### Trasforma Discreta di Fourier 
+ 
+Per eseguire calcoli su macchine digitali (DSP), dobbiamo risolvere ancora alcuni problemi. Un problema è che la somma nelle approssimazioni precedenti coinvolge un numero infinito di addendi. Un altro problema è che il parametro di frequenza $f$ (oppure $\omega$) è un parametro continuo. Per entrambi i problemi esistono alcune soluzioni pragmatiche. Per quanto riguarda il primo problema, assumiamo che la maggior parte dell'informazione rilevante di $f$ sia limitata a una certa durata nel tempo. Ad esempio, la registrazione di una canzone difficilmente dura più di dieci minuti. Avere una durata finita significa che il segnale analogico $f$ è assunto come nullo al di fuori di un intervallo compatto. Eventualmente spostando il segnale, possiamo assumere che questo intervallo inizi al tempo $t=0$. Questo significa che dobbiamo considerare solo un numero finito di campioni $x(0),x(1),\dots,x(N -1)$ per un numero intero opportuno $N$. Di conseguenza, la somma diventa finita. Per quanto riguarda il secondo problema, si calcola la trasformata di Fourier solo per un numero finito di frequenze. Analogamente al campionamento dell'asse del tempo, in genere si campiona l'asse delle frequenze considerando le frequenze $\omega= k/M$ per un certo numero di $M$ e $k\in [0,\dots,M-1]$. In pratica, spesso si accoppiano il numero di campioni $N$ e il numero $M$ che determina la risoluzione in frequenza impostando $N=M$. 
+L'approssimazione in pratica si avvale della seguente somma parziale
+
+\begin{equation}\label{eq:DFT}
+X_s(f_k)\approx X_N(k)=\sum_{n=0}^{N-1} x(n)e^{-j2\pi \frac{k}{N}n}
+\end{equation}
+
+dove le frequenze espresse dal coefficiente di Fourier $X_N(k)$ di indice k corrispondono alle frequenze fisiche
+
+$$
+f_k=\frac{k}{NT_s}=k\cdot \frac{F_s}{N}, \quad k=0,\dots,N-1
+$$
+
+in Hertz. Questa trasformazione è nota anche come `Trasformata di Fourier Discreta `(`DFT`). In pratica si usa una finestra temporale che produce effetti di smearing e leakage dello spettro. Questi concetti sono centrali nell'ambito dell'analisi spettrale e non saranno discussi qui. 
+
+Per completezza, richiamiamo la coppia DFT e IDFT (DFT inversa) definita su $N$ punti per un segnale $x(n)$ di pari  lunghezza e valutata in $N$ frequenze equidistanti sull'intero intervallo di Nyquist, $0\leq ω\leq 2\pi$, espresse in radianti per campione, come segue:
+
+$$
+\omega_k=k\cdot \frac{2\pi}{N},\qquad \quad k=0,\dots,N-1
+$$
+
+da cui DFT e IDFT, per $k=0,\dots,N-1$ e $n=0,\dots,N-1$, risultano:
+
+$$
+X_N(k)=\sum_{n=0}^{N-1} x(n)e^{-j\omega_k n}\qquad \text{e}\qquad x(n)=\frac{1}{N}\sum_{k=0}^{N-1} X_N(k)e^{j\omega_k n}
+$$
+
+
+I coefficienti $X_N(k)$ devono essere considerati tuttavia con attenzione. In primo luogo, la qualità dell'approssimazione nella {eq}`eq:DFT` può essere piuttosto scarsa, in particolare per frequenze vicine alla frequenza di Nyquist. In secondo luogo, per un segnale $x(t)$ a valore reale, la trasformata di Fourier soddisfa alcune proprietà di simmetria. Di conseguenza, la metà superiore dei coefficienti di Fourier è ridondante e occorre considerare solo i coefficienti $X_N(k)$ per $k\in [0,\dots,N/2]$. Infine, consideriamo alcuni aspetti di efficienza nel calcolo della DFT. Per calcolare un singolo coefficiente di Fourier $X_N(k)$, è necessario un numero di moltiplicazioni e addizioni lineare in $N$. Pertanto, per calcolare tutti i coefficienti $X_N(k)$ per $k\in [0,\dots,N/2]$ è richiesto un numero di operazioni dell'ordine di $N^2$. Nonostante sia un numero finito di operazioni, un approccio computazionale di questo tipo è troppo lento per molte applicazioni pratiche, specialmente quando $N$ è grande. Il numero di operazioni può essere drasticamente ridotto utilizzando un algoritmo efficiente noto come la `trasformata veloce di Fourier` (`FFT`). L'algoritmo FFT, scoperto da Gauss e Fourier duecento anni fa, ha rivoluzionato intere industrie ed è ora utilizzato in miliardi di dispositivi di telecomunicazione e altri dispositivi. La FFT sfrutta le ridondanze tra sinusoidi di diverse frequenze per calcolare congiuntamente tutti i coefficienti di Fourier tramite una ricorsione. Questa ricorsione funziona particolarmente bene nel caso in cui $N$ sia una potenza di due. Di conseguenza, la FFT riduce il numero complessivo di operazioni dall'ordine di $N^2$ all'ordine di $N \log_2 N$. I risparmi sono enormi. Ad esempio, usando $N = 2^{10} = 1024$, l'FFT richiede approssimativamente $N \log_2 N = 10240$ operazioni invece di $N^2 = 1048576$ operazioni nell'approccio naive, con un fattore di risparmio di circa 100. Nel caso di $N = 2^{20}$, i risparmi ammontano a un fattore di circa 50000, etc.
+
+##### Spettro di segnale a banda non limitata
+
+In ossequio al monito riportato sopra circa il fatto che coefficienti $X_N(k)$ possono generare errore variabile di approssimazione dello spettro di un segnale analogico da cui prendono le mosse, si mostra di seguito l'analisi temporale e spettrale di un segnale a banda non limitata, come l'esponenziale negativo, con particolare attenzione all'errore che si commette a causa dell'ineludibile aliasing. Si mostra inoltre quale ruolo giochino due principali parametri del processo di campionamento, come la frequenza di campionamento $F_s$ e il numero di campioni osservati $N$, nell'estrarre sufficiente informazioni per il controllo di detto errore.  
+
+Si considerino il segnale esponenziale negativo $x_a(t)=Ae^{-\alpha t} u(t)$, con $A,\alpha$ reali positivi, $u(t)$ la funzione gradino, e la sua trasformata di Fourier che può essere data in forma analitica $X_a(f)=A/(\alpha+j2\pi f)$ riportate nelle figure seguenti (in cui si mostra il segnale $x_a(t)$ e la risposta in frequenza $|X_a(f)|$, cioè il modulo dello spettro). 
+
+![exp](images/exp.png)
+
+E\' evidente che lo spettro $|X_a(f)|$ non è limitato e ha energia in tutte le frequenza $-\infty<f<+\infty$, benché abbia un decadimento esponenziale che rende le frequenze meno rilevanti in bande via via sempre più lontane dallo zero.
+
+Per determinare la trasformata di Fourier di $x_a(t)$ mediante tecniche di analisi digitale è necessario campionare la funzione $x_a(t)$. Il risultato del campionamento è illustrato nella sottostante figura. Il segnale campionato, con frequenza $F_s$ risulta:
+
+$$
+x(n)=x_a(nT_s)=Ae^{-\alpha nT_s}, \quad 0\leq n\leq +\infty
+$$
+
+![](images/exp_dis.png)
+
+Lo spettro di $x(n)$ può essere trovato facilmente se si utilizza un calcolo diretto della trasformata di Fourier a tempo discreto. Troviamo che
+
+$$
+X_s(f)=\sum_{-\infty}^{+\infty}x_a(nT_s)e^{-j2\pi fn 𝑇_𝑠}=
+\frac{A}{1-e^{-T_s(\alpha+j2\pi f)}}
+$$
+
+La sequenza dei campioni ha una trasformata di Fourier che si ottiene replicando infinite volte la trasformata di Fourier del segnale originale, ciascuna replica essendo centrata su un
+multiplo della frequenza di campionamento $F_s=1/T_s$. Se dunque tale frequenza non è sufficientemente grande compare il fenomeno dell’aliasing, per cui tali repliche risultano sovrapposte. Ciò è mostrato in figura, e fornisce una prima importante differenza dell’implementazione numerica rispetto
+alla trasformata originale. Quella ottenuta è la DTFT ed ha il problema di dipendere da infiniti campioni, oltre ad essere una funzione continua nella variabile $f$, e quindi non trattabile numericamente.
+
+![](images/replica.png)
+
+La figura seguente invece mostra lo spettro $X_s(f)$ in banda base, cioè ristretta all'intervallo di Nyquist $[-F_s/2, F_s/2]=[-5,5]$, cioè con $F_s=10$ Hz, e corrispondente al lobo centrale della figura precedente.  
+
+![](images/exp_disF.png)
+
+Il problema dell’aliasing può essere eliminato (come è
+noto dal teorema del campionamento) campionando con una frequenza almeno pari al doppio della massima frequenza nello spettro di $x_a(t)$. D’altro canto, se $X_a(f)$ ha estensione illimitata l’aliasing potrà essere soltanto ridotto assumendo per $T_s$ il valore più piccolo possibile. Una seconda differenza, causata dall'implementazione numerica, rispetto al risultato atteso, risulta evidente dalle figure mostrate sopra: il numero di campioni di $x_a(t)$ considerati non potrà essere arbitrariamente elevato. Se dunque $x_a(t)$ ha durata temporale molto grande (come in questo caso che si estende
+per $-\infty<t<+\infty$) una porzione di segnale non sarà campionata. Graficamente, ciò corrisponde ad assumere una “finestra di campionamento” di $N$ campioni, come si vede dalla figura.
+
+![](images/finestra_rett.png)
+
+Dal punto di vista dello spettro in frequenza, in virtù della proprietà del prodotto, la convoluzione tra la trasformata $X_a(f)$ e quella della finestra (per es. rettangolare) $W(f)$ danno luogo a classici ripple (dovuti al troncamento) che compaiono nello spettro della trasformata. Qui la frequenza di campionamento è fissata a $F_s=2$ Hz, mentre il numero di campioni prelevati dal segnale dato dalla lunghezza della finestra è $N=10$. Nell'immagine sotto è visibile l'effetto della convoluzione con la finestra rettangolare: il grafico mette assieme l'originale $X_a(f)$ (in blu), la DTFT $X_s(f)$ (in rosso) e la DFT $X_N(k)$ (in verde, ma plotatta con interpolazione continua).
+
+![](images/DFT_10.png)
+
+Nell'immagine seguente si opera la stessa finestratura, ma questa volta con finestra ampia il doppio, cioè $N=20$, pur mantenendo la frequenza di campionamento a $F_s=2$ Hz. Come si nota l'ampiezza dei ripple si riduce significativamente, quindi il numero di campioni incide sull'approssimazione puntuale tra i due spettri (si riduce la discrepanza tra continuo e discreto per ogni frequenza $f_k$ considerata).
+
+![](images/DFT_20.png)
+
+Per migliorare ulteriormente l'approssimazione, cioè al fine di ottenere una buona ricostruzione per via numerica della trasformata di Fourier originale queste differenze (che, di fatto, si traducono in errori di valutazione) possono essere controllate da un numero sufficientemente elevato di campioni e un sufficiente passo di campionamento. La figura successiva mostra, mediante i plot dei tre spettri citati sopra, il livello di approssimazione usando $N=200$ campioni del segnale originale $x_a(nT_s)$ e un tasso di campionamento $F_s=20$. Come si nota, l'estensione della banda di frequenza in cui gli spettri sono per buona parte sovrapposti si estende fino a raggiungere il tasso di Nyquist $F_s/2$ (in entrambe le direzioni), anche se in quella regione l'errore si mantiene più alto, che cresce con $F_s$ naturalmente.
+
+![](images/DFT_200_20.png)
+
+
+
+##### Il decadimento esponenziale
+
+Il decadimento esponenziale si verifica naturalmente quando una quantità decade a una velocità proporzionale alla quantità rimasta. In natura, tutti i risonatori lineari, come le corde degli strumenti musicali e le canne dei legni, mostrano un decadimento esponenziale nella loro risposta a un'eccitazione momentanea. Per fare un altro esempio, l'energia riverberante in una stanza decade esponenzialmente dopo la cessazione del suono diretto. In sostanza, tutte le oscillazioni non pilotate decadono in modo esponenziale (purché siano lineari e invarianti nel tempo). Non pilotate significa che non c'è una fonte continua di energia motrice. Esempi di oscillazioni non guidate sono le vibrazioni di un diapason, le corde percosse o pizzicate, la barra di una marimba o di uno xilofono e così via. Esempi di oscillazioni pilotate sono i corni, i fiati, gli archi e la voce. Le oscillazioni pilotate sono tipicamente periodiche, mentre quelle non pilotate non lo sono, tranne nei casi idealizzati (senza perdita).
+
+La crescita esponenziale si verifica quando una quantità aumenta a un tasso proporzionale alla quantità attuale. La crescita esponenziale è instabile, poiché nulla può crescere in modo esponenziale per sempre senza incorrere in qualche limite. Si noti che una costante di tempo positiva corrisponde a un decadimento esponenziale, mentre una costante di tempo negativa corrisponde a una crescita esponenziale. Nell'elaborazione dei segnali, abbiamo quasi sempre a che fare esclusivamente con il decadimento esponenziale (costanti di tempo positive).
+
+---
+
+## La Short-Time Fourier Transform (STFT)
+
+Abbiamo visto che la magnitudine della trasformata di Fourier ci informa sul contenuto complessivo di frequenza di un segnale, ma non ci dice in quale momento tale contenuto di frequenza si manifesta. La figura seguente illustra questo fatto, mostrando la forma d'onda e la magnitudine della trasformata di Fourier per due segnali. Il primo segnale è composto da due parti, con una sinusoide di frequenza $\omega = 1$ Hz e ampiezza $A = 1$ nella prima parte e una sinusoide di $\omega = 5$ Hz e ampiezza $A = 0.7$ nella seconda parte. Inoltre, il segnale è nullo all'esterno dell'intervallo $[0,10]$. Al contrario, il secondo segnale è una sovrapposizione di queste due sinusoidi ed è nullo all'esterno dell'intervallo $[0,5]$. Anche se i due segnali sono di natura diversa, le magnitudini delle rispettive trasformate di Fourier risultano più o meno identiche. Questo dimostra i limiti della trasformata di Fourier nell'analizzare segnali con caratteristiche variabili nel tempo.
+
+![](images/STFT_esempio.png)
+
+La trasformata di Fourier fornisce informazioni sulle frequenze che sono mediate su tutto il dominio temporale. Tuttavia, l'informazione sul momento in cui tali frequenze si manifestano è nascosta nella trasformata. Per recuperare l'informazione temporale nascosta, Dennis Gabor introdusse, nel 1946, la `Short-Time Fourier Transform` (`STFT`). Invece di considerare l'intero segnale, l'idea principale della STFT è quella di considerare solo una piccola sezione del segnale. A tale scopo, si fissa una cosiddetta funzione finestra, che è una funzione non nulla solo per un breve intervallo di tempo (definendo la sezione considerata). Il segnale originale viene quindi moltiplicato con la funzione finestra per ottenere un segnale finestrato. Per ottenere informazioni sulle frequenze in diversi istanti temporali, si sposta la funzione finestra lungo il tempo e si calcola una trasformata di Fourier per ciascuno dei segnali finestrati risultanti.
+
+Questa idea è illustrata nella figura seguente, che continua l'esempio dalla figura precedente. Per ottenere sezioni locali del segnale originale, si moltiplica il segnale con funzioni finestra rettangolari opportunamente traslate. Nel secondo grafico a partire dall'alto, la sezione locale risultante contiene solo contenuto di frequenza a $1$ Hz, il che porta a un singolo picco principale nella trasformata di Fourier a $\omega = 1$ Hz. Spostando ulteriormente la finestra temporale verso destra, la sezione risultante contiene componenti a $1$ Hz e $5$ Hz (terza figura). Queste componenti sono riflesse dai due picchi a $\omega = 1$ e $\omega = 5$. Infine, la sezione mostrata nella quarta figura contiene solo contenuto di frequenza a $5$ Hz.
+
+![alt text](images/STFT_window.png)
+
+Già a questo punto, desideriamo enfatizzare che la STFT riflette non solo le proprietà del segnale originale ma anche quelle della funzione finestra. Innanzitutto, la STFT dipende dalla lunghezza della finestra, che determina la dimensione della sezione. Inoltre, la STFT è influenzata dalla forma della funzione finestra. Ad esempio, i bordi netti della finestra rettangolare tipicamente introducono artefatti di tipo “ripple”. 
+
+Nel seguito, consideriamo il caso di segnali a tempo discreto e specifichiamo le formule matematiche più importanti, necessarie per le applicazioni pratiche. Sia $x : \mathbb{Z} \rightarrow \mathbb{R}$ un segnale a valori reali ottenuto tramite campionamento equidistante rispetto a una frequenza di campionamento fissa $F_s$ espressa in Hertz. Inoltre, sia $w : [0 : N - 1] \rightarrow \mathbb{R}$ una funzione finestra campionata di lunghezza $N \in \mathbb{N}$. Ad esempio, nel caso di una finestra rettangolare, si ha $w(n) = 1$ per $n \in [0 : N - 1]$. Implicitamente, si assume che $w(n) = 0$ per tutti gli altri parametri temporali $n \in \mathbb{Z} \setminus [0 : N - 1]$ al di fuori di questa finestra. Il parametro di lunghezza $N$ determina la durata delle sezioni considerate, che corrisponde a $NT_s=N/F_s$ secondi. Si introduce anche un parametro aggiuntivo $H \in \mathbb{N}$, che è chiamato hop size. Il parametro hop size è specificato in campioni e determina la dimensione del passo con cui la finestra deve essere traslata lungo il segnale.
+
+Rispetto a questi parametri, la STFT discreta $X$ del segnale $x$ è definita da
+
+$$
+X(m, k) := \sum_{n=0}^{N-1} x(n + mH) w(n) \, \mathrm{exp}\left(-2 \pi i \frac{kn}{N}\right) \quad (2.26)
+$$
+
+con $m \in \mathbb{Z}$ e $k \in [0 : K]$. Il numero $K=N/2$ (supponendo che $N$ sia pari) è l'indice di frequenza corrispondente alla frequenza di Nyquist. Il numero complesso $X(m, k)$ denota il $k$-esimo coefficiente di Fourier per il $m$-esimo frame temporale. Si noti che per ciascun frame temporale fisso $m$, si ottiene un vettore spettrale di dimensione $K + 1$ dato dai coefficienti $X(m, k)$ per $k \in [0 : K]$. Il calcolo di ciascun vettore spettrale di questo tipo corrisponde a una DFT di dimensione $N$ che può essere eseguita efficientemente utilizzando l'FFT.
+
+Cosa abbiamo effettivamente calcolato in (2.26) in relazione al segnale analogico originale $f$? Per quanto riguarda la dimensione temporale, ogni coefficiente di Fourier $X(m, k)$ è associato alla posizione temporale fisica
+
+$$
+T_m = m \cdot \frac{H}{F_s} 
+$$
+
+espressa in secondi. Ad esempio, per il minimo valore possibile di hop size $H = 1$, si ottiene $T_m = m/F_s = m \cdot T_s$ sec. In questo caso, si ottiene un vettore spettrale per ciascun campione del segnale discreto $x$, il che comporta un enorme aumento del volume dei dati. Inoltre, considerare sezioni traslate di un solo campione produce generalmente vettori spettrali molto simili. Per ridurre questo tipo di ridondanza, si tende a correlare l'hop size alla lunghezza $N$ della finestra. Ad esempio, si sceglie spesso $H = N/2$, che costituisce un buon compromesso tra una risoluzione temporale ragionevole e il volume dei dati comprendente tutti i coefficienti spettrali generati.
+
+Per quanto riguarda la dimensione della frequenza, abbiamo visto prima che l'indice $k$ di $X(m, k)$ corrisponde alla frequenza fisica
+
+$$
+f_k = k \cdot \frac{F_s}{N} 
+$$
+
+espressa in Hertz.
+
+##### Spettrogramma
+
+Introduciamo qui il concetto di spettrogramma, che denotiamo con $Y$. Lo spettrogramma è una rappresentazione bidimensionale del modulo quadro della STFT:
+
+$$
+Y(m, k) := |X(m, k)|^2.
+$$
+
+Esso può essere visualizzato tramite un'immagine bidimensionale, dove l'asse orizzontale rappresenta il tempo e l'asse verticale rappresenta la frequenza. In questa immagine, il valore dello spettrogramma $Y(m, k)$ è rappresentato dall'intensità o dal colore nell'immagine alla coordinata $(m, k)$. Si noti che nel caso discreto l'asse temporale è indicizzato dagli indici dei frame $m$ e l'asse delle frequenze è indicizzato dagli indici di frequenza $k$.
+
+Continuando con l'esempio precedente, consideriamo ora una versione campionata del segnale analogico usando una frequenza di campionamento di $F_s = 32 \, \text{Hz}$. Avendo una durata fisica di $10 \, \text{sec}$, si ottengono 320 campioni (vedi figura). 
+
+![](images/sig_2_sinusoidi.png)
+
+Utilizzando una lunghezza della finestra di $N = 64$ campioni e un hop size di $H = 32$ campioni, otteniamo lo spettrogramma mostrato di seguito. Nell'immagine, la tonalità codifica l'ampiezza di un coefficiente spettrale, dove colori più chiari corrispondono a valori maggiori. Tramite la formula sopra, l'$m$-esimo frame corrisponde alla posizione temporale fisica $T_m = 1 \, \text{sec}$. In altre parole, la STFT ha una risoluzione temporale di un frame per secondo. Inoltre, tramite la formula per la risoluzione in frequenza, il $k$-esimo coefficiente di Fourier corrisponde alla frequenza fisica $f_k=k/2 \,\text{Hz}$. In altre parole, si ottiene una risoluzione in frequenza di due coefficienti per Hertz. Il grafico dello spettrogramma con assi temporali e di frequenza sono mostrati in figura (sono esclusi gli estremi in cui la sovrapposizione non è completa).
+
+![](images/spettrog1.png)
+
+Consideriamo ora alcune impostazioni tipiche riscontrate nell'elaborazione di segnali musicali. Ad esempio, nel caso di registrazioni su CD, si ha una frequenza di campionamento di $F_s = 44100 \, \text{Hz}$. Utilizzando una lunghezza della finestra di $N = 4096$ e un hop size di $H = N/2$, questo risulta in una risoluzione temporale di $\frac{H}{F_s} \approx 46.4 \, \text{ms}$ e una risoluzione in frequenza di $\frac{F_s}{N} \approx 10.8 \, \text{Hz}$. Per ottenere una migliore risoluzione in frequenza, si può aumentare la lunghezza della finestra $N$. Questo, tuttavia, porta a una minore localizzazione temporale, riducendo la capacità della STFT di catturare fenomeni locali nel segnale.
