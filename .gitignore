@@ -2,3 +2,4 @@
 .github/
 _build/
 .vscode/
+.gitignore
