@@ -1,4 +1,4 @@
 # MyST build outputs
-.github
-_build
-.vscode
+.github/
+_build/
+.vscode/
