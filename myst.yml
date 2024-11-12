@@ -22,6 +22,7 @@ project:
     - file: cap1-suono.md
     - file: cap2-audio.md
     - file: cap3-spettro.md
+    - file: cap4-filtri.md
     
 site:
   template: book-theme
