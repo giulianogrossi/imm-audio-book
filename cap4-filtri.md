@@ -85,7 +85,7 @@ $$
 
 Nella figura sotto, è mostrato un filtro di ordine 3. Come si può vedere, esso comprende tre ritardi dell'ingresso, sotto forma di tre ritardi unitari in cascata. 
 
-```{image} images/fir3.png
+```{image} images/FIR3.png
 :width: 300px
 :align: center
 ```
