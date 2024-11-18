@@ -49,7 +49,7 @@ y(n) &= x(n) + a x(n-1)\\
 &= \left( 1 + a z^{-1} \right) z^n. 
 \end{align}
 
-Questo ci mostra che il fasore, $z^n$, viene modificato da una moltiplicazione per $1+az^{-1}$ nel suo percorso verso l'uscita quando lo facciamo passare attraverso il filtro, così ora abbiamo una comprensione iniziale di cosa faccia [](eq:fir). In realtà, abbiamo anche appena appreso che l'uscita del filtro sarà anch'essa un fasore, ma uno che è stato modificato! Se sostituiamo $z^n $con $z^n = e^{j\omega n}$, il risultato, che chiamiamo $H(\omega)$, è
+Questo ci mostra che il fasore, $z^n$, viene modificato da una moltiplicazione per $1+az^{-1}$ nel suo percorso verso l'uscita quando lo facciamo passare attraverso il filtro, così ora abbiamo una comprensione iniziale di cosa faccia [](#eq:fir). In realtà, abbiamo anche appena appreso che l'uscita del filtro sarà anch'essa un fasore, ma uno che è stato modificato! Se sostituiamo $z^n $con $z^n = e^{j\omega n}$, il risultato, che chiamiamo $H(\omega)$, è
 
 \begin{align}
 H(\omega) &= 1 + a z^{-1} \Big|_{z=e^{j\omega}} \\
@@ -71,7 +71,7 @@ Questo è illustrato nella figura sotto.
 
 Va notato che, sebbene possiamo derivare la risposta in frequenza di filtri semplici abbastanza facilmente con carta e penna, questo nella pratica non viene quasi mai fatto, specialmente per filtri più complessi. Si utilizzano invece librerie sw specializzate, come quelle scritte in Python (e mostrate nelle esercitazioni), per calcolare numericamente la risposta in frequenza. Pertanto, le nostre derivazioni qui servono solo a illustrare i concetti e a esplorare il comportamento dei filtri.
 
-Procediamo ora a esplorare un filtro un po' più complesso. Invece di considerare solo il termine ritardato singolo in [](eq:fir), possiamo aggiungere più termini di questo tipo, ciascuno scalato da un valore diverso, ovvero:
+Procediamo ora a esplorare un filtro un po' più complesso. Invece di considerare solo il termine ritardato singolo in [](#eq:fir), possiamo aggiungere più termini di questo tipo, ciascuno scalato da un valore diverso, ovvero:
 
 $$\label{eq:firMtap}
 y(n) = b_0 x(n) + b_1 x(n-1) + b_2 x(n-2) + \cdots + b_M x(n-M).
@@ -105,7 +105,7 @@ $$\label{eq:MA}
 y(n) = a_0 x(n) + a_1 x(n-1).
 $$
 
-Con $a_0 = 0.5$ e $a_1 = 0.5$, questo filtro calcola semplicemente la media (o media aritmetica) di due campioni consecutivi. Abbiamo visto come possiamo comprendere i filtri osservando come modificano un fasore di una certa frequenza, che viene fatto passare attraverso il filtro. Abbiamo anche visto che possiamo considerare l'effetto di un ritardo di un campione come una moltiplicazione di un fasore per $z^{-1}$. Possiamo, in effetti, usare questo modo di pensare indipendentemente da quale sia il nostro ingresso. Questo perché possiamo considerare qualsiasi segnale come composto da un certo numero (eventualmente infinito) di fasori! Ciò significa che non abbiamo nemmeno bisogno di sapere quale sia l'ingresso per comprendere come sarà influenzato da un filtro: possiamo semplicemente immaginare che sia composto da fasori. Possiamo pensare colloquialmente a questo come a una sorta di rappresentazione in fasori del nostro ingresso. Scriviamo questo come $x(n) \to X(z)$. Come abbiamo anche visto, l'uscita di un filtro sarà anch'essa un fasore quando l'ingresso è un fasore, sebbene modificato. Pertanto, quando l'ingresso è costituito da un numero di fasori, anche l'uscita sarà costituita da un numero di fasori. Questo deriva dalla linearità dei filtri—ne parleremo più avanti. Possiamo quindi scrivere l'uscita come $y(n) \to Y(z)$. $X(z)$ e $Y(z)$ sono, tecnicamente parlando, le trasformate z delle sequenze $x(n)$ e $y(n)$, rispettivamente, e diciamo che stiamo calcolando (o derivando) la trasformata $z$ quando facciamo questo. Ammettiamo che, a questo punto, il concetto sia un po' abbozzato, ma approfondiremo la trasformata $z$ più avanti. Tornando al filtro nella [](eq:MA), possiamo sostituire $x(n)$ con $X(z)$ e $y(n)$ con $Y(z)$, ottenendo:
+Con $a_0 = 0.5$ e $a_1 = 0.5$, questo filtro calcola semplicemente la media (o media aritmetica) di due campioni consecutivi. Abbiamo visto come possiamo comprendere i filtri osservando come modificano un fasore di una certa frequenza, che viene fatto passare attraverso il filtro. Abbiamo anche visto che possiamo considerare l'effetto di un ritardo di un campione come una moltiplicazione di un fasore per $z^{-1}$. Possiamo, in effetti, usare questo modo di pensare indipendentemente da quale sia il nostro ingresso. Questo perché possiamo considerare qualsiasi segnale come composto da un certo numero (eventualmente infinito) di fasori! Ciò significa che non abbiamo nemmeno bisogno di sapere quale sia l'ingresso per comprendere come sarà influenzato da un filtro: possiamo semplicemente immaginare che sia composto da fasori. Possiamo pensare colloquialmente a questo come a una sorta di rappresentazione in fasori del nostro ingresso. Scriviamo questo come $x(n) \to X(z)$. Come abbiamo anche visto, l'uscita di un filtro sarà anch'essa un fasore quando l'ingresso è un fasore, sebbene modificato. Pertanto, quando l'ingresso è costituito da un numero di fasori, anche l'uscita sarà costituita da un numero di fasori. Questo deriva dalla linearità dei filtri—ne parleremo più avanti. Possiamo quindi scrivere l'uscita come $y(n) \to Y(z)$. $X(z)$ e $Y(z)$ sono, tecnicamente parlando, le trasformate z delle sequenze $x(n)$ e $y(n)$, rispettivamente, e diciamo che stiamo calcolando (o derivando) la trasformata $z$ quando facciamo questo. Ammettiamo che, a questo punto, il concetto sia un po' abbozzato, ma approfondiremo la trasformata $z$ più avanti. Tornando al filtro nella [](#eq:MA), possiamo sostituire $x(n)$ con $X(z)$ e $y(n)$ con $Y(z)$, ottenendo:
 
 $$
 Y(z) = \left( a_0 + a_1 z^{-1} \right) X(z).
@@ -125,19 +125,19 @@ $$
 H(z) = \frac{Y(z)}{X(z)}.
 $$
 
-Intuitivamente, questo può essere compreso nel seguente modo. Se mettiamo l'ingresso $X(z)$ all'ingresso del sistema e misuriamo $Y(z)$ in qualche modo, e desideriamo dire qualcosa sul sistema indipendentemente dall'ingresso $X(z)$, possiamo dividere l'uscita $Y(z)$ per l'ingresso, ottenendo così la funzione di trasferimento $H(z)$. La ragione per cui possiamo farlo è legata alla rappresentazione in fasori dell'ingresso. Nel caso del filtro [](eq:MA), la funzione di trasferimento è data da:
+Intuitivamente, questo può essere compreso nel seguente modo. Se mettiamo l'ingresso $X(z)$ all'ingresso del sistema e misuriamo $Y(z)$ in qualche modo, e desideriamo dire qualcosa sul sistema indipendentemente dall'ingresso $X(z)$, possiamo dividere l'uscita $Y(z)$ per l'ingresso, ottenendo così la funzione di trasferimento $H(z)$. La ragione per cui possiamo farlo è legata alla rappresentazione in fasori dell'ingresso. Nel caso del filtro [](#eq:MA), la funzione di trasferimento è data da:
 
 $$\label{eq:FT}
 H(z) = a_0 + a_1 z^{-1}. \quad (4.21)
 $$
 
-Se sostituiamo $z$ con $e^{j\omega}$, otteniamo la risposta in frequenza $H(\omega)$. Per comprendere meglio i filtri, è utile pensare alle funzioni di trasferimento come a polinomi. La funzione di trasferimento in [](eq:FT) può essere scritta anche come:
+Se sostituiamo $z$ con $e^{j\omega}$, otteniamo la risposta in frequenza $H(\omega)$. Per comprendere meglio i filtri, è utile pensare alle funzioni di trasferimento come a polinomi. La funzione di trasferimento in [](#eq:FT) può essere scritta anche come:
 
 $$
 H(z) = \frac{a_0 z + a_1}{z}, 
 $$
 
-moltiplicando numeratore e denominatore per $z$. Notiamo che abbiamo un polinomio di primo ordine al numeratore, cioè $A(z) = a_0 z + a_1$. Come sappiamo, i polinomi hanno radici, cioè valori per cui il polinomio si annulla. Nel caso del numeratore in [](eq:FT), possiamo facilmente vedere che abbiamo una radice per $z=-\frac{a_1}{a_0}$. Cosa significa questo per il nostro filtro? Come menzionato prima, otteniamo la risposta in frequenza di un filtro sostituendo $z$ con $e^{j\omega}$. Facendo ciò, stiamo essenzialmente valutando i polinomi al numeratore e al denominatore della funzione di trasferimento sul cerchio unitario. Se i valori per cui valutiamo il polinomio sono vicini alla radice del polinomio al numeratore, la funzione di trasferimento tenderà a zero e sarà esattamente zero se la radice si trova sul cerchio unitario. Questo significa che qualsiasi segnale in ingresso sarà attenuato o persino annullato a frequenze vicine alle radici del polinomio. Per questa ragione, le radici del polinomio al numeratore di una funzione di trasferimento sono chiamate `zeri`. Generalizzando, possiamo osservare che il filtro più grande in [](eq:firMtap) ha la funzione di trasferimento:
+moltiplicando numeratore e denominatore per $z$. Notiamo che abbiamo un polinomio di primo ordine al numeratore, cioè $A(z) = a_0 z + a_1$. Come sappiamo, i polinomi hanno radici, cioè valori per cui il polinomio si annulla. Nel caso del numeratore in [](#eq:FT), possiamo facilmente vedere che abbiamo una radice per $z=-\frac{a_1}{a_0}$. Cosa significa questo per il nostro filtro? Come menzionato prima, otteniamo la risposta in frequenza di un filtro sostituendo $z$ con $e^{j\omega}$. Facendo ciò, stiamo essenzialmente valutando i polinomi al numeratore e al denominatore della funzione di trasferimento sul cerchio unitario. Se i valori per cui valutiamo il polinomio sono vicini alla radice del polinomio al numeratore, la funzione di trasferimento tenderà a zero e sarà esattamente zero se la radice si trova sul cerchio unitario. Questo significa che qualsiasi segnale in ingresso sarà attenuato o persino annullato a frequenze vicine alle radici del polinomio. Per questa ragione, le radici del polinomio al numeratore di una funzione di trasferimento sono chiamate `zeri`. Generalizzando, possiamo osservare che il filtro più grande in [](#eq:firMtap) ha la funzione di trasferimento:
 
 $$\label{eq:firM}
 H(z) = b_0 + b_1 z^{-1} + b_2 z^{-2} + \cdots + b_M z^{-M}.
@@ -161,13 +161,13 @@ $$
 0, \ldots, 0, 1, 0, \ldots, 0, 
 $$
 
-dove l'1 si trova all'istante temporale 0, oppure, se iniziamo la sequenza con $n=0$, la sequenza diventa semplicemente $1, 0, \ldots$. Forse possiamo imparare qualcosa di utile inserendo un tale impulso nell'ingresso di un filtro. In effetti, il segnale che otteniamo mettendo $\delta(n)$ come ingresso è chiamato `risposta all'impulso`, ed è un concetto molto importante nella teoria dei filtri.  Partendo dal semplice filtro in [](eq:fir), possiamo osservare che quando mettiamo l'impulso in ingresso al tempo $n = 0$ (supponendo che l'ingresso sia zero per $n < 0$), la sequenza in uscita è semplicemente 
+dove l'1 si trova all'istante temporale 0, oppure, se iniziamo la sequenza con $n=0$, la sequenza diventa semplicemente $1, 0, \ldots$. Forse possiamo imparare qualcosa di utile inserendo un tale impulso nell'ingresso di un filtro. In effetti, il segnale che otteniamo mettendo $\delta(n)$ come ingresso è chiamato `risposta all'impulso`, ed è un concetto molto importante nella teoria dei filtri.  Partendo dal semplice filtro in [](#eq:fir), possiamo osservare che quando mettiamo l'impulso in ingresso al tempo $n = 0$ (supponendo che l'ingresso sia zero per $n < 0$), la sequenza in uscita è semplicemente 
 
 $$
 1, a, 0, \ldots.
 $$ 
 
-Possiamo vedere questo seguendo i numeri, in ordine, attraverso il diagramma a blocchi. Al tempo $n = 0$, $x(n-1)$ è 0, e l'impulso passa direttamente all'uscita. Al tempo $n = 1$, $x(n)$ è ora 0 ma $x(n-1)$ è 1. Pertanto, otteniamo $1 \cdot a$ all'uscita. Al tempo $n = 2$ e da allora in poi, sia $x(n)$ che $x(n-1)$ sono zero, e nessun segnale passa attraverso il filtro.  Analogamente, possiamo facilmente osservare che il filtro in [](eq:MA) produce $a_0, a_1, 0, \ldots$ quando $\delta(n)$ è posto come ingresso. Nel caso più complicato del filtro più grande in [](eq:firM), possiamo vedere che l'uscita è $b_0, b_1, b_2, \ldots, b_M$ quando $x(n)=\delta(n)$. Pertanto, possiamo osservare i coefficienti del filtro all'uscita di tale filtro quando mettiamo un impulso in ingresso. Questo, tuttavia, è vero solo per i filtri a reazione diretta (feedforward filters). Possiamo anche osservare che la risposta all'impulso sarà zero per $n>M$, cioè quando l'indice temporale supera il massimo ritardo. Per questo motivo, i filtri della forma [](eq:firM) sono anche chiamati filtri a risposta impulsiva finita (FIR). La conclusione di tutto ciò è che possiamo effettivamente imparare qualcosa su un filtro osservando la sua uscita quando un impulso è posto in ingresso. 
+Possiamo vedere questo seguendo i numeri, in ordine, attraverso il diagramma a blocchi. Al tempo $n = 0$, $x(n-1)$ è 0, e l'impulso passa direttamente all'uscita. Al tempo $n = 1$, $x(n)$ è ora 0 ma $x(n-1)$ è 1. Pertanto, otteniamo $1 \cdot a$ all'uscita. Al tempo $n = 2$ e da allora in poi, sia $x(n)$ che $x(n-1)$ sono zero, e nessun segnale passa attraverso il filtro.  Analogamente, possiamo facilmente osservare che il filtro in [](#eq:MA) produce $a_0, a_1, 0, \ldots$ quando $\delta(n)$ è posto come ingresso. Nel caso più complicato del filtro più grande in [](#eq:firM), possiamo vedere che l'uscita è $b_0, b_1, b_2, \ldots, b_M$ quando $x(n)=\delta(n)$. Pertanto, possiamo osservare i coefficienti del filtro all'uscita di tale filtro quando mettiamo un impulso in ingresso. Questo, tuttavia, è vero solo per i filtri a reazione diretta (feedforward filters). Possiamo anche osservare che la risposta all'impulso sarà zero per $n>M$, cioè quando l'indice temporale supera il massimo ritardo. Per questo motivo, i filtri della forma [](#eq:firM) sono anche chiamati filtri a risposta impulsiva finita (FIR). La conclusione di tutto ciò è che possiamo effettivamente imparare qualcosa su un filtro osservando la sua uscita quando un impulso è posto in ingresso. 
 
 ---
 
@@ -206,7 +206,7 @@ $$
 
 Questo non è un comportamento desiderabile. I valori della sequenza crescono continuamente. Questo non è mai stato un problema per i filtri a reazione diretta che abbiamo considerato finora. Si tratta infatti di una proprietà speciale dei filtri con retroazione. Diciamo che il filtro è instabile. In questo caso semplice, possiamo osservare che finché $|a| < 1$, la risposta impulsiva decadrà verso zero. Tuttavia, per filtri con più ritardi nella parte di retroazione, non è immediato capire se il filtro sia stabile. 
 
-La risposta in frequenza del filtro [](eq:IIR) quando sollecitato in ingresso dal fasore $z^{n}=e^{j\omega n}$ è
+La risposta in frequenza del filtro [](#eq:IIR) quando sollecitato in ingresso dal fasore $z^{n}=e^{j\omega n}$ è
 
 \begin{align}
 H(\omega) &= \frac{1}{1 -a z^{-1}} \Big|_{z=e^{j\omega}} \\
@@ -250,7 +250,7 @@ H(z) &= \frac{Y(z)}{X(z)} \\
 
 A differenza del caso feedforward, ora appare un polinomio non banale al denominatore. Abbiamo visto in precedenza che le radici del polinomio al numeratore causano l'attenuazione o addirittura l'annullamento del segnale di ingresso a frequenze vicine alle radici. Cosa fanno, invece, le radici al denominatore? Se moltiplichiamo per $z$ sia al numeratore che al denominatore della funzione di trasferimento, il polinomio al denominatore diventa $A(z) = z - a$. È ovviamente nullo per $z = a$. Quando $z$ si avvicina ad $a$, divideremo per un numero piccolo al denominatore, il che farà crescere la magnitudine. Quindi, se $z = e^{j\omega}$ si avvicina alle radici per qualche frequenza $\omega$, si avrà un'amplificazione di quel fasore. Se il fasore coincide esattamente con la radice, si divide per zero e possiamo pensare che la risposta in magnitudine tenda all'infinito. Come il lettore potrebbe aver intuito, questo fenomeno è strettamente legato alla questione della stabilità. Infatti, un filtro che ha tutte le radici del polinomio al denominatore all'interno del cerchio unitario è garantito essere stabile. Queste radici sono chiamate `poli`.
 
-Applicando la trasformata zeta ad entrambi i membri della [](eq:diff) si ottiene una funzione di trasferimento razionale con un polinomio $B(z)$ al numeratore e un altro $A(z)$ al denominatore, ovvero:
+Applicando la trasformata zeta ad entrambi i membri della [](#eq:diff) si ottiene una funzione di trasferimento razionale con un polinomio $B(z)$ al numeratore e un altro $A(z)$ al denominatore, ovvero:
 
 $$
 H(z) = \frac{B(z)}{A(z)}.
