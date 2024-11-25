@@ -333,7 +333,8 @@ dove $n$  è l’indice del campione temporale, $D$  è il numero di campioni di
 Un modello semplice di riflessione singola può essere costruito partendo dai blocchi di base realizzati come una linea di ritardo di m campioni collegata in cascata a un coefficiente di attenuazione $a$, eventualmente sostituito da un filtro nel caso in cui si voglia simulare un’assorbimento dipendente dalla frequenza. L’uscita di questa linea di ritardo con attenuazione viene sommata al segnale diretto. 
 
 Il filtro `FIR-comb` non ricorsivo ha la struttura mostrata nella figura sottostante, in cui $D$ è un numero intero e $a$ una costante positiva, in cui la relazione ingresso-uscita è espressa dalla seguente equazione alle differenze
-$$
+
+$$\label{eq:eco}
 y(n)=x(n)+ax(n-D)
 $$
 
@@ -372,6 +373,11 @@ $$
 f_k = \frac{k F_s}{D} = k f_0, \quad k = 0, 1, \dots, D - 1.
 $$
 
+I grafici sulla destra mostrano il modulo della risposta in frequenza per un dato valore di $a$, a dimostrazione della sua periodicità. Alcune importanti proprietà sono:
+Il modulo decade periodicamente ad un minimo locale (in inglese conosciuto come notch) e ricresce periodicamente ad un massimo locale (in inglese conosciuto come peak cioè picco).
+I livelli di massimo e di minimo sono sempre equidistanti da 1.
+Quando  $a=\pm 1$ il minimo assume il valore di ampiezza zero. Il massimo, per valori positivi di $a$, coincide con il minimo per valori negativi di $a$ e viceversa.
+
 ##### Esempio
 
 Nell'esempio che seguente si mostra il codice del notebook python per un filtro comb FIR con guadagno $G=0.9$, numero di campioni di ritardo $D=10$ e frequenza di campionamento $F_s=100$ Hz. In questo caso la fondamentale è $f_0=F_s/D=10$ Hz. Nella figura sono anche indicati gli zeri, in numero pari a $D$, della funzione di trasferimento con un raggio $\rho=\sqrt[D]{G}=\sqrt[10]{0.9}\approx 0.9895$. Se il filtro viene applicato a un segnale audio CD con $F_s=44100$ Hz e $D=F_s/2$ si ottiene un segnale audio dato dalla somma di se stesso con se stesso ritardato di 5 secondi. 
@@ -400,7 +406,7 @@ $$
 
 che può essere sommata tramite la serie geometrica nella forma:
 
-$$
+$$\label{eq:Hcomb}
 H(z) = \frac{1}{1 - a z^{-D}} 
 $$
 
