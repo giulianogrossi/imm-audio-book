@@ -3,7 +3,7 @@ Filtri audio
 
 ---
 
-##### Introduzione
+## Introduzione
 
 La forma più semplice di elaborazione audio è il filtraggio, e con i filtri è possibile fare molte cose interessanti con i segnali audio. In questo capitolo, esploreremo cosa sono i filtri, cosa fanno e forniremo alcuni esempi di filtri relativamente semplici. Quelli che comunemente chiamiamo filtri sono, tecnicamente, filtri lineari e invarianti nel tempo. Lineare significa che i filtri obbediscono a proprietà associate alla linearità dei sistemi, mentre invariante nel tempo implica che i filtri non cambiano nel tempo, il che ci consente di analizzarli più facilmente e di comprenderli indipendentemente dal tempo. Un filtro digitale è quindi un qualsiasi sistema lineare e invariante nel tempo che opera su segnali discreti. Un sistema di questo tipo è completamente descritto dalla sua risposta impulsiva o dalla sua funzione di trasferimento (razionale). Affronteremo il problema di progettare risposte impulsive o funzioni di trasferimento che soddisfino specifiche nel dominio del tempo o della frequenza. Esistono anche filtri non invarianti nel tempo, di cui vedremo alcuni esempi sotto forma di effetti audio.
 
@@ -41,7 +41,7 @@ $$ \label{fasore}
 z^n = e^{j \omega n}.
 $$
 
-Ora, se poniamo il fasore in ingresso al filtro, cioè impostiamo $x_n = z^n$, allora otteniamo un'uscita
+Ora, se poniamo il fasore in ingresso al filtro, cioè impostiamo $x(n) = z^n$, allora otteniamo un'uscita
 
 \begin{align}
 y(n) &= x(n) + a x(n-1)\\ 

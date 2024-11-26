@@ -3,7 +3,7 @@ Spettro del segnale audio
 
 ---
 
-##### Introduzione
+## Introduzione
 
 La trasformata di Fourier è uno strumento matematico che ci permette di capire quali frequenze compongono un segnale, come un’onda sonora o un segnale elettrico. Immagina di avere una canzone e di poter “vedere” le singole note musicali che la compongono: la trasformata di Fourier fa proprio questo, prendendo un segnale e scomponendolo nelle sue parti fondamentali, le frequenze, che sono come le singole note della canzone.
 
@@ -303,10 +303,10 @@ Per eseguire calcoli su macchine digitali (DSP), dobbiamo risolvere ancora alcun
 L'approssimazione in pratica si avvale della seguente somma parziale
 
 \begin{equation}\label{eq:DFT}
-X_s(f_k)\approx X_N(k)=\sum_{n=0}^{N-1} x(n)e^{-j2\pi \frac{k}{N}n}
+X_s(f_k)\approx x(n)(k)=\sum_{n=0}^{N-1} x(n)e^{-j2\pi \frac{k}{N}n}
 \end{equation}
 
-dove le frequenze espresse dal coefficiente di Fourier $X_N(k)$ di indice k corrispondono alle frequenze fisiche
+dove le frequenze espresse dal coefficiente di Fourier $x(n)(k)$ di indice k corrispondono alle frequenze fisiche
 
 $$
 f_k=\frac{k}{NT_s}=k\cdot \frac{F_s}{N}, \quad k=0,\dots,N-1
@@ -323,15 +323,15 @@ $$
 da cui DFT e IDFT, per $k=0,\dots,N-1$ e $n=0,\dots,N-1$, risultano:
 
 $$
-X_N(k)=\sum_{n=0}^{N-1} x(n)e^{-j\omega_k n}\qquad \text{e}\qquad x(n)=\frac{1}{N}\sum_{k=0}^{N-1} X_N(k)e^{j\omega_k n}
+x(n)(k)=\sum_{n=0}^{N-1} x(n)e^{-j\omega_k n}\qquad \text{e}\qquad x(n)=\frac{1}{N}\sum_{k=0}^{N-1} x(n)(k)e^{j\omega_k n}
 $$
 
 
-I coefficienti $X_N(k)$ devono essere considerati tuttavia con attenzione. In primo luogo, la qualità dell'approssimazione nella {eq}`eq:DFT` può essere piuttosto scarsa, in particolare per frequenze vicine alla frequenza di Nyquist. In secondo luogo, per un segnale $x(t)$ a valore reale, la trasformata di Fourier soddisfa alcune proprietà di simmetria. Di conseguenza, la metà superiore dei coefficienti di Fourier è ridondante e occorre considerare solo i coefficienti $X_N(k)$ per $k\in [0,\dots,N/2]$. Infine, consideriamo alcuni aspetti di efficienza nel calcolo della DFT. Per calcolare un singolo coefficiente di Fourier $X_N(k)$, è necessario un numero di moltiplicazioni e addizioni lineare in $N$. Pertanto, per calcolare tutti i coefficienti $X_N(k)$ per $k\in [0,\dots,N/2]$ è richiesto un numero di operazioni dell'ordine di $N^2$. Nonostante sia un numero finito di operazioni, un approccio computazionale di questo tipo è troppo lento per molte applicazioni pratiche, specialmente quando $N$ è grande. Il numero di operazioni può essere drasticamente ridotto utilizzando un algoritmo efficiente noto come la `trasformata veloce di Fourier` (`FFT`). L'algoritmo FFT, scoperto da Gauss e Fourier duecento anni fa, ha rivoluzionato intere industrie ed è ora utilizzato in miliardi di dispositivi di telecomunicazione e altri dispositivi. La FFT sfrutta le ridondanze tra sinusoidi di diverse frequenze per calcolare congiuntamente tutti i coefficienti di Fourier tramite una ricorsione. Questa ricorsione funziona particolarmente bene nel caso in cui $N$ sia una potenza di due. Di conseguenza, la FFT riduce il numero complessivo di operazioni dall'ordine di $N^2$ all'ordine di $N \log_2 N$. I risparmi sono enormi. Ad esempio, usando $N = 2^{10} = 1024$, l'FFT richiede approssimativamente $N \log_2 N = 10240$ operazioni invece di $N^2 = 1048576$ operazioni nell'approccio naive, con un fattore di risparmio di circa 100. Nel caso di $N = 2^{20}$, i risparmi ammontano a un fattore di circa 50000, etc.
+I coefficienti $x(n)(k)$ devono essere considerati tuttavia con attenzione. In primo luogo, la qualità dell'approssimazione nella {eq}`eq:DFT` può essere piuttosto scarsa, in particolare per frequenze vicine alla frequenza di Nyquist. In secondo luogo, per un segnale $x(t)$ a valore reale, la trasformata di Fourier soddisfa alcune proprietà di simmetria. Di conseguenza, la metà superiore dei coefficienti di Fourier è ridondante e occorre considerare solo i coefficienti $x(n)(k)$ per $k\in [0,\dots,N/2]$. Infine, consideriamo alcuni aspetti di efficienza nel calcolo della DFT. Per calcolare un singolo coefficiente di Fourier $x(n)(k)$, è necessario un numero di moltiplicazioni e addizioni lineare in $N$. Pertanto, per calcolare tutti i coefficienti $x(n)(k)$ per $k\in [0,\dots,N/2]$ è richiesto un numero di operazioni dell'ordine di $N^2$. Nonostante sia un numero finito di operazioni, un approccio computazionale di questo tipo è troppo lento per molte applicazioni pratiche, specialmente quando $N$ è grande. Il numero di operazioni può essere drasticamente ridotto utilizzando un algoritmo efficiente noto come la `trasformata veloce di Fourier` (`FFT`). L'algoritmo FFT, scoperto da Gauss e Fourier duecento anni fa, ha rivoluzionato intere industrie ed è ora utilizzato in miliardi di dispositivi di telecomunicazione e altri dispositivi. La FFT sfrutta le ridondanze tra sinusoidi di diverse frequenze per calcolare congiuntamente tutti i coefficienti di Fourier tramite una ricorsione. Questa ricorsione funziona particolarmente bene nel caso in cui $N$ sia una potenza di due. Di conseguenza, la FFT riduce il numero complessivo di operazioni dall'ordine di $N^2$ all'ordine di $N \log_2 N$. I risparmi sono enormi. Ad esempio, usando $N = 2^{10} = 1024$, l'FFT richiede approssimativamente $N \log_2 N = 10240$ operazioni invece di $N^2 = 1048576$ operazioni nell'approccio naive, con un fattore di risparmio di circa 100. Nel caso di $N = 2^{20}$, i risparmi ammontano a un fattore di circa 50000, etc.
 
 ##### Spettro di segnale a banda non limitata
 
-In ossequio al monito riportato sopra circa il fatto che coefficienti $X_N(k)$ possono generare errore variabile di approssimazione dello spettro di un segnale analogico da cui prendono le mosse, si mostra di seguito l'analisi temporale e spettrale di un segnale a banda non limitata, come l'esponenziale negativo, con particolare attenzione all'errore che si commette a causa dell'ineludibile aliasing. Si mostra inoltre quale ruolo giochino due principali parametri del processo di campionamento, come la frequenza di campionamento $F_s$ e il numero di campioni osservati $N$, nell'estrarre sufficiente informazioni per il controllo di detto errore.  
+In ossequio al monito riportato sopra circa il fatto che coefficienti $x(n)(k)$ possono generare errore variabile di approssimazione dello spettro di un segnale analogico da cui prendono le mosse, si mostra di seguito l'analisi temporale e spettrale di un segnale a banda non limitata, come l'esponenziale negativo, con particolare attenzione all'errore che si commette a causa dell'ineludibile aliasing. Si mostra inoltre quale ruolo giochino due principali parametri del processo di campionamento, come la frequenza di campionamento $F_s$ e il numero di campioni osservati $N$, nell'estrarre sufficiente informazioni per il controllo di detto errore.  
 
 Si considerino il segnale esponenziale negativo $x_a(t)=Ae^{-\alpha t} u(t)$, con $A,\alpha$ reali positivi, $u(t)$ la funzione gradino, e la sua trasformata di Fourier che può essere data in forma analitica $X_a(f)=A/(\alpha+j2\pi f)$ riportate nelle figure seguenti (in cui si mostra il segnale $x_a(t)$ e la risposta in frequenza $|X_a(f)|$, cioè il modulo dello spettro). 
 
@@ -370,7 +370,7 @@ per $-\infty<t<+\infty$) una porzione di segnale non sarà campionata. Graficame
 
 ![](images/finestra_rett.png)
 
-Dal punto di vista dello spettro in frequenza, in virtù della proprietà del prodotto, la convoluzione tra la trasformata $X_a(f)$ e quella della finestra (per es. rettangolare) $W(f)$ danno luogo a classici ripple (dovuti al troncamento) che compaiono nello spettro della trasformata. Qui la frequenza di campionamento è fissata a $F_s=2$ Hz, mentre il numero di campioni prelevati dal segnale dato dalla lunghezza della finestra è $N=10$. Nell'immagine sotto è visibile l'effetto della convoluzione con la finestra rettangolare: il grafico mette assieme l'originale $X_a(f)$ (in blu), la DTFT $X_s(f)$ (in rosso) e la DFT $X_N(k)$ (in verde, ma plotatta con interpolazione continua).
+Dal punto di vista dello spettro in frequenza, in virtù della proprietà del prodotto, la convoluzione tra la trasformata $X_a(f)$ e quella della finestra (per es. rettangolare) $W(f)$ danno luogo a classici ripple (dovuti al troncamento) che compaiono nello spettro della trasformata. Qui la frequenza di campionamento è fissata a $F_s=2$ Hz, mentre il numero di campioni prelevati dal segnale dato dalla lunghezza della finestra è $N=10$. Nell'immagine sotto è visibile l'effetto della convoluzione con la finestra rettangolare: il grafico mette assieme l'originale $X_a(f)$ (in blu), la DTFT $X_s(f)$ (in rosso) e la DFT $x(n)(k)$ (in verde, ma plotatta con interpolazione continua).
 
 ![](images/DFT_10.png)
 
