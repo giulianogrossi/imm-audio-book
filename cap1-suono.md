@@ -113,13 +113,18 @@ Se l'onda sonora incide in direzione perpendicolare alla superficie riflettente 
 
 La velocità dell'onda incidente è uguale a quella dell'onda riflessa, perché l'onda viaggia nello stesso mezzo. Poiché la frequenza è fissa, per l'equazione dell'onda $v =\lambda f$. Questo ci assicura che la lunghezza dell'onda riflessa è identica alla lunghezza d'onda incidente. L'eco è l'esempio più noto di riflessione di onde sonore. Quando lanciamo un grido davanti a una parete verticale posta a opportuna distanza, la parete riflette una parte dell'onda acustica lungo la direzione di incidenza. Dopo qualche istante riceviamo il grido di ritorno, cioè l'eco.
 Poiché la velocità del suono è costante, il tempo che impiega per andare e tornare dalla parete riflettente si calcola con la formula:
-$$t=\frac{2d}{v}$$
-dove $d$ è la distanza della parete (vedi figura).
 
-```{image} images/eco.png
+$$
+t=\frac{2D}{v},
+$$ 
+
+dove $D$ è la distanza della parete (vedi figura).
+
+
+```{image} images/emittente-ricevente.png
 :alt: eco
 :class: bg-primary mb-1
-:width: 600px
+:width: 500px
 :align: center
 ```
 
@@ -183,24 +188,31 @@ Per comprendere qual è l'ampiezza di pressione per suoni che udiamo tutti i gio
 
 Poiché il rapporto tra un suono appena udibile e un suono alla soglia del dolore fisico è così elevato (circa un milione), conviene schiacciare in qualche modo la scala di riferimento, per avere un'idea significativa delle grandezze relative in gioco. Introduciamo quindi una scala logaritmica, il `Livello di Pressione Sonora` (`Sound Pressure Level` - `SPI`), basata sul rapporto tra due suoni e misurata in decibel. Il Livello di Pressione Sonora SPL è dato dalla relazione:
 
-$$SPL = 20 \log (p/p_0)$$
+$$
+\text{SPL} = 20 \log (p/p_0)
+$$
 
 La scala dei decibel è una scala relativa, nella quale cioè un suono viene misurato in rapporto a un suono di riferimento: $p$ è la pressione del suono da misurare, e $p_0$ è la pressione del suono di riferimento. La pressione di riferimento $p_0$ corrisponde alla soglia minima di udibilità definita poc'anzi. Del rapporto tra la pressione $p$ e la pressione $p_0$, si prende il logaritmo e si moltiplica per 20. Il logaritmo del rapporto si definisce come bel (da Alexander Graham Bell). La moltiplicazione per 20 deve essere interpretata come una moltiplicazione per 10 e poi per 2. La moltiplicazione per 10 esprime la stessa quantita in decibel (cosi come avviene per i metri espressi in decimetri, o i litri in decilitri, moltiplicando per 10). L'ulteriore moltiplicazione per 2 sarà chiara tra qualche istante, quando avremo definito il secondo metodo di misura dell'ampiezza del segnale, che considera l'intensità sonora legata all'energia trasportata dall'onda.
 
 L'intensità sonora è infatti una misura dell'energia trasportata dall'onda: in particolare, come avviene per l'intensità luminosa, l'intensità sonora è l'energia che passa attraverso una superficie unitaria ($1\, m^2$) per unità di tempo ($1$ sec). Poiché l'energia al secondo si misura in W	att, l'intensità si misura in $Watt/m^2$. Nel caso dell'intensità sonora, la scala dei decibel, che assume il nome di `Livello di Intensità Sonora` (`Sound Intensity Level` - SIL), è data dalla relazione:
 
-$$SIL = 10 \log (I/I_0)$$
+$$
+\text{SIL} = 10 \log (I/I_0)
+$$
 
 dove $I$ è l'intensità del suono in questione e $I_0$ è il valore di intensità del suono di riferimento. Si tratta di nuovo della soglia minima di intensità per un suono a 1000 Hz di frequenza e vale 0.000000000001 $Watt/m^2$ ($10^{-12}$). poiché $SPL$ e $SIL$ sono valori calcolati in relazione alla soglia di udibilità, nella maggior parte dei suoni standard si ha che i due valori sono identici: non entriamo nei dettagli, ma è opportuno sapere che i due valori differiscono dal punto di vista dell'interpretazione fisica. La pressione è il risultato di onde che arrivano da molteplici direzioni, mentre l'intensità viene definita per una direzione di flusso dell'energia e una superficie attraversata. Il motivo per avere entrambe le misure è che a volte conviene lavorare con l'intensità e altre volte con la pressione, ed è facile, come vedremo subito, passare da una formula all'altra.
 
 Prima di concludere con alcuni valori significativi di ampiezza sonora (vedi Tabella), che daranno un'idea della forza del suono in alcuni casi familiari, occorre precisare cosa avviene con l'introduzione dei decibel. 
 
+&nbsp;
 ```{image} images/SIL.png
 :alt: eco
 :class: bg-primary mb-1
 :width: 800px
 :align: center
 ```
+&nbsp;
+
 
 Abbiamo visto che il decibel non è una quantità di suono, ma un rapporto tra due suoni; per avere una scala assoluta, il rapporto si determina in relazione a un suono sulla soglia dell'udibilità. Prendiamo ora tre suoni qualsiasi $x$, $y$ e $z$ (vedere le relazioni schematiche in basso). Se l'intensità del suono $x$ è 10 volte maggiore dell'intensità del suono $y$, allora la differenza tra i livelli di intensità dei due suoni è di 10 decibel (dB). Inoltre, se l'intensità del suono $y$ è 10 volte maggiore dell'intensità del suono $z$, allora la differenza tra i livelli di intensità dei due suoni è di nuovo di 10 dB. Infine, notiamo che il rapporto tra l'intensità del suono $x$ è 100 volte maggiore dell'intensità del suono $z$, ma la differenza tra i livelli di intensità del suono $x$ e del suono $z$ è solo di 20 dB. 
 
@@ -211,12 +223,16 @@ errori di giudizio riguardanti la sua altezza (almeno quella relativa). Il diapa
 
 Questo spiega in parte la differenza che sussiste tra un suono puro e un suono complesso. Un suono puro (detto anche `tono puro`) è costituito da una sola frequenza ed è quindi descritto da un'onda sinusoidale semplice (Figura sotto, in alto); l'andamento del segnale è molto arrotondato; il periodo è composto da una singola compressione e una singola rarefazione ben definite; l'ascolto non è particolarmente interessante. Un `suono complesso` consiste invece di più frequenze sommate in un'onda dall'andamento articolato (Figura sotto, in basso); in un singolo periodo possono essere comprese più alternanze di compressioni e rarefazioni intermedie; l'ascolto rivela il timbro caratteristico di una sorgente (se esiste in natura o convenzionalmente fissata per i suoni di origine elettronica) e dell'ambiente circostante.
 
+&nbsp;
+
 ```{image} images/tono_puro_complesso.png
 :alt: eco
 :class: bg-primary mb-1
 :width: 800px
 :align: center
 ```
+&nbsp;
+
 Come vedremo nei prossimi capitoli, un suono complesso qualsiasi contiene molte frequenze. Perché in un suono si possa individuare una frequenza speciale, detta fondamentale, che caratterizza la sensazione globale di gravità/acutezza trasmessa dal suono, occorre che il segnale sia periodico. Un’oscillazione periodica complessa può essere considerata come una somma di una serie di oscillazioni sinusoidali semplici, le cui frequenze costituiscono una progressione aritmetica. Cioè, un segnale periodico lo posso sviluppare come somma di (in)finiti termini armonicamente correlati, ciascuno dei quali è caratterizzato da una frequenza multipla della frequenza fondamentale. 
 
 
@@ -242,6 +258,8 @@ L'insieme, questi parametri consentono di descrivere accuratamente la natura e i
 
 Come detto in precedenza, all'origine di un suono vi è sempre una vibrazione. Tutte le sorgenti sonore (incluse quelle musicali) vibrano: ogni vibrazione completa è detta ciclo. Facciamo riferimento al movimento di una corda fissata alle due estremità (Figura sotto). 
 
+&nbsp;
+
 ```{image} images/corda.png
 :alt: eco
 :class: bg-primary mb-1
@@ -249,9 +267,13 @@ Come detto in precedenza, all'origine di un suono vi è sempre una vibrazione. T
 :align: center
 ```
 
+&nbsp;
+
 La corda parte da una posizione A (dove si trova a riposo) e si muove verso una direzione. Raggiunta la massima distanza dalla posizione di partenza (punto B), la corda ritorna verso la posizione di equilibrio A. Riprende quindi il cammino in direzione opposta alla precedente, raggiungendo la massima distanza nel punto C. Infine, ritorna verso la posizione di partenza A, e tutto ricomincia. Ogni segnale sonoro comprende molti di questi cicli. I moti di questo tipo in fisica sono detti moti oscillatori. Si ha un moto oscillatorio quando una particella oscilla (o vibra) intorno a una posizione di equilibrio. Moti oscillatori sono il moto di un pendolo, il moto di un peso attaccato a una molla, il moto degli atomi in un corpo solido, il moto della corda in figura. Dei moti oscillatori, il più semplice e, come vedremo, anche il più importante, è il moto armonico semplice, che si ha quando la forza che riporta l'oggetto nella posizione di riposo è proporzionale allo spostamento dell'oggetto. Il pendolo e la massa attaccata a una molla sono tipici esempi di moto armonico semplice.  Se oltre all'informazione sulla posizione della particella vogliamo rappresentare la successione delle variazioni della distanza dall'origine con la variazione dell'angolo a cui si trova la particella occorre disegnare un diagramma cartesiano con una funzione trigonometrica, ad esempio il seno. Il seno di un angolo, infatti, non è altro che la posizione della particella sull'asse verticale rispetto all'origine
 
 La funzione disegnata descrive quindi un movimento sinusoidale; il fenomeno ondulatorio connesso a tale vibrazione è detto `onda seno`. Tutta la scienza delle onde sonore è costruita a partire dalle onde sinusoidali. Inseriamo ora il tempo nelle nostre descrizioni. La particella in moto armonico, sia essa una corda o la punta di un diapason, si sposta nel tempo anche se ripete le stesse posizioni. Nella figura si suppone di vincolare un pennino alla punta di un diapason: vibrando, essa disegna nel tempo una curva sinusoidale (simile al funzionamento di un elettrocardiografo).
+
+&nbsp;
 
 ```{image} images/diapason.png
 :alt: eco
@@ -260,47 +282,57 @@ La funzione disegnata descrive quindi un movimento sinusoidale; il fenomeno ondu
 :align: center
 ```
 
+&nbsp;
+
 Quindi, se sull'asse orizzontale rappresentiamo il tempo, la curva che rappresenta la posizione della particella avrà lo stesso andamento sinusoidale. In particolare, l'angolo che corrisponde alla posizione della particella in un certo istante di tempo dipende dalla velocità della vibrazione. In figura vengono rappresentate le caratteristiche importanti dell'oscillazione nel tempo. Innanzitutto, l'ampiezza dell'oscillazione: maggiore è la distanza percorsa dalla particella allontanandosi dalla posizione di equilibrio, maggiore è l'intensità sonora.  L'ampiezza si potrebbe misurare con la distanza massima dalla posizione di equilibrio (quindi in metri) . Suoni deboli (un bisbiglio) compieranno delle oscillazioni molto vicine alla posizione di equilibrio; suoni forti (un'esplosione) compieranno ampie oscillazioni intorno alla posizione di equilibrio. La velocità con cui la particella oscilla, cioè la velocità di rotazione sul cerchio, si misura con il numero di cicli che la particella completa nell'unità di tempo: questa grandezza è la frequenza $f$ che è l'inverso del periodo $T$. La frequenza è il fattore determinante per l'altezza di un suono: maggiore è la frequenza, più acuto è un suono. Per calcolare la frequenza occorre sapere quanti cicli (e frazioni di ciclo) sono stati completati in un secondo. Questo calcolo necessita della nozione di fase di un segnale. Infatti, la fase indica un istante preciso in un ciclo di un segnale. Per calcolare la frequenza, un ciclo si considera completato tutte le volte che un segnale si presenta nella stessa fase. Poiché un ciclo consta di 360°, un modo per misurare la fase è l'angolo corrispondente all'istante di tempo considerato. Non
 ha molto senso considerare la fase di un segnale sinusoidale isolato, ma è importante quando si analizzano le differenze tra più segnali. Se due (o più) onde hanno la stessa frequenza e raggiungono il massimo nello stesso istante, allora le onde si dicono in fase; se viceversa una è al minimo e l'altra è al massimo, le due onde si dicono in opposizione di fase, e presentano una differenza di fase di 180°. In generale, la fase è misurata in gradi di differenza tra le onde (ad esempio, 30°). La fase è particolarmente importante nella spazializzazione del suono, in quanto permette di esprimere una delle differenze che caratterizzano i due segnali percepiti alle due orecchie, ma che riguardano la stessa sorgente sonora. Oltre al periodo, un altro modo alternativo di caratterizzare la velocita di oscillazione di un segnale è la nozione di lunghezza d'onda. La lunghezza d'onda è la distanza tra due punti identici in cicli adiacenti di un segnale. Nel caso delle onde sonore, è la distanza tra due particelle d'aria che si trovano nella stessa fase in cicli adiacenti. Si misura quindi in metri e centimetri. La lunghezza d'onda è inversamente proporzionale alla frequenza: maggiore è la frequenza di un segnale, minore è la sua lunghezza d'onda.
 
 
 ##### Onde stazionarie
 
+&nbsp;
 ```{image} images/onda-riflessa.png
 :alt: riflessa
 :class: bg-primary mb-1
 :width: 200px
 :align: center
 ```
+&nbsp;
 
 Nella figura qui sopra è illustrata la propagazione di un'onda su una corda fissata alla parete. Quando incontra la parete, l'onda torna indietro. Questo fenomeno si chiama riflessione. Nell'esempio, l'onda riflessa ha la stessa forma di quella incidente sulla parete ma, dove prima c'era una cresta, ora c'è un ventre e viceversa. L'onda risulta 'capovolta' rispetto a quella incidente. L'onda che viaggia verso sinistra si riflette e ritorna verso destra; viene riflessa sulla parete di destra e così via. In condizioni ideali, cioè quando l'attrito è trascurabile, l'onda va avanti e indietro fra le due pareti e il movimento continua indefinitamente. Quando l'onda è di tipo sinusoidale e la distanza fra le pareti ha un valore particolare, si ha il fenomeno delle onde stazionarie. L'onda di andata e quella di ritorno si sovrappongono, alcuni punti del mezzo stanno sempre fermi (nodi) e altri punti oscillano con la massima ampiezza (ventri). Il nome deriva dal fatto che l'onda, pur oscillando nel tempo, rimane ferma nella sua posizione. Se pizzichiamo con attenzione la corda di una chitarra nel suo centro possiamo ottenere un moto come quello rappresentato nella figura. 
 
+&nbsp;
 ```{image} images/onda.png
 :alt: onda
 :class: bg-primary mb-1
 :width: 400px
 :align: center
 ```
+&nbsp;
 
 Questa onda stazionaria ha due punti sempre fissi (detti nodi) agli estremi della corda; tutti gli altri punti della corda si muovono di moto armonico nello stesso verso: o tutti verso l’alto, o tutti verso il basso. Hanno tutti la stessa frequenza
 e si muovono in fase, cioè raggiungono insieme sia il punto massimo dell’oscillazione, sia il punto minimo. Pizzicando opportunamente una corda si possono ottenere onde stazionarie
 con un numero maggiore di nodi. Per esempio, si possono ottenere onde con due o tre nodi come queste sotto in figura.
 
+&nbsp;
 ```{image} images/piu-nodi.png
 :alt: onda
 :class: bg-primary mb-1
 :width: 400px
 :align: center
 ```
+&nbsp;
 
 La figura sotto mostra che il primo modo normale di oscillazione, quello con due nodi, ha una lunghezza d’onda $\lambda_1=2L$, dove $L$ è la lunghezza della corda che vibra. Il modo normale successivo, con tre nodi, ha lunghezza d’onda $\lambda_2=L$. Poi c’è il modo normale con quattro nodi, che ha lunghezza d’onda $\lambda_3=2/3L$
 
+&nbsp;
 ```{image} images/nodi-onde.png
 :alt: nodi
 :class: bg-primary mb-1
 :width: 400px
 :align: center
 ```
+&nbsp;
 
 In generale, la lunghezza d’onda del modo normale numero n (che ha $n+1$ nodi) è $$\lambda_n=\frac{2L}{n},\qquad n=0,1,2,\dots$$ Se indichiamo con $v$ la velocità delle onde sulla corda, possiamo ottenere la frequenza $f_n$ del modo normale numero $n$:
 $$f_n=\frac{v}{\lambda_n}=n\frac{v}{2L},\qquad n=0,1,2,\dots$$
@@ -322,11 +354,15 @@ o timpano e l’orecchio interno o labirinto.
 
 ![est](images/orecchio.png)
 
+&nbsp;
+
 ##### L’orecchio esterno
 Esso è costituito da una parte esterna visibile di forma ovoidale, detta padiglione, fatta di cartilagine, una media, detta conca auricolare, associata alla messa a fuoco ed all’esaltazione dei suoni, e una esterna, chiamata anche elica, associata alla separazione spaziale verticale, che ci permette di poter giudicare l’altezza di una sorgente sonora. La parte centrale spedisce i suoni al canale uditorio, detto anche meato acustico. Esso è un tubo lungo circa 2.7 cm e avente diametro pari a 0.7 cm, che termina con una membrana, la
 membrana del timpano, sensibile alle onde sonore che vanno a infrangersi su di essa e che divide proprio l’orecchio esterno da quello medio. 
 
 ![est](images/orecchio_esterno.png)
+
+&nbsp;
 
 ##### L’orecchio medio
 
@@ -335,6 +371,8 @@ con il labirinto. Essi formano un sistema di leve di collegamento tra il timpano
 poi nella faringe.
 
 ![est](images/orecchio_medio.png)
+
+&nbsp;
 
 ##### L’orecchio interno
 
@@ -351,14 +389,19 @@ i recettori dell’udito, e ha una struttura cellulare fatta di un doppio ordine
 
 ![est](images/orecchio_interno.png)
 
+&nbsp;
+
 Dunque l’orecchio esterno focalizza e amplifica le onde sonore, che mettono in vibrazione il timpano auricolare, e le dirige verso l’orecchio medio. Nell’orecchio medio, l’energia di queste onde viene trasformata in vibrazioni meccaniche della struttura ossea dell’orecchio medio (energia cinetica). Uno dei tre ossicini della catena, la staﬀa, muovendosi avanti e indietro entro la finestra ovale della coclea trasmette l’impulso cinetico alla perilinfa in essa contenuta; attraverso l’endolinfa del condotto cocleare le onde vengono trasmesse dalla rampa vestibolare alla rampa timpanica (e quindi entrano in vibrazione anche le membrane che separano le rampe, o stanze, della coclea). 
 
 ![est](images/coclea.png)
+
+&nbsp;
 
 Il segnale arriva così alla membrana basilare, che separa la rampa vestibolare da quella timpanica, e dove si trova l’organo del Corti. Le cellule acustiche in esso contenute sono in contatto con le cellule nervose che fanno parte del nervo vestibolo cocleare. Di lì il segnale, che nella coclea viene trasdotto (l’energia cinetica diventa energia elettro-chimica), giunge all’area acustica della corteccia cerebrale, e poi al lobo temporale del cervello: qui avviene la decodificazione dell’impulso elettrico, e si giunge così alla percezione del suono.
 
 ![est](images/membrana_basilare.png)
 
+&nbsp;
 
 ##### Limitazioni dell’orecchio umano
 In musica le frequenze sono misurate in Hertz (Hz). Lo spettro approssimativo delle frequenze che l’orecchio umano può udire va da circa 20 Hz fino a 20.000 Hz. Per frequenze al di fuori di questo intervallo non c’è risonanza nella membrana basilare. L’intensità del suono è misurata in decibel (dB). Zero decibel rappresentano un’intensità di potenza pari
@@ -370,6 +413,7 @@ del phon è definito come livello di pressione del segnale di 1000 Hz della stes
 
 ![est](images/soglia_udito.png)
 
+&nbsp;
 
 Le curve di questo grafico sono chiamate curve isofone.
 
