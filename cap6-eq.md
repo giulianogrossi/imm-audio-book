@@ -341,25 +341,30 @@ con $G_0 = 1$.
 ## Pratica comune
 
 Tutti i filtri che abbiamo considerato in questo capitolo sono casi speciali di un filtro IIR generale del secondo ordine, della forma:
-\[
+
+$$
 y(n) = b_0 x(n) + b_1 x(n-1) + b_2 x(n-2) + a_1 y(n-1) + a_2 y(n-2).
-\]
+$$
+
 L'unica differenza tra i vari filtri risiede nella scelta dei coefficienti.
 
 Un diagramma a blocchi della struttura del filtro che può essere utilizzata per implementare i filtri equalizzatori è mostrato in figura. 
 
 ![]()
 
-Nella Tabella 1, sono elencati i coefficienti dei filtri per i vari casi insieme alla definizione appropriata di \(\beta\). Se scegliamo la definizione di \(G_B\) in \((10.16)\), ossia:
-\[
-G_B^2 = \frac{G^2 + G_0^2}{2},
-\]
-le varie definizioni di \(\beta\) risultano semplificate. Inoltre, con una scelta del livello unitario, ossia \(G_0 = 1\), l'espressione è ulteriormente semplificata, e i coefficienti risultanti del filtro sono riportati in Tabella~10.2. Per un rapido riferimento, i parametri utente dei vari filtri sono elencati in Tabella~10.3.
+Nella Tabella 1, sono elencati i coefficienti dei filtri per i vari casi insieme alla definizione appropriata di $\beta$. Se scegliamo la definizione:
 
-Si noti che, invece della larghezza di banda, \(\Delta \omega\), è possibile utilizzare il cosiddetto fattore \(Q\), definito come:
-\[
+$$
+G_B^2 = \frac{G^2 + G_0^2}{2},
+$$
+
+le varie definizioni di $\beta$ risultano semplificate. Inoltre, con una scelta del livello unitario, ossia $G_0 = 1$, l'espressione è ulteriormente semplificata, e i coefficienti risultanti del filtro sono riportati in Tabella 2. Per un rapido riferimento, i parametri utente dei vari filtri sono elencati in Tabella 3.
+
+Si noti che, invece della larghezza di banda, $\Delta \omega$, è possibile utilizzare il cosiddetto fattore $Q$, definito come:
+
+$$
 Q = \frac{\omega_0}{\Delta \omega},
-\]
+$$
 
 ![](images/tabelle_eq.png)
 
