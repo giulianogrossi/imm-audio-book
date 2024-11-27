@@ -84,7 +84,29 @@ La figura mostra il comportamento del filtro per un dato fasore $e^{j\omega}$ in
 
 Quando il polo e lo zero sono molto vicini, cioè $r\approx R$, la risposta in frequenza rimane essenzialmente piatta per frequenze lontane da $\omega=±\omega_0$, perché le distanze del fasore $e^{j\omega}$ dalle coppie polo/zero sono pressoché uguali, il che fa pensare che un filtro di questo tipo può essere considerato un semplice equalizzatore parametrico, che fornisce un “boost” se $r < R$, o un “cut” se $r > R$. L'altezza del boost o del cut rispetto a 1 è controllata dalla vicinanza di $r$ a $R$. L'ampiezza dei picchi o delle cadute è controllata dalla vicinanza di $R$ al cerchio unitario.
 
-I filtri qui descritti sono semplici, offrono un'dea chiara su come il filtro opera, tuttavia la tecnica che li origina è adeguata solo nel caso di larghezza di banda ridotta, cioè quando li si utilizzano per cancellare frequenze date dal rumore puntuale in frequenza, come la corrente elettrica a 50 Hz negli apparati elettronici. Ma diventa complicata per larghezze di picco maggiori, come quelle che vengono invece richieste negli equalizzatori audio grafici e parametrici. A differenza di quello mostrao sopra, il metodo della `trasformazione bilineare` (non discusso qui) offre un controllo preciso sulle specifiche desiderate per tali filtri. Descriviamo di seguito pertanto una famiglia di filtri notch e peak ottenuti con detta tecnica e che, combinati assieme, rivelano caratteristiche più adeguate all'equalizzazione generale.  
+##### Esempio
+
+In questo esempio si mostra il filtro notch o elimina banda in azione, mettendo in evidenza come questo sia uno strumento molto preciso in grado di agire su bande di frequenza estremamente sottili. Per rifarsi a un esempio classico, si può citare il feedback nella chitarra acustica che si presenta durante l’amplificazione. Poiché il feedback si verifica a una frequenza precisa, è necessario utilizzare filtri elimina banda, più mirati rispetto ai normali equalizzatori, per intervenire senza alterare significativamente il suono. Un altro caso è la necessità di eliminare il picco in frequenza a 50 Hz dato dalla corrente elettrica negli apparati elettronici.
+
+Nel caso qui di seguito, con lo stesso spirito, si vuole invece eliminare un rumore fastidioso molto acuto, cioè alle alte frequenze non lontane dalla frequenza di Nyquist, artatamente introdotto in una clip campionata a 44.1 kHz (in figura). 
+
+![](images/spettro_sound.png)
+
+Più in dettaglio, si osserva che in un range di frequenze che va da 19.700 Hz a 20.050 Hz circa, emergono 4 picchi corrispondenti ad altrettante frequenze generate da toni puri che introducono un sibilo estremamente fastidioso all'ascolto (figura sotto). 
+
+![](images/spttro_sound2.png)
+
+Questo è il caso in cui è opportuno applicare una sequenza di filtri notch puntuali sulle frequenze, in particolare con centro banda $\omega_0=19717, 19831, 19935, 20050$, come si può dedurre dallo spettro precedente e replicato dalla risposta in frequenza congiunta dei quattro notch radunati nella figura sotto.
+
+![](images/notches.png)
+
+A valle dell'applicazione del filtro si nota dallo spettro del segnale filtrato che le frequenze sono del tutto sparite e assieme as esse il sibilo più acuto da cui la clip è affetta (in figura).
+
+![](images/spettro_sound3.png)
+&nbsp;
+
+
+I filtri qui descritti sono semplici, offrono un'dea chiara su come il filtro opera, tuttavia la tecnica che li origina è adeguata solo nel caso di larghezza di banda ridotta, cioè quando li si utilizzano per cancellare frequenze date dal rumore puntuale in frequenza, come negli esempi precedenti. Ma diventa complicata per larghezze di picco maggiori, come quelle che vengono invece richieste negli equalizzatori audio grafici e parametrici. A differenza di quello mostrato sopra, il metodo della `trasformazione bilineare` (non discusso qui) offre un controllo preciso sulle specifiche desiderate per tali filtri. Descriviamo di seguito pertanto una famiglia di filtri notch e peak ottenuti con detta tecnica e che, combinati assieme, rivelano caratteristiche più adeguate all'equalizzazione generale.  
 
 Se indichiamo con $H_{\text{notch}}(z)$ e $H_{\text{peak}}(z)$ le funzioni di trasferimento dei filtri `notch` e `peak`, la trasformazione bilineare permette di mettere in evidenza i guadagni alle varie frequenze, denotati con $G_0$, $G$ e $G_B$ rispettivamente, dove:
 - $G_0$ è spesso scelto come costante negli equalizzatori e può essere semplicemente impostato a 1, ovvero $G_0 = 1$, e viene talvolta chiamato `livello`,
@@ -121,39 +143,43 @@ cioè, la frequenza centrale è la media geometrica di $\omega_1$ e $\omega_2$, 
 :align: center
 ```
 
-Pertanto, secondo la tecnica della trasformazione bilineare, un filtro notch con frequenza centrale $\omega_0$ ha seguente:
+Pertanto, secondo la tecnica della trasformazione bilineare, un filtro notch con frequenza centrale $\omega_0$ ha la seguente:
 
 ```{card}
-:header: Funzione di trasferimento filtro notch
+:header: *Funzione di trasferimento filtro notch*
 :footer: 
 $$
 H_{\text{notch}}(z)=b\,\frac{1 - 2 \cos \omega_0 z^{-1} + z^{-2}}{1 - 2b \cos \omega_0 z^{-1} + (2b - 1)z^{-2}}, 
 $$
 ```
 
-che può essere visto come un filtro IIR di secondo ordine. La quantità $b$, che rappresenta il guadagno generale del filtro, è data da:
+che può essere visto come un filtro IIR di secondo ordine. Il valore $b$, che rappresenta il guadagno generale del filtro, è dato da:
 
 $$
 b = \frac{1}{1 + \beta},\qquad \text{con}\qquad \beta = \frac{\sqrt{1 - G_B^2}}{G_B} \tan \frac{\Delta \omega}{2},
 $$
 
-mentre $G_B$ è il guadagno alle frequenze di taglio $\omega_1$ e $\omega_2$. Per ottenere frequenze di taglio a -3 dB, possiamo semplicemente scegliere $G_B^2 = 0.5$. Da $H_{\text{notch}}(z)$ del filtro notch ricaviamo la seguente equazione alle differenze:
+mentre $G_B$ è il guadagno alle frequenze di taglio $\omega_1$ e $\omega_2$. Per ottenere frequenze di taglio a $-3$ dB, possiamo semplicemente scegliere $G_B^2 = 0.5$. 
+
+Per quanto riguarda la risposta del filtro nel tempo $n$, da $H_{\text{notch}}(z)$ del filtro notch ricaviamo (per semplice ispezione) la seguente equazione alle differenze:
 
 $$
 y(n) = b x(n) - 2b \cos \omega_0 x(n-1) + b x(n-2) + 2b \cos \omega_0 y(n-1) - (2b - 1)y(n-2). 
 $$
 
-Per implementarlo, è sufficiente scegliere $\omega_0$ e calcolare $b$, che viene determinato selezionando una larghezza di banda $\Delta \omega$. 
-
-In figura sono mostrati alcuni esempi di risposte in modulo di filtri notch. Questi sono rappresentati per una frequenza centrale di $\omega_0 = \pi / 2$ e per larghezze di banda variabili con $G_B^2 = 0.5$.
+Per implementarlo, è sufficiente scegliere $\omega_0$ e calcolare $b$, che viene determinato selezionando una larghezza di banda $\Delta \omega$ desiderata. In figura sono mostrati alcuni esempi di risposte in modulo di filtri notch. Questi sono rappresentati per una frequenza centrale di $\omega_0 = \pi / 2$ e per larghezze di banda variabili con $G_B^2 = 0.5$.
 
 ![]()
 
 Una analoga descrizione può essere data per il filtro peak. Esso  amplifica il segnale a una determinata frequenza, che corrisponde alla frequenza centrale $\omega_0$ del filtro. La sua funzione di trasferimento è la seguente:
 
+```{card}
+:header: *Funzione di trasferimento filtro peak*
+:footer: 
 $$
 H_{\text{peak}}(z) =(1 - b)\, \frac{1 - z^{-2}}{1 - 2b \cos \omega_0 z^{-1} + (2b - 1)z^{-2}},
 $$
+```
 
 dove, similmente al filtro notch, il guadagno $b$ è dato da:
 
@@ -180,36 +206,24 @@ Le risposte dei filtri peak sono mostrate. Sono rappresentate le risposte per un
 
 ##### Filtro Equalizzatore Parametrico
 
-Per definire il filtro equalizzatore parametrico, si combiniamo i filtri peak e notch che abbiamo appena introdotto nel modo seguente: 
+Per definire il `filtro equalizzatore parametrico`, si combiniamo i filtri peak e notch che abbiamo appena introdotto nel modo seguente: 
 
-<!-- $$
-H_{\text{notch}}(z) = \frac{A(z)}{B(z)}\qquad \text{e}\qquad H_{\text{peak}}(z) = \frac{C(z)}{D(z)},
-$$ -->
-%possiamo ottenere un unico filtro come
+```{card}
+:header: Funzione di trasferimento filtro EQ
+:footer: 
 
 $$
 H_{\text{eq}}(z) = G_0 H_{\text{notch}}(z) + G H_{\text{peak}}(z),
 $$
+```
 
-<!-- cioè
-
-$$
-H_{\text{eq}}(z) = G_0 \frac{A(z)}{B(z)} + G \frac{C(z)}{D(z)},
-$$
-
-che può essere ulteriormente scritto come
-
-$$
-H_{\text{eq}}(z) = \frac{G_0 A(z)D(z) + G C(z)B(z)}{B(z)D(z)}.
-$$ -->
-
-La prima cosa che è interessante notare, è che ponendo $G_0 = 1$ e $G = 1$ si ha 
+La prima proprietà che è interessante notare, è che ponendo $G_0 = 1$ e $G = 1$ si ha 
 
 $$
 H_{\text{notch}}(z) + H_{\text{peak}}(z) = 1.
 $$
 
-Questo significa che la composizione dà luogo a un sistema neutro e i due filtri non alterano il segnale in ingresso. I filtri sono quindi detti complementari. Se scegliamo $G_0 = 0$ e $G = 1$, otteniamo un filtro peak. Viceversa, impostando $G_0 = 1$ e $G = 0$, otteniamo un filtro notch dal filtro equalizzatore parametrico. Pertanto, il filtro è molto flessibile e include, come casi speciali, i filtri peak e notch.
+Questo significa che la composizione dà luogo a un sistema neutro, tale per cui i due filtri non alterano il segnale in ingresso. I filtri sono quindi detti complementari. Se scegliamo $G_0 = 0$ e $G = 1$, otteniamo un filtro peak. Viceversa, impostando $G_0 = 1$ e $G = 0$, otteniamo un filtro notch dal filtro equalizzatore parametrico. Questo fatto denota la flessibilità del filtro il quale include, come casi speciali, i filtri peak e notch.
 
 Prima di procedere alla combinazione dei due filtri, dobbiamo considerare come scegliere il parametro di guadagno $G_B$. Esistono diversi modi per farlo. Tuttavia, è utile (e comune) impostarlo in relazione a $G$ e $G_0$ come media aritmetica o media geometrica delle due, cioè:
 
@@ -341,7 +355,7 @@ con $G_0 = 1$.
 
 ---
 
-## Pratica comune
+## Riassunto parametri
 
 Tutti i filtri che abbiamo considerato in questo capitolo sono casi speciali di un filtro IIR generale del secondo ordine, della forma:
 
