@@ -23,28 +23,29 @@ Gli equalizzatori grafici sono il tipo più comune, in cui la banda audio è div
 Negli equalizzatori parametrici, la risposta in frequenza desiderata viene ottenuta utilizzando un certo numero di bande, ognuna delle quali può essere controllata tramite una frequenza centrale, una larghezza di banda e un guadagno (o altri parametri simili). Collegando in cascata quattro o cinque filtri di questo tipo è possibile ottenere quasi tutti gli effetti di equalizzazione desiderati.
 ```
 
-##### IL ruolo dell’EQ nel sound design, mixing e mastering
-
-L’EQ è uno strumento fondamentale nella produzione audio e svolge ruoli diversi a seconda delle fasi di lavorazione. Può essere considerato il “coltellino svizzero” dell’audio, capace sia di realizzare regolazioni sottili che di apportare cambiamenti radicali in vari momenti della produzione. In ogni contesto, l’EQ risponde a esigenze specifiche: creare nuovi suoni, bilanciare le tracce o perfezionare il mix finale per gli ascoltatori. Di seguito una panoramica:
-
-**EQ nel Sound Design**
-
-Nel sound design, l’EQ è uno strumento estremamente versatile che va oltre il semplice miglioramento o pulizia dell’audio. Viene usato per modellare creativamente i suoni in modo da adattarli al contesto narrativo o evocare atmosfere specifiche. Ad esempio, l’EQ può simulare ambienti diversi, come far sembrare che un suono provenga da dietro una porta chiusa attenuando le alte frequenze. Un’altra tecnica comune è l’effetto “telefono”, ottenuto con un filtro passa-banda per imitare la risposta in frequenza limitata di un vecchio telefono. I sound designer utilizzano frequentemente l’EQ per creare illusioni di distanza o riprodurre l’acustica di spazi differenti, rendendolo essenziale nella costruzione di ambienti audio immersivi.
-
-**EQ nel Mixing**
-
-Durante la fase di mixaggio, l’EQ viene utilizzato principalmente per bilanciare le singole tracce all’interno di una canzone. Permette di ritagliare uno spazio unico per ogni strumento o parte vocale, evitando che si sovrappongano nello stesso intervallo di frequenze. Con l’EQ, si può migliorare la chiarezza, rimuovere le frequenze “fangose” e modellare il tono di ciascun elemento per contribuire in modo efficace al mix complessivo. L’obiettivo è creare coesione tra i vari componenti, assicurandosi che ognuno sia udibile chiaramente senza sovrastare gli altri.
-
-**EQ nel Mastering**
-
-Nel mastering, l’EQ assume un ruolo leggermente diverso. Viene utilizzato per perfezionare il suono complessivo di una traccia o di un album. L’obiettivo è ottenere una risposta in frequenza bilanciata sull’intero mix, garantendo che suoni bene su tutti i sistemi di riproduzione. L’EQ nel mastering implica regolazioni sottili per migliorare il tono generale del mix, correggere piccoli squilibri e garantire coerenza tra i brani di un album.
-
-Come abbiamo visto, l’EQ è uno strumento imprescindibile per qualsiasi produttore musicale, essenziale per modellare e perfezionare il suono delle tracce. Dall'analisi delle bande di frequenza all’utilizzo dei parametri e delle tecniche dell’EQ, si rammenta che l’efficacia dell’EQ si basa su equilibrio e sottigliezza. Non si tratta solo di far suonare bene gli elementi singolarmente, ma di garantire che lavorino insieme per creare un mix coeso e armonioso. Che si stia aumentando le frequenze per aggiungere brillantezza o tagliando per ridurre le frequenze indesiderate, ogni regolazione dovrebbe servire il fine ultimo di migliorare il paesaggio sonoro complessivo.
-
-
 ---
 
-## Filtri peak e notch del II ordine
+## Equalizzazione audio
+
+L’equalizzazione è uno strumento fondamentale nella produzione audio e svolge ruoli diversi a seconda delle fasi di lavorazione. Può essere considerato il “coltellino svizzero” dell’audio, capace sia di realizzare regolazioni sottili che di apportare cambiamenti radicali in vari momenti della produzione. In ogni contesto, l’EQ risponde a esigenze specifiche: creare nuovi suoni, bilanciare le tracce o perfezionare il mix finale per gli ascoltatori. Di seguito una panoramica:
+
+**Equalizzazione nel Sound Design**
+
+Nel sound design, l’equalizzazione è uno strumento estremamente versatile che va oltre il semplice miglioramento o pulizia dell’audio. Viene usato per modellare creativamente i suoni in modo da adattarli al contesto narrativo o evocare atmosfere specifiche. Ad esempio, l’EQ può simulare ambienti diversi, come far sembrare che un suono provenga da dietro una porta chiusa attenuando le alte frequenze. Un’altra tecnica comune è l’effetto “telefono”, ottenuto con un filtro passa-banda per imitare la risposta in frequenza limitata di un vecchio telefono. I sound designer utilizzano frequentemente l’EQ per creare illusioni di distanza o riprodurre l’acustica di spazi differenti, rendendolo essenziale nella costruzione di ambienti audio immersivi.
+
+**Equalizzazione nel Mixing**
+
+Durante la fase di mixaggio, l’equalizzazione viene utilizzato principalmente per bilanciare le singole tracce all’interno di una canzone. Permette di ritagliare uno spazio unico per ogni strumento o parte vocale, evitando che si sovrappongano nello stesso intervallo di frequenze. Con l’EQ, si può migliorare la chiarezza, rimuovere le frequenze “fangose” e modellare il tono di ciascun elemento per contribuire in modo efficace al mix complessivo. L’obiettivo è creare coesione tra i vari componenti, assicurandosi che ognuno sia udibile chiaramente senza sovrastare gli altri.
+
+**Equalizzazione nel Mastering**
+
+Nel mastering, l’equalizzazione assume un ruolo leggermente diverso. Viene utilizzato per perfezionare il suono complessivo di una traccia o di un album. L’obiettivo è ottenere una risposta in frequenza bilanciata sull'intero mix, garantendo che suoni bene su tutti i sistemi di riproduzione. L’equalizzazione nel mastering implica regolazioni sottili per migliorare il tono generale del mix, correggere piccoli squilibri e garantire coerenza tra i brani di un album.
+
+Come abbiamo visto, l’equalizzazione è uno strumento imprescindibile per qualsiasi produttore musicale, essenziale per modellare e perfezionare il suono delle tracce. Dall'analisi delle bande di frequenza all’utilizzo dei parametri e delle tecniche dell’equalizzazione, si rammenta che l’efficacia dell’equalizzazione si basa su equilibrio e sottigliezza. Non si tratta solo di far suonare bene gli elementi singolarmente, ma di garantire che lavorino insieme per creare un mix coeso e armonioso. Che si stia aumentando le frequenze per aggiungere brillantezza o tagliando per ridurre le frequenze indesiderate, ogni regolazione dovrebbe servire il fine ultimo di migliorare il paesaggio sonoro complessivo.
+
+Di seguito vengono presentati, in linea teorica, i principali modelli di filtro utilizzati per questo scopo, tra cui i filtri peak e notch, l’EQ parametrico e i filtri shelving passabasso e passaalto.
+
+##### Filtri peak e notch del II ordine
 
 Nel capitolo precedente abbiamo visto il progetto del filtro risonatore utilizzando la tecnica del posizionamento di poli e zeri. L'idea base è quella di collocare una coppia di poli con raggio $R$ e angolo $\pm \omega_0$ all'interno della circonferenza unitaria, cioè 
 
@@ -173,9 +174,7 @@ In figura sono mostrati alcuni esempi di risposte in modulo per il filtro peak.
 
 Le risposte dei filtri peak sono mostrate. Sono rappresentate le risposte per una frequenza centrale di $\omega_0 = \pi/2$ e per larghezze di banda variabili con $G_B^2 = 0.5$.
 
---- 
-
-## Filtro Equalizzatore Parametrico
+##### Filtro Equalizzatore Parametrico
 
 Procediamo ora a combinare i filtri \textit{peak} e \textit{notch} che abbiamo appena introdotto, come descritto in (10.1). Questo si ottiene inserendo (10.4) e (10.7) in (10.1). Tuttavia, prima osserviamo che possiamo combinare i due filtri come segue: sia
 
@@ -270,9 +269,8 @@ In figura sono mostrati alcuni esempi di risposte in frequenza di filtri equaliz
 
 ![]()
 
----
 
-## Filtro Shelving 
+##### Filtro Shelving 
 
 Per trattare le frequenze molto basse e molto alte nel segnale audio, è utile introdurre i cosiddetti filtri shelving. Questi sono filtri che presentano una risposta piatta e un guadagno regolabile rispettivamente a basse o alte frequenze. Il filtro con risposta piatta alle basse frequenze è spesso chiamato `low-pass shelving filter`, mentre quello per le alte frequenze è chiamato `high-pass shelving filter`. Questi possono essere ottenuti dal filtro equalizzatore parametrico generale in (10.17) sostituendo la frequenza centrale, $\omega_0$, con $0$ o $\pi$.
 
