@@ -6,7 +6,7 @@ Equalizzazione
 ## Introduzione
 
 
-L'equalizzazione audio si riferisce al processo di modellazione delle frequenze di un segnale audio. Con l'equalizzatore è possibile utilizzare dei filtri per aumentare o ridurre selettivamente determinate frequenze al fine di ottenere il suono desiderato. Il processo di equalizzazione è sia una scienza che un'arte: un'attenta regolazione può eliminare i rumori indesiderati, aggiungere ariosità e chiarezza alle voci, enfatizzare il suono di una grancassa o ridurre la confusione causata da più strumenti che si scontrano nella stessa gamma di frequenze. Inoltre, l'equalizzazione può essere utilizzata per effetti creativi, come l'emulazione del suono distinto di una telefonata nella voce. La versatilità dell'equalizzatore è vastissima ed esploreremo le sue numerose applicazioni nelle prossime discussioni. Per il momento, concentriamoci sulle basi di questo strumento fondamentale.  
+L'equalizzazione audio si riferisce al processo di modellazione delle frequenze di un segnale audio. Con l'equalizzatore è possibile utilizzare dei filtri per aumentare o ridurre selettivamente determinate frequenze al fine di ottenere il suono desiderato. Il processo di equalizzazione è sia una scienza che un'arte: un'attenta regolazione può eliminare i rumori indesiderati, aggiungere ariosità e chiarezza alle voci, enfatizzare il suono di una grancassa o ridurre la confusione causata da più strumenti che si scontrano nella stessa gamma di frequenze. Inoltre, l'equalizzazione può essere utilizzata per effetti creativi, come l'emulazione del suono distinto di una telefonata nella voce. La versatilità dell'equalizzatore è vastissima ed esploreremo alcune sue applicazioni proprio a partire dai sistemi che la metto in atto, cioè il filtri equalizzatori.
 
 Gli equalizzatori (EQ) sono onnipresenti negli apparecchi audio, che si tratti di un semplice controllo dei toni su uno stereo, un equalizzatore grafico multibanda hi-fi, una banda di equalizzazione parametrica in un pedale per chitarra, oppure si tratti di sistemi audio analogici, digitali, domestici, automobilistici, pubblici o di registrazione/mixaggio in studio.
 Sebbene basati sugli stessi principi, gli equalizzatori hanno scopi diversi a seconda del contesto. Nei sistemi di riproduzione, gli equalizzatori servono a cancellare eventuali effetti di filtraggio indesiderati dovuti all'attrezzatura coinvolta (altoparlanti, amplificatori, ecc.) o all'acustica della stanza. I musicisti utilizzano gli equalizzatori per modellare il proprio suono, ovvero come parte di un'espressione musicale. Gli equalizzatori sono costruiti utilizzando filtri lineari tempo-invarianti (a condizione che i controlli non vengano modificati). Esistono due tipi di equalizzatori: `grafici` e `parametrici`. 
@@ -74,15 +74,19 @@ dove i coefficienti del filtro sono dati in funzione dei parametri $r$, $R$ e $\
 &a_1=-2R\cos(\omega_0),&\qquad &a_2=R^2&
 \end{align}
 
-La posizione di zeri e poli è mostrata figura. 
+La posizione di zeri e poli è mostrata figura (caso boost, nel caso cut si invertono le posizioni di poli e zeri, con zeri più esterni). 
 
 ![](images/risonatoreII.png)
 
-La figura mostra il comportamento del filtro per un dato fasore $e^{j\omega}$ in relazione alla sua prossimità o meno alla coppia polo/zero. Quando $r < R$, il polo “vince” sullo zero, nel senso che è più vicino al cerchio unitario rispetto allo zero, dando luogo a un picco nella risposta in frequenza a $\omega= \omega_0$. Il caso del risonatore può essere considerato come un caso speciale con $r = 0$. Quando $r > R$, lo zero vince sul polo, dando luogo a una caduta nella risposta in frequenza. In particolare, se $r = 1$, si ottiene uno zero esatto, una tacca, in corrispondenza di $\omega= \omega0$. Quando il polo e lo zero sono molto vicini, cioè $r\approx R$, la risposta in frequenza rimane essenzialmente piatta per frequenze lontane da $\omega=±\omega_0$, perché le distanze del fasore $e^{j\omega}$ dalle coppie polo/zero sono pressoché uguali, il che fa pensare che un filtro di questo tipo può essere considerato un semplice equalizzatore parametrico, che fornisce un “boost” se $r < R$, o un “cut” se $r > R$. L'altezza del boost o del cut rispetto a 1 è controllata dalla vicinanza di $r$ a $R$. L'ampiezza dei picchi o delle cadute è controllata dalla vicinanza di $R$ al cerchio unitario.
+La figura mostra il comportamento del filtro per un dato fasore $e^{j\omega}$ in relazione alla sua prossimità o meno alla coppia polo/zero. Si hanno i seguenti casi:
+- quando $r < R$, il polo “vince” sullo zero, nel senso che è più vicino al cerchio unitario rispetto allo zero, dando luogo a un picco nella risposta in frequenza a $\omega= \omega_0$. Il caso del risonatore può essere considerato come un caso speciale con $r = 0$. 
+- quando $r > R$, lo zero vince sul polo, dando luogo a una caduta nella risposta in frequenza. In particolare, se $r = 1$, si ottiene uno zero esatto, una tacca, in corrispondenza di $\omega= \omega_0$. 
 
-I filtri qui descritti sono semplici, offrono un'dea chiara su come il filtro opera, tuttavia questa tecnica è adeguata solo nel caso di larghezza di banda ridotta. Ma diventa complicata per larghezze di picco maggiori, come quelle che potrebbero essere utilizzate negli equalizzatori audio grafici e parametrici. Il metodo della trasformazione bilineare (non discusso qui) offre un controllo preciso sulle specifiche desiderate per tali filtri. Descriviamo da qui in poi pertanto una famiglia di filtri notch e peak ottenuti con detta tecnica e che rivelano caratteristiche più adeguate all'equalizzazione generale.  
+Quando il polo e lo zero sono molto vicini, cioè $r\approx R$, la risposta in frequenza rimane essenzialmente piatta per frequenze lontane da $\omega=±\omega_0$, perché le distanze del fasore $e^{j\omega}$ dalle coppie polo/zero sono pressoché uguali, il che fa pensare che un filtro di questo tipo può essere considerato un semplice equalizzatore parametrico, che fornisce un “boost” se $r < R$, o un “cut” se $r > R$. L'altezza del boost o del cut rispetto a 1 è controllata dalla vicinanza di $r$ a $R$. L'ampiezza dei picchi o delle cadute è controllata dalla vicinanza di $R$ al cerchio unitario.
 
-Se denotiamo con $H_{\text{notch}}(z)$ e $H_{\text{peak}}(z)$ le funzioni di trasferimento dei filtri `notch` e `peak`, la trasformazione bilineare permette di mettere in evidenza i guadagni alle varie frequenze, denotati con $G_0$, $G$ e $G_B$ rispettivamente, dove:
+I filtri qui descritti sono semplici, offrono un'dea chiara su come il filtro opera, tuttavia la tecnica che li origina è adeguata solo nel caso di larghezza di banda ridotta, cioè quando li si utilizzano per cancellare frequenze date dal rumore puntuale in frequenza, come la corrente elettrica a 50 Hz negli apparati elettronici. Ma diventa complicata per larghezze di picco maggiori, come quelle che vengono invece richieste negli equalizzatori audio grafici e parametrici. A differenza di quello mostrao sopra, il metodo della `trasformazione bilineare` (non discusso qui) offre un controllo preciso sulle specifiche desiderate per tali filtri. Descriviamo di seguito pertanto una famiglia di filtri notch e peak ottenuti con detta tecnica e che, combinati assieme, rivelano caratteristiche più adeguate all'equalizzazione generale.  
+
+Se indichiamo con $H_{\text{notch}}(z)$ e $H_{\text{peak}}(z)$ le funzioni di trasferimento dei filtri `notch` e `peak`, la trasformazione bilineare permette di mettere in evidenza i guadagni alle varie frequenze, denotati con $G_0$, $G$ e $G_B$ rispettivamente, dove:
 - $G_0$ è spesso scelto come costante negli equalizzatori e può essere semplicemente impostato a 1, ovvero $G_0 = 1$, e viene talvolta chiamato `livello`,
 - $G$ rappresenta l'amplificazione alla frequenza centrale del filtro rispetto al riferimento $G_0$,
 - $G_B$ è il guadagno alle frequenze di taglio del filtro (come spiegato di seguito).
@@ -107,7 +111,7 @@ $$
 \omega_0 = \sqrt{\omega_1 \omega_2} \quad \text{e} \quad \Delta \omega = \omega_2 - \omega_1, 
 $$
 
-cioè, la frequenza centrale è la media geometrica di $\omega_1$ e $\omega_2$, mentre la larghezza di banda è semplicemente la differenza tra le due. In figura sotto sono indicati gli equivalenti analogici di queste quantità, ovvero $f_1$ e $f_2$, sono correlati a $\omega_1$ e $\omega_2$, mentre $\Delta f$ è connessa a $\Delta\omega$ secondo quanto indicato nella [](eq:omega).
+cioè, la frequenza centrale è la media geometrica di $\omega_1$ e $\omega_2$, mentre la larghezza di banda è semplicemente la differenza tra le due. In figura sotto sono indicati gli equivalenti analogici di queste quantità, ovvero $f_1$ e $f_2$, derivati da $\omega_1$ e $\omega_2$, e $\Delta f$ derivata da $\Delta\omega$, secondo quanto indicato nella [](eq:omega).
 
 
 ```{image} images/gain_EQ.png
@@ -117,19 +121,23 @@ cioè, la frequenza centrale è la media geometrica di $\omega_1$ e $\omega_2$, 
 :align: center
 ```
 
-Un filtro notch con frequenza centrale $\omega_0$ ha una funzione di trasferimento della seguente forma:
+Pertanto, secondo la tecnica della trasformazione bilineare, un filtro notch con frequenza centrale $\omega_0$ ha seguente:
 
+```{card}
+:header: Funzione di trasferimento filtro notch
+:footer: 
 $$
-H_{\text{notch}}(z)=b\,\frac{1 - 2 \cos \omega_0 z^{-1} + z^{-2}}{1 - 2b \cos \omega_0 z^{-1} + (2b - 1)z^{-2}},
+H_{\text{notch}}(z)=b\,\frac{1 - 2 \cos \omega_0 z^{-1} + z^{-2}}{1 - 2b \cos \omega_0 z^{-1} + (2b - 1)z^{-2}}, 
 $$
+```
 
-che può essere visto come un filtro IIR di secondo ordine. La quantità $b$, che rappresenta il guadagno, è data da:
+che può essere visto come un filtro IIR di secondo ordine. La quantità $b$, che rappresenta il guadagno generale del filtro, è data da:
 
 $$
 b = \frac{1}{1 + \beta},\qquad \text{con}\qquad \beta = \frac{\sqrt{1 - G_B^2}}{G_B} \tan \frac{\Delta \omega}{2},
 $$
 
-e $G_B$ è il guadagno alle frequenze di taglio $\omega_1$ e $\omega_2$. Per ottenere frequenze di taglio a -3 dB, possiamo semplicemente scegliere $G_B^2 = 0.5$. Da $H_{\text{notch}}(z)$ del filtro notch ricaviamo la seguente equazione alle differenze:
+mentre $G_B$ è il guadagno alle frequenze di taglio $\omega_1$ e $\omega_2$. Per ottenere frequenze di taglio a -3 dB, possiamo semplicemente scegliere $G_B^2 = 0.5$. Da $H_{\text{notch}}(z)$ del filtro notch ricaviamo la seguente equazione alle differenze:
 
 $$
 y(n) = b x(n) - 2b \cos \omega_0 x(n-1) + b x(n-2) + 2b \cos \omega_0 y(n-1) - (2b - 1)y(n-2). 
