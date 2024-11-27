@@ -36,14 +36,16 @@ In sintesi, il suono nell’aria è principalmente un fenomeno longitudinale, me
 
 Un esempio classico di onde sonore longitudinali è il suono che si propaga nell’aria. Quando si parla, si emette un suono facendo vibrare le corde vocali, che a loro volta creano compressioni e rarefazioni nelle molecole d’aria.
 
-Le particelle d’aria oscillano avanti e indietro parallelamente alla direzione in cui l’onda sonora si propaga, caratterizzando così il suono come un’onda longitudinale. Nell'immagine qui sotto si rappresentano le onde sonore longitudinali attraverso un grafico (realistico) di spostamento delle particelle per evidenziare le dinamiche dell’onda.
+Le particelle d’aria oscillano avanti e indietro parallelamente alla direzione in cui l’onda sonora si propaga, caratterizzando così il suono come un’onda longitudinale. Nell'immagine qui sotto (prodotta da ChatGPT) si rappresentano le onde sonore longitudinali attraverso un grafico (realistico) di spostamento delle particelle per evidenziare le dinamiche dell’onda.
 
+&nbsp;
 ```{image} images/onda_longitudinale.png
 :alt: long
 :class: bg-primary mb-1
 :width: 600px
 :align: center
 ```
+&nbsp;
 
 Un esempio comune di onde trasversali è la propagazione delle onde sulla superficie dell’acqua. In queste onde, le particelle d’acqua si muovono perpendicolarmente alla direzione di propagazione dell’onda stessa. Quando si getta un sasso in uno stagno, si osservano onde che si propagano verso l’esterno formando cerchi concentrici, mentre le particelle d’acqua oscillano su e giù. Altri esempi includono:
 - Onde elettromagnetiche (come la luce e le onde radio), dove i campi elettrici e magnetici oscillano perpendicolarmente alla direzione di propagazione.
@@ -58,21 +60,25 @@ $$v=\frac{\lambda}{T}$$
 
 La `frequenza` dell'onda $f$, invece, indica quante volte un punto dell'acqua oscilla in un secondo. Poiché la frequenza è il reciproco del periodo ($f= 1/T$), possiamo anche scrivere l'equazione fondamentale di un'onda come:
 
+&nbsp;
 ```{image} images/velocita-onda.png
 :alt: long
 :class: bg-primary mb-1
 :width: 500px
 :align: center
 ```
+&nbsp;
 
 Il diagramma seguente mostra in forma grafica la relazione fra la lunghezza d’onda e la frequenza nel campo dell’udibile, cioè fra 20 e 20000 Hz (intervallo di notevole interesse applicativo poiché rappresenta l’intervallo di udibilità dell’Uomo medio).
 
+&nbsp;
 ```{image} images/freq_lambda.png
 :alt: long
 :class: bg-primary mb-1
 :width: 500px
 :align: center
 ```
+&nbsp;
 
 Si osservi come a 20 Hz, frequenza minima udibile, la lunghezza d’onda corrispondente sia di $17 m$ mentre a $20.000 Hz$ è di $17 mm$. Queste dimensioni sono importanti nel valutare le interazioni che le onde acustiche hanno con la materia.
 
@@ -83,13 +89,14 @@ Il suono può propagarsi in vari mezzi, e le sue caratteristiche variano in base
 
 Nella tabella si riportano alcuni valori della velocità $v$ in m/s per alcune sostanze a temperatura ambiente.
 
+&nbsp;
 ```{image} images/tabella-velocita.png
 :alt: long
 :class: bg-primary mb-1
 :width: 700px
 :align: center
 ```
-
+&nbsp;
 
 
 ##### Riflessione, rifrazione e diffrazione del Suono
@@ -104,12 +111,14 @@ Quando un'onda sonora che si sta propagando in un mezzo materiale incontra la su
 
 Se l'onda sonora incide in direzione perpendicolare alla superficie riflettente torna indietro nella stessa direzione. Se invece la direzione di propagazione dell'onda incidente non coincide con la perpendicolare alla superficie riflettente, l'onda riflessa si propaga in una direzione che forma con la stessa perpendicolare un angolo $r$ uguale a quello di incidenza $i$ (vedi figura).
 
+&nbsp;
 ```{image} images/onda-incid.png
 :alt: onda
 :class: bg-primary mb-1
 :width: 200px
 :align: center
 ```
+&nbsp;
 
 La velocità dell'onda incidente è uguale a quella dell'onda riflessa, perché l'onda viaggia nello stesso mezzo. Poiché la frequenza è fissa, per l'equazione dell'onda $v =\lambda f$. Questo ci assicura che la lunghezza dell'onda riflessa è identica alla lunghezza d'onda incidente. L'eco è l'esempio più noto di riflessione di onde sonore. Quando lanciamo un grido davanti a una parete verticale posta a opportuna distanza, la parete riflette una parte dell'onda acustica lungo la direzione di incidenza. Dopo qualche istante riceviamo il grido di ritorno, cioè l'eco.
 Poiché la velocità del suono è costante, il tempo che impiega per andare e tornare dalla parete riflettente si calcola con la formula:
@@ -120,13 +129,14 @@ $$
 
 dove $D$ è la distanza della parete (vedi figura).
 
-
+&nbsp;
 ```{image} images/emittente-ricevente.png
 :alt: eco
 :class: bg-primary mb-1
 :width: 500px
 :align: center
 ```
+&nbsp;
 
 Perché in una normale stanza non sentiamo l'eco? Per spiegare questo fatto bisogna tener presente che l'orecchio umano distingue due suoni solo se essi gli giungono distanziati nel tempo di almeno un decimo di secondo. Perciò il suono incidente e quello riflesso sulla parete saranno percepiti come distinti solo se il tempo impiegato dal suono per andare e tornare dalla parete è maggiore di un decimo di secondo. Con una velocità di 340 m/s, in un decimo di secondo il suono percorre 34 m.
 
