@@ -46,7 +46,41 @@ Come abbiamo visto, l’EQ è uno strumento imprescindibile per qualsiasi produt
 
 ## Filtri peak e notch del II ordine
 
-Nel capitolo precedente abbiamo visto il progetto del filtri risonatore utilizzando la tecnica del piazzamento poli/zeri. Per i filtri a larghezza ridotta questa tecnica è adeguata. Ma diventa complicata per larghezze di picco maggiori, come quelle che potrebbero essere utilizzate negli equalizzatori audio grafici e parametrici. Il metodo della trasformazione bilineare offre un controllo preciso sulle specifiche desiderate di tali filtri.
+Nel capitolo precedente abbiamo visto il progetto del filtro risonatore utilizzando la tecnica del posizionamento di poli e zeri. L'idea base è quella di collocare una coppia di poli con raggio $R$ e angolo $\pm \omega_0$ all'interno della circonferenza unitaria, cioè 
+
+$$
+p = R e^{j \omega_0} \quad \text{e} \quad p^* = R e^{-j \omega_0}
+$$
+
+dove $^*$ indica il complesso coniugato. Una leggera generalizzazione del filtro a risonatore consiste nel posizionare anche una coppia di zeri vicino ai poli lungo le stesse direzioni dei poli, cioè in corrispondenza delle posizioni:
+
+$$
+\rho=r e^{j \omega_0} \quad \text{e} \quad \rho^* = r e^{-j \omega_0}
+$$
+
+dove $r$ è ristretto al range $0 \leq r \leq 1$. La funzione di trasferimento diventa così:
+
+
+\begin{align}
+H(z) &= \frac{(1 - \rho z^{-1})(1 - \rho^* z^{-1})}{(1 - p z^{-1})(1 - p^* z^{-1})}\\
+&=\frac{(1 - r e^{j \omega_0} z^{-1})(1 - r e^{-j \omega_0} z^{-1})}{(1 - R e^{j \omega_0} z^{-1})(1 - R e^{-j \omega_0} z^{-1})}\\
+&= \frac{1 + b_1 z^{-1} + b_2 z^{-2}}{1 + a_1 z^{-1} + a_2 z^{-2}} 
+\end{align}
+
+dove i coefficienti del filtro sono dati in funzione dei parametri $r$, $R$ e $\omega_0$:
+
+\begin{align}
+&b_1=-2r\cos(\omega_0),&\qquad &b_2=r^2&\\
+&a_1=-2R\cos(\omega_0),&\qquad &a_2=R^2&
+\end{align}
+
+La posizione di zeri e poli è mostrata figura. 
+
+![](images/risonatoreII.png)
+
+La figura mostra il comportamento del filtro per un dato fasore $e^{j\omega}$ in relazione alla sua prossimità o meno alla coppia polo/zero. Quando $r < R$, il polo “vince” sullo zero, nel senso che è più vicino al cerchio unitario rispetto allo zero, dando luogo a un picco nella risposta in frequenza a $\omega= \omega0$. Il caso del risonatore può essere considerato come un caso speciale con $r = 0$. Quando $r > R$, lo zero vince sul polo, dando luogo a una caduta nella risposta in frequenza. In particolare, se $r = 1$, si ottiene uno zero esatto, una tacca, in corrispondenza di $\omega= \omega0$. Quando il polo e lo zero sono molto vicini, cioè $r\approx R$, la risposta in frequenza rimane essenzialmente piatta per frequenze lontane da $\omega=±\omega_0$, perché le distanze del fasore $e^{j\omega}$ dalle coppie polo/zero sono pressoché uguali, il che fa pensare che un filtro di questo tipo può essere considerato un semplice equalizzatore parametrico, che fornisce un “boost” se $r < R$, o un “cut” se $r > R$. L'altezza del boost o del cut rispetto a 1 è controllata dalla vicinanza di $r$ a $R$. L'ampiezza dei picchi o delle cadute è controllata dalla vicinanza di $R$ al cerchio unitario.
+
+I filtri qui descritti sono semplici, offrono un'dea chiara su come il filtro opera, tuttavia questa tecnica è adeguata solo nel caso di larghezza di banda ridotta. Ma diventa complicata per larghezze di picco maggiori, come quelle che potrebbero essere utilizzate negli equalizzatori audio grafici e parametrici. Il metodo della trasformazione bilineare (non discusso qui) offre un controllo preciso sulle specifiche desiderate per tali filtri. Descriviamo da qui in poi pertanto una famiglia di filtri notch e peak ottenuti con detta tecnica e che rivelano caratteristiche più adeguate all'equalizzazione generale.  
 
 Se denotiamo con $H_{\text{notch}}(z)$ e $H_{\text{peak}}(z)$ le funzioni di trasferimento dei filtri `notch` e `peak`, e con $G_0$ e $G$ i loro guadagni alle varie frequenze, allora $G$ rappresenta l'amplificazione alla frequenza centrale del filtro rispetto a $G_0$. Quest'ultimo è spesso scelto come costante negli equalizzatori e può essere semplicemente impostato a 1, ovvero $G_0 = 1$, e viene talvolta chiamato livello. Si ottiene un `boost` selezionando $G > G_0$ e un `cut` con $G < G_0$. Come mostrato figura, i guadagni relativi devono essere scelti come segue, a seconda che si tratti di un boost o di un cut:
 
@@ -68,6 +102,10 @@ $$
 $$
 
 cioè, la frequenza centrale è la media geometrica di $\omega_1$ e $\omega_2$, mentre la larghezza di banda è semplicemente la differenza tra le due. Si noti che gli equivalenti analogici di queste quantità, ovvero $f_1$ e $f_2$, sono correlati a $\omega_1$ e $\omega_2$ in modo simile a quanto indicato in [](eq:omega).
+
+
+![](images/bandwidth.png)
+
 
 Un filtro notch con frequenza centrale $\omega_0$ ha una funzione di trasferimento che si presenta come segue:
 
@@ -219,9 +257,6 @@ $$
 y(n) = \frac{G_0 + G \beta}{1 + \beta} x(n) 
 - \frac{2 G_0 \cos \omega_0}{1 + \beta} x(n-1).
 $$
-
-
-Ecco la traduzione in LaTeX:
 
 $$
 y(n) = \frac{G_0 + G \beta}{1 + \beta} x(n) 
