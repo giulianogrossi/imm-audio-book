@@ -5,7 +5,6 @@ Equalizzazione
 
 ## Introduzione
 
-
 L'equalizzazione audio si riferisce al processo di modellazione delle frequenze di un segnale audio. Con l'equalizzatore è possibile utilizzare dei filtri per aumentare o ridurre selettivamente determinate frequenze al fine di ottenere il suono desiderato. Il processo di equalizzazione è sia una scienza che un'arte: un'attenta regolazione può eliminare i rumori indesiderati, aggiungere ariosità e chiarezza alle voci, enfatizzare il suono di una grancassa o ridurre la confusione causata da più strumenti che si scontrano nella stessa gamma di frequenze. Inoltre, l'equalizzazione può essere utilizzata per effetti creativi, come l'emulazione del suono distinto di una telefonata nella voce. La versatilità dell'equalizzatore è vastissima ed esploreremo alcune sue applicazioni proprio a partire dai sistemi che la metto in atto, cioè il filtri equalizzatori.
 
 Gli equalizzatori (EQ) sono onnipresenti negli apparecchi audio, che si tratti di un semplice controllo dei toni su uno stereo, un equalizzatore grafico multibanda hi-fi, una banda di equalizzazione parametrica in un pedale per chitarra, oppure si tratti di sistemi audio analogici, digitali, domestici, automobilistici, pubblici o di registrazione/mixaggio in studio.
@@ -25,7 +24,35 @@ Negli equalizzatori parametrici, la risposta in frequenza desiderata viene otten
 
 ---
 
-## Equalizzazione audio
+## Equalizzazione grafica
+
+Nell'equalizzatore grafico, il segnale di ingresso viene inviato a un gruppo di filtri. Ogni filtro fa passare la porzione di segnale presente nella propria gamma di frequenza o banda. L'ampiezza passata da ciascun filtro viene regolata mediante un comando a slitta per aumentare o ridurre le componenti di frequenza passate da quel filtro. La posizione verticale di ciascun cursore indica quindi il guadagno applicato a quella banda di frequenza, in modo che i cursori assomiglino a un grafico della risposta dell'equalizzatore tracciato in funzione della frequenza.  Questo processo è generalmente semplice e può influire sulla qualità dell'audio. I musicisti o i tecnici audio utilizzano gli equalizzatori per bilanciare i diversi elementi di una canzone e creare maggiore chiarezza nell'audio.
+
+Gli equalizzatori grafici si trovano comunemente nei sistemi di altoparlanti audio per auto, negli home theater, negli studi di registrazione e nei sistemi audio stereofonici di fascia media e alta. Sono disponibili anche programmi di equalizzazione grafica da utilizzare per la regolazione fine del suono in un PC. Sono particolarmente indicati per gli ambienti sonori dal vivo, dove un tecnico può prendere decisioni rapide grazie a cursori chiaramente contrassegnati.
+
+Il numero di canali di frequenza può essere adattato ai requisiti dell'applicazione prevista. Un equalizzatore audio per auto potrebbe avere un totale di cinque-dieci bande di frequenza. Un equalizzatore per l'amplificazione professionale dal vivo ha in genere da 25 a 31 bande, per un controllo più preciso dei problemi di retroazione e per l'equalizzazione dei modi della stanza. Un equalizzatore di questo tipo è chiamato equalizzatore a 1/3 d'ottava (informalmente “EQ a terzo d'ottava”) perché le frequenze centrali dei suoi filtri sono distanziate di un terzo d'ottava, tre filtri per ottava. Gli equalizzatori con un numero di filtri per ottava pari alla metà sono comuni quando è richiesto un controllo meno preciso: questo design è chiamato equalizzatore a 2/3 ottave.
+ 
+Gli equalizzatori grafici funzionano potenziando o riducendo bande predeterminate per migliorare la qualità del suono. Le bande sono impostate all'interno di un intervallo fisso. Gli EQ grafici inviano l'audio in ingresso a una serie di filtri che passano l'audio in base alla banda assegnata. L'utente sposta verso l'alto o verso il basso i controlli a scorrimento etichettati in decibel per aumentare o ridurre l'energia passata attraverso ciascuna banda. I potenziometri a scorrimento per ciascun canale sono affiancati, con la frequenza più bassa a sinistra e quella più alta a destra. In questo modo, le posizioni dei pulsanti sembrano seguire una curva grafica. Esistono anche vari tipi di EQ, di cui uno è l'EQ grafico.
+
+Un tipico equalizzatore grafico è costituito da diversi filtri o amplificatori audio, ciascuno centrato su una frequenza specifica della gamma audio. La maggior parte degli equalizzatori grafici ha due serie identiche di filtri o amplificatori, uno per ogni canale di un sistema audio stereofonico. L'audio in ingresso viene inviato a una serie di filtri che lo passano in base alla gamma di frequenze. L'utente può aumentare o ridurre l'energia passata da ciascuna banda utilizzando i controlli a scorrimento. Se gli acuti sono troppo forti in una traccia, ad esempio, tagliando una delle bande di frequenza più alte è possibile attenuarli. Allo stesso modo, se i bassi sono eccessivi, l'abbassamento di un cursore su una delle bande di frequenza più basse può risolvere il problema. In ogni caso, anche solo piccole regolazioni possono cambiare il suono in modo significativo.
+
+I filtri passa-alto e passa-basso vengono utilizzati per definire i limiti. I filtri passa-alto tagliano le basse frequenze lasciando passare le alte, mentre i filtri passa-basso tagliano le alte frequenze lasciando passare le basse. Quindi, ad esempio, i produttori possono usare i filtri passa-alto per tagliare i bassi, mentre usano i filtri passa-basso per evitare l'emorragia di suoni a frequenza più alta, come i piatti. L'emorragia si verifica quando l'uscita di una sorgente audio si riversa nell'ingresso di un'altra sorgente audio.
+
+La differenza principale tra equalizzatori grafici ed equalizzatori parametrici è la flessibilità, ma anche la complessità, di quest'ultimi.  Gli equalizzatori parametrici sono equalizzatori variabili a più bande che consentono all'utente di controllare l'ampiezza, la frequenza centrale e la larghezza di banda di ciascuna banda. Gli equalizzatori parametrici aumentano e tagliano l'ampiezza, spostano la frequenza centrale verso l'alto o verso il basso e allargano o restringono la larghezza di banda di ciascuna banda. Questo tipo di equalizzatore consente regolazioni precise e i tecnici audio possono individuare frequenze particolari negli studi di registrazione e missaggio.
+
+Gli equalizzatori parametrici sono più complessi degli equalizzatori grafici, in quanto possono effettuare regolazioni più precise e specifiche. Mentre un equalizzatore grafico ha il controllo solo su un insieme fisso di frequenze, gli equalizzatori parametrici possono controllare quanto segue:
+- la frequenza esatta;
+- l'aumento o la riduzione dei decibel; e
+- l'ampiezza di banda o la gamma di ciascuna frequenza, definita anche quoziente di variazione, o semplicemente Q.
+
+nella figura si vede come L'utente può far scorrere i controlli in decibel per aumentare o ridurre l'energia che passa attraverso ciascuna banda.
+
+![](images/eq_grafico.png)
+
+
+---
+
+## Equalizzazione parametrica
 
 L’equalizzazione è uno strumento fondamentale nella produzione audio e svolge ruoli diversi a seconda delle fasi di lavorazione. Può essere considerato il “coltellino svizzero” dell’audio, capace sia di realizzare regolazioni sottili che di apportare cambiamenti radicali in vari momenti della produzione. In ogni contesto, l’EQ risponde a esigenze specifiche: creare nuovi suoni, bilanciare le tracce o perfezionare il mix finale per gli ascoltatori. Di seguito una panoramica:
 
@@ -84,7 +111,9 @@ La figura mostra il comportamento del filtro per un dato fasore $e^{j\omega}$ in
 
 Quando il polo e lo zero sono molto vicini, cioè $r\approx R$, la risposta in frequenza rimane essenzialmente piatta per frequenze lontane da $\omega=±\omega_0$, perché le distanze del fasore $e^{j\omega}$ dalle coppie polo/zero sono pressoché uguali, il che fa pensare che un filtro di questo tipo può essere considerato un semplice equalizzatore parametrico, che fornisce un “boost” se $r < R$, o un “cut” se $r > R$. L'altezza del boost o del cut rispetto a 1 è controllata dalla vicinanza di $r$ a $R$. L'ampiezza dei picchi o delle cadute è controllata dalla vicinanza di $R$ al cerchio unitario.
 
-##### Esempio
+&nbsp;
+
+```{tip} Uso del filtro notch (pyAudio6.ipynb)
 
 In questo esempio si mostra il filtro notch o elimina banda in azione, mettendo in evidenza come questo sia uno strumento molto preciso in grado di agire su bande di frequenza estremamente sottili. Per rifarsi a un esempio classico, si può citare il feedback nella chitarra acustica che si presenta durante l’amplificazione. Poiché il feedback si verifica a una frequenza precisa, è necessario utilizzare filtri elimina banda, più mirati rispetto ai normali equalizzatori, per intervenire senza alterare significativamente il suono. Un altro caso è la necessità di eliminare il picco in frequenza a 50 Hz dato dalla corrente elettrica negli apparati elettronici.
 
@@ -96,15 +125,15 @@ Più in dettaglio, si osserva che in un range di frequenze che va da 19.700 Hz a
 
 ![](images/spttro_sound2.png)
 
-Questo è il caso in cui è opportuno applicare una sequenza di filtri notch puntuali sulle frequenze, in particolare con centro banda $\omega_0=19717, 19831, 19935, 20050$, come si può dedurre dallo spettro precedente e replicato dalla risposta in frequenza congiunta dei quattro notch radunati nella figura sotto.
+Questo è il caso in cui è opportuno applicare una sequenza di filtri notch puntuali sulle frequenze, in particolare con frequenze centrali analogiche $f_0=19717, 19831, 19935, 20050$, come si può dedurre dallo spettro precedente e replicato dalla risposta in frequenza congiunta dei quattro notch radunati nella figura sotto. I parametri dei filtri sono i seguenti: $Fs = 44100$ Hz, $R= 0.998$, $r =0.999$ e le frequenze $f_0$ indicate sopra.
 
 ![](images/notches.png)
 
 A valle dell'applicazione del filtro si nota dallo spettro del segnale filtrato che le frequenze sono del tutto sparite e assieme as esse il sibilo più acuto da cui la clip è affetta (in figura).
 
 ![](images/spettro_sound3.png)
+```
 &nbsp;
-
 
 I filtri qui descritti sono semplici, offrono un'dea chiara su come il filtro opera, tuttavia la tecnica che li origina è adeguata solo nel caso di larghezza di banda ridotta, cioè quando li si utilizzano per cancellare frequenze date dal rumore puntuale in frequenza, come negli esempi precedenti. Ma diventa complicata per larghezze di picco maggiori, come quelle che vengono invece richieste negli equalizzatori audio grafici e parametrici. A differenza di quello mostrato sopra, il metodo della `trasformazione bilineare` (non discusso qui) offre un controllo preciso sulle specifiche desiderate per tali filtri. Descriviamo di seguito pertanto una famiglia di filtri notch e peak ottenuti con detta tecnica e che, combinati assieme, rivelano caratteristiche più adeguate all'equalizzazione generale.  
 
@@ -202,7 +231,50 @@ In figura sono mostrati alcuni esempi di risposte in modulo per il filtro peak.
 
 ![]()
 
-Le risposte dei filtri peak sono mostrate. Sono rappresentate le risposte per una frequenza centrale di $\omega_0 = \pi/2$ e per larghezze di banda variabili con $G_B^2 = 0.5$.
+Le risposte dei filtri peak sono mostrate. Sono rappresentate le risposte per una frequenza centrale di $\omega_0=\pi/2$ e per larghezze di banda variabili con $G_B^2 = 0.5$.
+
+```{note} Differenza tra filtro notch e notchEQ (*python*)
+
+Nella tabella seguente si fa una comparazione diretta tra i due i due modelli di filtro notch descritti sopra: il filtro `notch risonatore` e il filtro `notchEQ equalizzatore`. Si riporta il codice python dei due filtri e l'analisi in frequenza a parità di parametri di definizione dei filtri
+
+::::{tab-set}
+:::{tab-item} notchR
+:sync: tab1
+
+filtro 1 
+:::
+
+:::{tab-item} spettro
+:sync: tab2
+filtro due 
+
+:::
+
+
+:::{tab-item}  notchEQ
+:sync: tab2
+filtro due 
+:::
+
+
+:::{tab-item} spettro
+:sync: tab2
+filtro due 
+:::
+
+
+
+::::
+
+
+
+
+
+
+```
+
+
+
 
 ##### Filtro Equalizzatore Parametrico
 
