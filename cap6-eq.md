@@ -184,7 +184,7 @@ cioè, la frequenza centrale è la media geometrica di $\omega_1$ e $\omega_2$, 
 ```{image} images/gain_EQ.png
 :alt: long
 :class: bg-primary mb-1
-:width: 350px
+:width: 500px
 :align: center
 ```
 &nbsp;
