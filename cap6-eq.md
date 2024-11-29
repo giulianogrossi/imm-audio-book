@@ -41,14 +41,15 @@ I filtri passa-alto e passa-basso vengono utilizzati per definire i limiti. I fi
 La differenza principale tra equalizzatori grafici ed equalizzatori parametrici è la flessibilità, ma anche la complessità, di quest'ultimi.  Gli equalizzatori parametrici sono equalizzatori variabili a più bande che consentono all'utente di controllare l'ampiezza, la frequenza centrale e la larghezza di banda di ciascuna banda. Gli equalizzatori parametrici aumentano e tagliano l'ampiezza, spostano la frequenza centrale verso l'alto o verso il basso e allargano o restringono la larghezza di banda di ciascuna banda. Questo tipo di equalizzatore consente regolazioni precise e i tecnici audio possono individuare frequenze particolari negli studi di registrazione e missaggio.
 
 Gli equalizzatori parametrici sono più complessi degli equalizzatori grafici, in quanto possono effettuare regolazioni più precise e specifiche. Mentre un equalizzatore grafico ha il controllo solo su un insieme fisso di frequenze, gli equalizzatori parametrici possono controllare quanto segue:
-- la frequenza esatta;
-- l'aumento o la riduzione dei decibel; e
+- la frequenza esatta,
+- l'aumento o la riduzione dei decibel,
 - l'ampiezza di banda o la gamma di ciascuna frequenza, definita anche quoziente di variazione, o semplicemente Q.
 
-nella figura si vede come L'utente può far scorrere i controlli in decibel per aumentare o ridurre l'energia che passa attraverso ciascuna banda.
+Nella figura si vede come l'apparato consenta all'utente di far scorrere i controlli (in decibel) per aumentare o ridurre l'energia che passa attraverso ciascuna banda e, di conseguenza, mettere in azione l'equalizzazione con più o meno vigore.
 
+&nbsp;
 ![](images/eq_grafico.png)
-
+&nbsp;
 
 ---
 
@@ -103,9 +104,11 @@ dove i coefficienti del filtro sono dati in funzione dei parametri $r$, $R$ e $\
 
 La posizione di zeri e poli è mostrata figura (caso boost, nel caso cut si invertono le posizioni di poli e zeri, con zeri più esterni). 
 
+&nbsp;
 ![](images/risonatoreII.png)
+&nbsp;
 
-La figura mostra il comportamento del filtro per un dato fasore $e^{j\omega}$ in relazione alla sua prossimità o meno alla coppia polo/zero. Si hanno i seguenti casi:
+La figura mostra il comportamento del filtro per un dato fasore $e^{j\omega}$ in relazione alla sua prossimità o lontananza dalle coppie polo/zero. Si hanno i seguenti casi:
 - quando $r < R$, il polo “vince” sullo zero, nel senso che è più vicino al cerchio unitario rispetto allo zero, dando luogo a un picco nella risposta in frequenza a $\omega= \omega_0$. Il caso del risonatore può essere considerato come un caso speciale con $r = 0$. 
 - quando $r > R$, lo zero vince sul polo, dando luogo a una caduta nella risposta in frequenza. In particolare, se $r = 1$, si ottiene uno zero esatto, una tacca, in corrispondenza di $\omega= \omega_0$. 
 
@@ -147,8 +150,9 @@ Si ottiene un `boost` selezionando $G > G_0$ e un `cut` con $G < G_0$. Come most
 $$G^2_0 < G^2_B < G^2 \text{ (boost)}$$ 
 $$G_2 < G^2_B < G^2_0 \text{ (cut)}$$ 
 
+&nbsp;
 ![](images/boostcut.png)
-
+&nbsp;
 
 I filtri peak e notch condividono un certo numero di parametri (da qui il termine parametrico), ovvero la larghezza di banda $\Delta \omega$, la frequenza centrale $\omega_0$ e $G$ (mentre $G_B$ viene calcolato da questi), che possono essere regolati dall'utente. Queste quantità digitali sono legate a quelle analogiche secondo le relazioni:
 
@@ -168,9 +172,10 @@ cioè, la frequenza centrale è la media geometrica di $\omega_1$ e $\omega_2$, 
 ```{image} images/gain_EQ.png
 :alt: long
 :class: bg-primary mb-1
-:width: 400px
+:width: 350px
 :align: center
 ```
+&nbsp;
 
 Pertanto, secondo la tecnica della trasformazione bilineare, un filtro notch con frequenza centrale $\omega_0$ ha la seguente:
 
@@ -427,7 +432,7 @@ con $G_0 = 1$.
 
 ---
 
-## Riassunto parametri
+##### Riassunto parametri
 
 Tutti i filtri che abbiamo considerato in questo capitolo sono casi speciali di un filtro IIR generale del secondo ordine, della forma:
 
