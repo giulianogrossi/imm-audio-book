@@ -46,7 +46,9 @@ I `suoni armonici` sono suoni prodotti da onde che includono una frequenza fonda
 
 La seguente figura illustra lo spettro di un Do ottenuto dall'arpeggio della corda della chitarra che genera un'onda stazionaria di diverse frequenze. Si possono notare infatti al fondamentale di circa $261$ Hz e le armoniche correlate distribuite nello spettro limitato dalla frequenza di campionamento $F_s=10$ kHz.   
 
-![do](images/do-chitarra.png)
+&nbsp;
+![](images/do-chitarra.png)
+&nbsp;
 
 Come si nota dalla figura, nello spettro sono presenti degli `ipertoni`, che sono le componenti di un suono complesso dotate di una frequenza superiore a quella della fondamentale. Se le frequenze degli ipertoni sono multipli interi della frequenza della fondamentale, essi si dicono armoniche. Nello spettrogramma del suono, gli ipertoni sono evidenziati dai massimi del grafico. In natura è estremamente difficile trovare un suono che contenga una sola frequenza, pertanto le note suonate dagli strumenti classici sono come degli accordi di più note, solo con l'avvento degli strumenti elettronici è possibile produrre agilmente suoni monofrequenza. In particolare, gli ipertoni si presentano negli strumenti a corda, nei fiati e nella voce umana.
 
@@ -58,12 +60,14 @@ La `colorazione` o `timbro` del suono è la qualità che ci permette di distingu
 
 La capacità dell’orecchio umano di percepire il timbro è correlata alla frequenza. A basse frequenze, l’orecchio può rilevare differenze di fase e seguire i cambiamenti di un gran numero di armoniche. Man mano che la frequenza aumenta, la capacità dell’orecchio di discriminare la fase diminuisce sopra A4 (440 Hz), e il numero di armoniche udibili si riduce a causa della risposta dell’orecchio. Ad esempio, un suono con una frequenza fondamentale di 100 Hz ha armoniche a intervalli di 100 Hz, quindi la 150ª armonica si trova a 15 kHz. Ma un suono con una fondamentale di 1 kHz ha la sua 15ª armonica a 15 kHz. Il numero di armoniche udibili risulta quindi limitato all’aumentare della frequenza fondamentale. I sintetizzatori forniscono un controllo completo sulla frequenza, fase e livello delle armoniche, consentendo all’utente di controllare il timbro. Le caratteristiche del timbro si possono osservare nella seguente figura in cui la fondamentale del suono è alla frequenza $f$, mentre c’è un’armonica al doppio di questa frequenza, $2f$ e poi compare anche un ipertono o frequenza parziale a $3.75f$. 
 
+&nbsp;
 ```{image} images/timbro.png
 :alt: long
 :class: bg-primary mb-1
-:width: 500px
+:width: 600px
 :align: center
 ```
+&nbsp;
 
 Alcuni dei principali fattori che contribuiscono al timbro sono:
 
@@ -93,22 +97,27 @@ I suoni inarmonici sono percepiti dall'orecchio umano come “più ruvidi” o �
 
 Il `rumore bianco` è uno di questi. Con rumore bianco (in inglese: white noise ) un rumore di ampiezza mediamente costante su tutto lo spettro di frequenza. Ciò significa che questo tipo di segnale possiede tutte le frequenze disponibili nello spettro, che ogni frequenza ha ampiezza casuale con ampiezza massima fissata. In sostanza si tratta di un rumore termico solo che in questo caso si intende un rumore appositamente generato con finalità di test. Per vedere infatti il comportamento di un componente audio, per esempio di un canale di un mixer, si invia in ingresso un rumore bianco e si esamina il segnale di uscita. Generalmente l'obiettivo sarà quello di ottenere un segnale in uscita mediamente costante a tutte le frequenze, questo significherà che il componente è affidabile a tutte le frequenze. In generale il rumore bianco viene usato per i test sui componenti elettronici. Di seguito viene riportato un esempio di rumore bianco nel tempo e nelle frequenze.
 
+&nbsp;
 ![](images/white_noise.png)
+&nbsp;
 
 Dato che il rumore bianco è costante a tutte le frequenze, vuol dire che l'energia associata ad ogni ottava non è costante. Per esempio l'energia compresa nella banda $20$ Hz - $40$ Hz non sarà la stessa di quella della banda $5$ KHz - $10 $KHz. Ovviamente quest'ultima banda avrà un'energia associata molto maggiore pur essendo sempre la larghezza pari a un'ottava in quanto il secondo intervallo di frequenze è molto più largo del primo; in altre parole contiene più frequenze dunque complessivamente più energia. Il `rumore rosa` (in inglese: pink noise ), usato anch'esso con finalità di test, presenta un decremento di 3dB ogni volta che una frequenza viene raddoppiata. In questo modo l'energia associata ad ogni ottava rimane costante su tutto lo spettro. Viene comunemente utilizzato per la taratura di sistemi di rinforzo sonoro dove il rumore bianco risulta essere un segnale non rappresentativo del segnale audio che alimenterà il sistema di rinforzo stesso. Questo è dovuto al fatto che un segnale audio ha un contenuto di energia sulle alte frequenze minore rispetto alle basse frequenze e dunque viene mal rappresentato dal rumore bianco in cui l'energia associata ad ogni ottava è doppia rispetto all'ottava precedente.
 
+&nbsp;
 ![](images/pink_noise.png)
-
+&nbsp;
 
 ##### Inviluppo
 I suoni non iniziano e non terminano istantaneamente. Ci vuole un tempo finito affinché una corda inizi a vibrare e un certo tempo perché essa riduca la vibrazione a uno stato stazionario. Il tempo necessario affinché un oggetto inizi a vibrare si chiama `tempo di attacco`, mentre il tempo impiegato dalla vibrazione per decrescere a uno stato stazionario è detto `tempo di decadimento`. Per gli strumenti che possono produrre un suono continuo, come l’organo, il tempo di decadimento è definito come il tempo necessario affinché il suono decresca fino al livello di sostegno stazionario, mentre la fine della vibrazione si chiama `tempo di rilascio` (in figura).
 
+&nbsp;
 ```{image} images/ADSR.png
 :alt: long
 :class: bg-primary mb-1
 :width: 500px
 :align: center
 ```
+&nbsp;
 
 Alcuni strumenti hanno tempi di attacco, decadimento e rilascio lunghi: per esempio, gli strumenti a corda ad arco. Gli strumenti a corda pizzicata hanno tempi di attacco più brevi. Alcuni strumenti, come il pianoforte o le percussioni, hanno tempi di attacco molto rapidi. Tempi molto brevi sono spesso chiamati transienti. La combinazione di tutte le fasi di un suono è chiamata inviluppo e rappresenta il cambiamento del volume del suono tracciato nel tempo. Il termine inviluppo può anche essere utilizzato in un senso più ampio.
 
@@ -130,13 +139,17 @@ Qui consideriamo solo il caso della `scala cromatica temperata` a dodici toni, i
 
 Per nominare le note della scala temperata a dodici toni, oltre a indicare la classe di altezza, è necessario fornire un identificatore per l’ottava. Seguendo la Notazione Scientifica, ogni nota è specificata dal nome della classe di altezza, seguito da un numero che indica l’ottava. La nota A4 ha una frequenza fondamentale di 440 Hz e serve da riferimento. Il numero dell’ottava aumenta di uno passando da una nota con classe di altezza B a una con classe di altezza C. Ad esempio, la nota B4 è seguita dalla nota C5. Analogamente, il numero dell’ottava diminuisce di uno passando da una C a una B. La nota più bassa, C0, ha una frequenza fondamentale intorno ai 16 Hz, al di sotto della soglia di percezione acustica umana. La figura seguente mostra le note da C3 a C5, insieme ai tasti corrispondenti di una tastiera di pianoforte.
 
+&nbsp;
 ![tastiera](images/tastiera.png)
+&nbsp;
 
 Ordinando tutte le note della scala temperata secondo le loro altezze, si ottiene una scala cromatica temperata, in cui tutte le note della scala sono equidistanti. Il termine cromatico deriva dal greco chroma, che significa colore. Nel contesto musicale, il termine `croma` è strettamente legato alle dodici differenti Classi di altezza. Ad esempio, le note C2 e C5 hanno entrambe lo stesso valore di croma, C. In altre parole, tutte le note che hanno lo stesso valore di croma appartengono alla stessa classe di altezza. Ricordiamo che le note che appartengono alla stessa classe di altezza (o che hanno lo stesso valore di croma) vengono percepite come simili in un certo modo. Al contrario, le note che appartengono a classi di altezza diverse (o che hanno valori di croma diversi) vengono percepite come dissimili. Questo giustifica l’uso del termine “croma” nel senso che note con valori di croma differenti hanno un “colore sonoro” differente.
 
 Nella figura seguente si vede la lista delle frequenze in Hertz dei tasti di un moderno pianoforte standard a 88 tasti in temperamento graduale a dodici toni, dove il quarantanovesimo tasto, il LA centrale (o A4), ha la sua fondamentale a $440$ Hz (in evidenza). Ogni ottava divide la frequenza in dodici passi identici (per esempio, il quinto LA è $440$ Hz e la sua ottava superiore è $880$ Hz), ogni frequenza successiva si deriva moltiplicando (in crescendo) o dividendo (in descrescendo) per la radice dodicesima di due (come mostrato di seguito). Per esempio, la frequenza del semitono superiore al la centrale A4 (A4\#), si ottiene moltiplicando $440$ per la radice dodicesima di due. Per passare dal la centrale A4 al $SI$ centrale $B4$ (salendo di un tono, o due semitoni), si moltiplica $440$ per la radice dodicesima di due, due volte. Per passare da A4 a C5 (il DO superiore), si moltiplica $440$ tre volte per la radice di due.
 
+&nbsp;
 ![key](images/piano_key.png)
+&nbsp;
 
 ##### Scala temperata
 
@@ -166,8 +179,9 @@ che si può approssimare a 1.06.
 
 Dunque, moltiplicare la frequenza di una nota per $2^{1/12}$ corrisponde a salire di un semitono nella scala temperata, mentre moltiplicare la frequenza di una nota per $2^{k/12}$ corrisponde a salire di $k$ semitoni nella scala temperata, come rappresentato in figura.
 
+&nbsp;
 ![scala](images/scala.png)
-
+&nbsp;
 
 Inoltre, per la proprietà dei logaritmi (il logaritmo di un quoziente è uguale alla differenza dei logaritmi del dividendo e del divisore) la scala logaritmica trasforma i rapporti di frequenza in differenze, così un’ottava si traduce in un intervallo costante fra i logaritmi delle frequenze. Per esempio (ma vale per tutte le coppie di note con lo stesso nome, ma appartenenti a ottave contigue):
 
@@ -178,12 +192,14 @@ $$
 
 La musica occidentale si basa sul sistema temperato equabile. La sua scala si distingue anzitutto in `cromatica` e `diatonica`. La scala cromatica è la scala che comprende tutti i suoni possibili del sistema, quindi nel temperamento equabile è definita dalla successione di 12 semitoni contigui (in figura). Il semitono cromatico è formato da due note con lo stesso nome ma diversa altezza (es: Do - Do\#, Mi$\flat$ - Mi).
 
+&nbsp;
 ```{image} images/scala_do_maggiore.png
 :alt: long
 :class: bg-primary mb-1
 :width: 400px
 :align: center
 ```
+&nbsp;
 
 La scala diatonica è una scala di 7 note e ad essa appartengono due grandi tipi di scale: la scala maggiore (in figura sotto), costituita da 5 toni e 2 semitoni, e diverse forme di scale minori. Il semitono diatonico è formato con due note consecutive con diverso nome e diversa altezza (es: Mi - Fa , Si - Do)
 
@@ -207,11 +223,15 @@ Come abbiamo visto in precedenza, i segnali musicali sono generalmente complessi
 
 Per comprenderne la portata, iniziamo con un segnale audio che rappresenta il suono di un brano musicale. Ad esempio, analizziamo il suono di una singola nota suonata su un pianoforte il cui tracciato temporale è mostrata in figura. 
 
+&nbsp;
 ![C4](images/C4_piano.png)
+&nbsp;
 
 Per comprendere quale nota sia stata effettivamente suonata, ricordiamo che l’altezza di un suono musicale è strettamente legata alla sua frequenza fondamentale, ovvero la frequenza della componente parziale più bassa del suono. Pertanto, dobbiamo determinare il contenuto in frequenza, ossia le principali oscillazioni periodiche del segnale. Ingrandiamo il segnale considerando solo una sezione di circa 20 ms e di 220 campioni (come in figura). 
 
+&nbsp;
 ![](images/clip_C4.png)
+&nbsp;
 
 La figura mostra che il segnale si comporta in modo quasi periodico in questa sezione. In particolare, si possono osservare 5 creste principali di un’oscillazione simile a una sinusoide. La presenza di circa 5 cicli di oscillazione in una sezione di 20 ms indica che il segnale contiene una componente di frequenza di circa 262 Hz.
 
@@ -219,16 +239,21 @@ L'idea principale dell'analisi di Fourier è confrontare il segnale con sinusoid
 
 Tracciamo ora i coefficienti $c_f$ rispetto ai vari parametri di frequenza $f \in \mathbb{R}$. Questo genera un grafico come quello mostrato nella prossima figura. In questo grafico, il valore massimo si trova per il parametro di frequenza $f_0=261.7$ Hz che rappresenta all'incirca la `frequenza fondamentale` della nota C4. Infatti, questa è esattamente la nota suonata nell'esempio al pianoforte. Inoltre, attraverso i coefficienti che spiccano nel grafico, si può anche osservare la presenza di numerose sinusoidi di frequenza multipla della fondamentale ad indicare, all’incirca, le componenti in frequenza delle parziali del tono C4, anche detto `spettro di frequenza` del segnale.
 
+&nbsp;
 ![mag](images/magnitude_C4.png)
+&nbsp;
 
 Per osservare nel dettaglio il contributo delle armoniche nell'approssimazione del segnale si osservi la figura seguente. Come detto il segnale è un segnale quasi periodico in cui si possono osservare oscillazioni che rimandano all'dea di una sovrapposizione di sinusoidi di varia frequenza ed ampiezza. Infatti si nota direttamente dal secondo grafico in figura il peso della prima armonica, o fondamentale, di frequenza $f_0$. Le creste tra segnale e fondamentale mostrano una indubbia corrispondenza. Tuttavia sono necessarie altre armoniche per ottenere migliore ricostruzione: nella seconda e nella terza immagine sono infatti riportati i grafici con rispettivamente 3 e 10 armoniche linearmente combinate con i coefficienti mostrati prima. Le armoniche sono multiple della fondamentale secondo la legge $f_k=(k+1)f_0$, con $k=0,1,2,\cdots$.
 
+&nbsp;
 ![harm](images/harmonics.png)
+&nbsp;
 
 Con questo esempio, abbiamo già visto l'idea principale della trasformata di Fourier. La trasformata di Fourier scompone un segnale nelle sue componenti di frequenza. Per ciascuna frequenza $f$, la trasformata di Fourier fornisce un coefficiente $c_f$ (e una fase $\varphi_f$) che ci dice in che misura il segnale dato corrisponde a un'oscillazione prototipo sinusoidale di quella frequenza. Sotto ipotesi molto larghe dunque, un qualsiasi segnale può essere visto come somma di un numero, eventualmente infinito, di componenti armoniche.  Ad ogni componente armonica è associata una frequenza di oscillazione. Quindi è possibile studiare quali e quante frequenze siano presenti in un dato segnale. La trasformata di Fourier è una trasformazione matematica reversibile che permette tutto questo: aumentando il numero di componenti armoniche, ovvero il numero dei segnali armonici a diversa frequenza, si può migliorare l’approssimazione del segnale fino a ridurre a zero la differenza.
 Questa sovrapposizione ponderata viene anche chiamata rappresentazione di Fourier del segnale originale. Il segnale originale e la trasformata di Fourier contengono la stessa quantità di informazioni. Queste informazioni, tuttavia, sono rappresentate in modi diversi. Mentre il segnale visualizza le informazioni nel dominio del tempo, la trasformata di Fourier le visualizza nel dominio della frequenza. Come affermato da Hubbard [9], il segnale ci dice quando determinate note vengono suonate nel tempo, ma nasconde le informazioni sulle frequenze. Al contrario, la trasformata di Fourier della musica mostra quali note (frequenze) vengono suonate, ma nasconde le informazioni su quando le note vengono eseguite.
 
 ---
+
 ##### Trasformata di Fourier di segnali analogici
 
 Senza seguire una trattazione rigorosa, ricordiamo qui l'importante risultato relativo alla trasformata di Fourier di un segnale (audio) analogico. Richiamiamo poi che per calcolare lo spettro di un segnale analogico in digitale, si campiona una registrazione di durata finita del segnale e i campioni risultanti vengono trasformati nel dominio della frequenza mediante un algoritmo DFT o FFT. La frequenza di campionamento $F_s$ deve essere sufficientemente veloce da minimizzare gli effetti dell'aliasing. Se necessario, un prefiltro analogico anti-aliasing può precedere l'operazione di campionamento.
@@ -249,7 +274,9 @@ $$
 
 Consideriamo alcuni esempi. La figura seguente mostra la forma d'onda e la trasformata di Fourier in ampiezza per alcuni segnali audio, dove viene suonata una singola nota C4 su strumenti diversi: un pianoforte, una tromba, un violino e un flauto. Abbiamo già incontrato questo esempio in precedenza, dove abbiamo discusso l'aspetto del timbro. Ricordiamo che l'esistenza di determinati parziali e la loro forza relativa hanno un'influenza cruciale sul timbro di un tono musicale. 
 
+&nbsp;
 ![](images/strumenti.png)
+&nbsp;
 
 Nel caso del tono del pianoforte, la trasformata di Fourier mostra un picco netto a 262 Hz, il che rivela che la maggior parte dell'energia del segnale è contenuta nel primo parziale o nella frequenza fondamentale della nota C4. Ulteriori picchi (anche oltre l'intervallo di frequenza mostrato da 0 a 1000 Hz) si trovano a multipli interi della frequenza fondamentale, corrispondenti ai parziali superiori. La successiva mostra che la stessa nota suonata su una tromba genera uno spettro di frequenza simile, dove i picchi appaiono nuovamente a multipli interi della frequenza fondamentale. Tuttavia, la maggior parte dell'energia è ora contenuta nel terzo parziale, e le altezze relative dei picchi sono diverse rispetto al pianoforte. Questo è uno dei motivi per cui una tromba suona diversa da un pianoforte. Per un violino, la maggior parte dell'energia è di nuovo contenuta nel primo parziale. Si noti che i picchi sono sfocati in frequenza, un risultato del vibrato. Le modulazioni di frequenza del vibrato, dipendenti dal tempo, sono mediate dalla trasformata di Fourier. In questo modo si ottiene un singolo coefficiente per ogni frequenza, indipendente dalle fluttuazioni spettro-temporali. Una spiegazione simile vale per il tono del flauto mostrato in ultimo.
 
@@ -293,7 +320,9 @@ $$
 
 Anche se non giustificato qui, la periodicità in $f$ è legata alla replica periodica dello spettro originale $X_a(f)$, come si vede in figura.
 
+&nbsp;
 ![](images/replica_spettro.png)
+&nbsp;
 
 --- 
 
@@ -335,7 +364,9 @@ In ossequio al monito riportato sopra circa il fatto che coefficienti $x(n)(k)$ 
 
 Si considerino il segnale esponenziale negativo $x_a(t)=Ae^{-\alpha t} u(t)$, con $A,\alpha$ reali positivi, $u(t)$ la funzione gradino, e la sua trasformata di Fourier che può essere data in forma analitica $X_a(f)=A/(\alpha+j2\pi f)$ riportate nelle figure seguenti (in cui si mostra il segnale $x_a(t)$ e la risposta in frequenza $|X_a(f)|$, cioè il modulo dello spettro). 
 
+&nbsp;
 ![exp](images/exp.png)
+&nbsp;
 
 E\' evidente che lo spettro $|X_a(f)|$ non è limitato e ha energia in tutte le frequenza $-\infty<f<+\infty$, benché abbia un decadimento esponenziale che rende le frequenze meno rilevanti in bande via via sempre più lontane dallo zero.
 
@@ -345,7 +376,9 @@ $$
 x(n)=x_a(nT_s)=Ae^{-\alpha nT_s}, \quad 0\leq n\leq +\infty
 $$
 
+&nbsp;
 ![](images/exp_dis.png)
+&nbsp;
 
 Lo spettro di $x(n)$ può essere trovato facilmente se si utilizza un calcolo diretto della trasformata di Fourier a tempo discreto. Troviamo che
 
@@ -358,30 +391,41 @@ La sequenza dei campioni ha una trasformata di Fourier che si ottiene replicando
 multiplo della frequenza di campionamento $F_s=1/T_s$. Se dunque tale frequenza non è sufficientemente grande compare il fenomeno dell’aliasing, per cui tali repliche risultano sovrapposte. Ciò è mostrato in figura, e fornisce una prima importante differenza dell’implementazione numerica rispetto
 alla trasformata originale. Quella ottenuta è la DTFT ed ha il problema di dipendere da infiniti campioni, oltre ad essere una funzione continua nella variabile $f$, e quindi non trattabile numericamente.
 
+&nbsp;
 ![](images/replica.png)
+&nbsp;
 
 La figura seguente invece mostra lo spettro $X_s(f)$ in banda base, cioè ristretta all'intervallo di Nyquist $[-F_s/2, F_s/2]=[-5,5]$, cioè con $F_s=10$ Hz, e corrispondente al lobo centrale della figura precedente.  
 
+&nbsp;
 ![](images/exp_disF.png)
+&nbsp;
 
 Il problema dell’aliasing può essere eliminato (come è
 noto dal teorema del campionamento) campionando con una frequenza almeno pari al doppio della massima frequenza nello spettro di $x_a(t)$. D’altro canto, se $X_a(f)$ ha estensione illimitata l’aliasing potrà essere soltanto ridotto assumendo per $T_s$ il valore più piccolo possibile. Una seconda differenza, causata dall'implementazione numerica, rispetto al risultato atteso, risulta evidente dalle figure mostrate sopra: il numero di campioni di $x_a(t)$ considerati non potrà essere arbitrariamente elevato. Se dunque $x_a(t)$ ha durata temporale molto grande (come in questo caso che si estende
 per $-\infty<t<+\infty$) una porzione di segnale non sarà campionata. Graficamente, ciò corrisponde ad assumere una “finestra di campionamento” di $N$ campioni, come si vede dalla figura.
 
+&nbsp;
 ![](images/finestra_rett.png)
+&nbsp;
 
 Dal punto di vista dello spettro in frequenza, in virtù della proprietà del prodotto, la convoluzione tra la trasformata $X_a(f)$ e quella della finestra (per es. rettangolare) $W(f)$ danno luogo a classici ripple (dovuti al troncamento) che compaiono nello spettro della trasformata. Qui la frequenza di campionamento è fissata a $F_s=2$ Hz, mentre il numero di campioni prelevati dal segnale dato dalla lunghezza della finestra è $N=10$. Nell'immagine sotto è visibile l'effetto della convoluzione con la finestra rettangolare: il grafico mette assieme l'originale $X_a(f)$ (in blu), la DTFT $X_s(f)$ (in rosso) e la DFT $x(n)(k)$ (in verde, ma plotatta con interpolazione continua).
 
+&nbsp;
 ![](images/DFT_10.png)
+&nbsp;
 
 Nell'immagine seguente si opera la stessa finestratura, ma questa volta con finestra ampia il doppio, cioè $N=20$, pur mantenendo la frequenza di campionamento a $F_s=2$ Hz. Come si nota l'ampiezza dei ripple si riduce significativamente, quindi il numero di campioni incide sull'approssimazione puntuale tra i due spettri (si riduce la discrepanza tra continuo e discreto per ogni frequenza $f_k$ considerata).
 
+&nbsp;
 ![](images/DFT_20.png)
+&nbsp;
 
 Per migliorare ulteriormente l'approssimazione, cioè al fine di ottenere una buona ricostruzione per via numerica della trasformata di Fourier originale queste differenze (che, di fatto, si traducono in errori di valutazione) possono essere controllate da un numero sufficientemente elevato di campioni e un sufficiente passo di campionamento. La figura successiva mostra, mediante i plot dei tre spettri citati sopra, il livello di approssimazione usando $N=200$ campioni del segnale originale $x_a(nT_s)$ e un tasso di campionamento $F_s=20$. Come si nota, l'estensione della banda di frequenza in cui gli spettri sono per buona parte sovrapposti si estende fino a raggiungere il tasso di Nyquist $F_s/2$ (in entrambe le direzioni), anche se in quella regione l'errore si mantiene più alto, che cresce con $F_s$ naturalmente.
 
+&nbsp;
 ![](images/DFT_200_20.png)
-
+&nbsp;
 
 
 ##### Il decadimento esponenziale
@@ -396,13 +440,17 @@ La crescita esponenziale si verifica quando una quantità aumenta a un tasso pro
 
 Abbiamo visto che la magnitudine della trasformata di Fourier ci informa sul contenuto complessivo di frequenza di un segnale, ma non ci dice in quale momento tale contenuto di frequenza si manifesta. La figura seguente illustra questo fatto, mostrando la forma d'onda e la magnitudine della trasformata di Fourier per due segnali. Il primo segnale è composto da due parti, con una sinusoide di frequenza $\omega = 1$ Hz e ampiezza $A = 1$ nella prima parte e una sinusoide di $\omega = 5$ Hz e ampiezza $A = 0.7$ nella seconda parte. Inoltre, il segnale è nullo all'esterno dell'intervallo $[0,10]$. Al contrario, il secondo segnale è una sovrapposizione di queste due sinusoidi ed è nullo all'esterno dell'intervallo $[0,5]$. Anche se i due segnali sono di natura diversa, le magnitudini delle rispettive trasformate di Fourier risultano più o meno identiche. Questo dimostra i limiti della trasformata di Fourier nell'analizzare segnali con caratteristiche variabili nel tempo.
 
+&nbsp;
 ![](images/STFT_esempio.png)
+&nbsp;
 
 La trasformata di Fourier fornisce informazioni sulle frequenze che sono mediate su tutto il dominio temporale. Tuttavia, l'informazione sul momento in cui tali frequenze si manifestano è nascosta nella trasformata. Per recuperare l'informazione temporale nascosta, Dennis Gabor introdusse, nel 1946, la `Short-Time Fourier Transform` (`STFT`). Invece di considerare l'intero segnale, l'idea principale della STFT è quella di considerare solo una piccola sezione del segnale. A tale scopo, si fissa una cosiddetta funzione finestra, che è una funzione non nulla solo per un breve intervallo di tempo (definendo la sezione considerata). Il segnale originale viene quindi moltiplicato con la funzione finestra per ottenere un segnale finestrato. Per ottenere informazioni sulle frequenze in diversi istanti temporali, si sposta la funzione finestra lungo il tempo e si calcola una trasformata di Fourier per ciascuno dei segnali finestrati risultanti.
 
 Questa idea è illustrata nella figura seguente, che continua l'esempio dalla figura precedente. Per ottenere sezioni locali del segnale originale, si moltiplica il segnale con funzioni finestra rettangolari opportunamente traslate. Nel secondo grafico a partire dall'alto, la sezione locale risultante contiene solo contenuto di frequenza a $1$ Hz, il che porta a un singolo picco principale nella trasformata di Fourier a $\omega = 1$ Hz. Spostando ulteriormente la finestra temporale verso destra, la sezione risultante contiene componenti a $1$ Hz e $5$ Hz (terza figura). Queste componenti sono riflesse dai due picchi a $\omega = 1$ e $\omega = 5$. Infine, la sezione mostrata nella quarta figura contiene solo contenuto di frequenza a $5$ Hz.
 
-![alt text](images/STFT_window.png)
+&nbsp;
+![](images/STFT_window.png)
+&nbsp;
 
 Già a questo punto, desideriamo enfatizzare che la STFT riflette non solo le proprietà del segnale originale ma anche quelle della funzione finestra. Innanzitutto, la STFT dipende dalla lunghezza della finestra, che determina la dimensione della sezione. Inoltre, la STFT è influenzata dalla forma della funzione finestra. Ad esempio, i bordi netti della finestra rettangolare tipicamente introducono artefatti di tipo “ripple”. 
 
@@ -444,10 +492,14 @@ Esso può essere visualizzato tramite un'immagine bidimensionale, dove l'asse or
 
 Continuando con l'esempio precedente, consideriamo ora una versione campionata del segnale analogico usando una frequenza di campionamento di $F_s = 32 \, \text{Hz}$. Avendo una durata fisica di $10 \, \text{sec}$, si ottengono 320 campioni (vedi figura). 
 
+&nbsp;
 ![](images/sig_2_sinusoidi.png)
+&nbsp;
 
 Utilizzando una lunghezza della finestra di $N = 64$ campioni e un hop size di $H = 32$ campioni, otteniamo lo spettrogramma mostrato di seguito. Nell'immagine, la tonalità codifica l'ampiezza di un coefficiente spettrale, dove colori più chiari corrispondono a valori maggiori. Tramite la formula sopra, l'$m$-esimo frame corrisponde alla posizione temporale fisica $T_m = 1 \, \text{sec}$. In altre parole, la STFT ha una risoluzione temporale di un frame per secondo. Inoltre, tramite la formula per la risoluzione in frequenza, il $k$-esimo coefficiente di Fourier corrisponde alla frequenza fisica $f_k=k/2 \,\text{Hz}$. In altre parole, si ottiene una risoluzione in frequenza di due coefficienti per Hertz. Il grafico dello spettrogramma con assi temporali e di frequenza sono mostrati in figura (sono esclusi gli estremi in cui la sovrapposizione non è completa).
 
+&nbsp;
 ![](images/spettrog1.png)
+&nbsp;
 
 Consideriamo ora alcune impostazioni tipiche riscontrate nell'elaborazione di segnali musicali. Ad esempio, nel caso di registrazioni su CD, si ha una frequenza di campionamento di $F_s = 44100 \, \text{Hz}$. Utilizzando una lunghezza della finestra di $N = 4096$ e un hop size di $H = N/2$, questo risulta in una risoluzione temporale di $\frac{H}{F_s} \approx 46.4 \, \text{ms}$ e una risoluzione in frequenza di $\frac{F_s}{N} \approx 10.8 \, \text{Hz}$. Per ottenere una migliore risoluzione in frequenza, si può aumentare la lunghezza della finestra $N$. Questo, tuttavia, porta a una minore localizzazione temporale, riducendo la capacità della STFT di catturare fenomeni locali nel segnale.

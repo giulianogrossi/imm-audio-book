@@ -36,7 +36,9 @@ dove $f_d$ è una bassa frequenza (normalizzata alla frequenza di campionamento)
 
 La sua realizzazione è mostrata in figura sotto. I picchi della risposta in frequenza del filtro comb variabile nel tempo, che si verificano a multipli di $F_s/d$, e i suoi notch a multipli dispari di $F_s/2d$, si sposteranno su e giù lungo l'asse delle frequenze, producendo il caratteristico suono di tipo "whooshing" (fruscio) chiamato `flanging`. Il parametro $a$ controlla la profondità dei notch. In unità di [radianti/campione], i notch si verificano a multipli dispari di $\pi/d$. Nei primi anni, l'effetto di flanging veniva creato suonando contemporaneamente il brano musicale tramite due registratori a nastro e rallentando alternativamente ciascun nastro premendo manualmente il bordo della bobina del nastro.
 
+&nbsp;
 ![](images/flanger.png)
+&nbsp;
 
 Poiché il ritardo variabile $d(n)$ può assumere valori non interi all'interno dell'intervallo $0 \leq d \leq D$, l'implementazione dell'Eq. [](eq:flang) richiede il calcolo dell'output $x(n - d)$ di una linea di ritardo a tali valori non interi. Ciò può essere facilmente realizzato tramite troncamento, arrotondamento o interpolazione lineare.
 
@@ -54,11 +56,15 @@ $$
 
 dove $a=0.7$, $D = 20$ e $f_d=1$ Hz o $f_d/F_s=0.001$ [cicli/campione], in modo che ci siano $f_dN = 2$ cicli nei $2000$ campioni. L'immagine sotto mostra il segnale originale $x(n)$ (colore blu), il segnale con ritardo variabile $x(n-d(n))$ (colore rosso) e il ritardo $d(n)/D$ (colore verde) ridimensionato all'unità per un plot visibile. In particolare il segnale $x(n-d(n))$ mostra i pattern tipici della modulazione in frequenza, in cui si nota che l’ampiezza resta costante mentre la frequenza varia in funzione dell’ampiezza del modulante $d(n)$.
 
+&nbsp;
 ![](images/flanger_sinusoid.png)
+&nbsp;
 
 Nella figura successiva si mostra invece in dettaglio il segnale ritardo variabile $d(n)$ (definito sopra anche modulante) espresso in [](eq:delay), dopo l'arrotondamento a intero, dato effettivamente utilizzato e modulato dalla cosinusoide per introdurre i ritardi variabili con effetto smooth come richiesto dal modello. Il massimo del ritardo è $D=10$ in questo caso e 2 sono i cicli complessivi, distribuiti nei $2000$ campioni visualizzati e interpolati linearmente.
 
+&nbsp;
 ![](images/flanger_d.png)
+&nbsp;
 
 ##### Chorusing
 
@@ -74,10 +80,12 @@ dove $a$ è il parametro di guadagno (o mix) e $d(n)$ è la funzione di ritardo 
 
 Un diagramma a blocchi dell'effetto chorus è mostrato in figura. Possiamo riconoscerlo come un filtro comb e il filtro di base è quindi simile a quello di un eco. Tuttavia, i ritardi coinvolti sono così piccoli che non vengono percepiti come eco distinti, e variano nel tempo!
 
+&nbsp;
 ```{image} images/chorus.png
-:width: 500px
+:width: 600px
 :align: center
 ```
+&nbsp;
 
 Possiamo immaginare l'effetto del ritardo variabile nel tempo sul comb come le valli dello spettro di magnitudine che si spostano lentamente, con la loro distanza che aumenta e diminuisce nel tempo man mano che il ritardo cambia. Un altro modo di pensarlo è che $x(n-d(n))$ corrisponde all'uscita dell'effetto vibrato, il che significa che l'uscita dell'effetto chorus è il segnale di ingresso mescolato con l'uscita di un effetto vibrato!
 
@@ -105,8 +113,9 @@ Il segnale $v(n)$ è un segnale casuale a bassa frequenza con media zero che var
 Come esempio pratico, si consideri nuovamente il segnale $y(n)$ definito in [](eq:sin), ma con $d(n)$ che varia secondo l'eq. [](eq:chorus). L'ingresso è la stessa sinusoide di frequenza $f=5$ Hz e lunghezza $N=2000$ campioni. La frequenza del segnale casuale $v(n)$ è assunta pari $f_r= 0.025$ [cicli/campione], corrispondente a $Nf_r = 5$ variazioni casuali nei 2000 campioni. 
 il periodo del generatore è $𝐷_𝑟=1/f_r =40$ campioni, come in figura.
 
+&nbsp;
 ![](images/chorusing.png)
-
+&nbsp;
 
 ##### Vibrato
 
@@ -126,7 +135,9 @@ dove $f_d$ Hz è la frequenza, o `velocità` (`speed`), del ritardo variabile ne
 
 L'effetto del ritardo variabile nel tempo su una sinusoide è illustrato nella figura seguente. In alto si mostra l'ingresso, una sinusoide di ampiezza $A=1$ e frequenza $f=5$ Hz campionata con $F_s=1000$ Hz. L'uscita dell'effetto vibrato (figura in basso) è ottenuta impostando il ritardo tra $0$ e $D=50$ ms a una frequenza $f_d=1$ Hz. Come si può notare, il risultato è che la frequenza della sinusoide varia periodicamente, creando la percezione del vibrato.
 
+&nbsp;
 ![](images/vibrato.png)
+&nbsp;
 
 ---
 
@@ -157,12 +168,13 @@ Se impostiamo $x(n)$ uguale a $\delta(n)$ e lo inseriamo nell'espressione per la
 
 Nella figura seguente, è mostrato un esempio di risposta impulsiva misurata in una cattedrale. Le prime riflessioni possono essere chiaramente viste sotto forma di picchi molto distinti all'inizio. Inoltre, si può anche osservare che la risposta impulsiva decade, anche se risulta piuttosto lunga. Si nota inoltre che la parte finale della risposta impulsiva contiene meno picchi distinti. Questo aspetto legato alle dinamiche di riverberazione di un ambiente viene discusso più approfonditamente nella sezione seguente.
 
-
+&nbsp;
 ```{figure} images/risp_impulso.png
 :label: impulso
 :alt: Sunset at the beach
 :align: center
 :width: 400px
+&nbsp;
 
 Impulso (sparo) campionato con $F_s=44.1$ kHz ▶ <audio src="sound/gunshot.wav" />
 ```
@@ -172,7 +184,9 @@ Impulso (sparo) campionato con $F_s=44.1$ kHz ▶ <audio src="sound/gunshot.wav"
 
 La riverberazione di uno spazio d'ascolto è tipicamente caratterizzata da tre periodi di tempo distinti: il suono diretto, le prime riflessioni (early) e le riflessioni tardive (late), come illustrato nella figura sotto. Le prime riflessioni corrispondono alle prime riflessioni sulle pareti della stanza; man mano che le onde continuano a rimbalzare sulle pareti, la loro densità aumenta e si disperdono, arrivando all'ascoltatore da tutte le direzioni. La costante di tempo di riverberazione è il tempo necessario affinché la risposta all'impulso della stanza decada di $60$ dB. Le tipiche sale da concerto hanno costanti di tempo di circa $1.8-2$ secondi.
 
+&nbsp;
 ![](images/riverbero.png)
+&nbsp;
 
 La qualità del suono di una sala da concerto dipende dai dettagli della risposta all'impulso del riverbero, che dipende dalla posizione relativa della sorgente sonora e dell'ascoltatore. Pertanto, simulare digitalmente le caratteristiche di riverbero di una determinata sala è un compito quasi impossibile. Come compromesso, i processori di riverbero digitali tentano di simulare la tipica risposta all'impulso del riverbero di una sala e offrono all'utente la possibilità di modificare alcuni parametri, come la durata delle prime riflessioni (il tempo di ritardo) o il tempo complessivo di riverbero. 
 
@@ -200,10 +214,12 @@ $$
 
 Lo schema a blocchi del riverberatore allpass è mostrato in figura.
 
+&nbsp;
 ```{image} images/allpass.png
-:width: 400px
+:width: 500px
 :align: center
 ```
+&nbsp;
 
 La risposta all'impulso è data da:
 
@@ -218,8 +234,9 @@ $$
 
 con $D-1$ zeri tra i valori non nulli. Come nel caso del filtro comb, è facile notare che il filtro è stabile quando $|a| < 1$, poiché la risposta all'impulso diventa sempre più piccola in funzione di $n$. Un esempio tipico della risposta all'impulso di un filtro passa-tutto di questo tipo è rappresentato nella figura5 per $a=-0.95$ e $D=10$.
 
+&nbsp;
 ![](images/imp_resp_allpass.png)
-
+&nbsp;
 
 Le risposte in frequenza e in magnitudine si ottengono imponendo $z = e^{j\omega}$
 
@@ -235,19 +252,21 @@ $$
 
 Anche se la sua risposta in magnitudine è piatta, la sua risposta transitoria presenta lo stesso andamento a decadimento esponenziale degli echi del riverbero semplice, come si vede dalla figura (risposta in magnitudo blu e risposta in fase rossa). 
 
-
+&nbsp;
 ```{image} images/allpass_risp_freq.png
-:width: 400px
+:width: 500px
 :align: center
 ```
+&nbsp;
 
 Si può dimostrare che la risposta di fase di qualsiasi filtro allpass è sempre negativa e monotonamente decrescente (come si vede anche in figura). I ritardi di fase sono sempre funzioni che assumono valori positivi. Questo fatto ci permette di pensare ai filtri allpass come a mezzi in cui i segnali si propagano con un ritardo dipendente dalla frequenza, senza essere soggetti ad alcun assorbimento o amplificazione. Nella figura sotto è mostrata una frequenza critica (o di turnover), cioè quell'insieme di valori di frequenza in cui le fasi vengono invertite e quindi in cui si ha la massima azione del filtro. Questo accade in corrispondenza dei multipli dispari della frequenza fondamentale $f_0=F_s/(2D)$, cioè $f_k=kf_0$, con $k$ dispari (mostrato sopra).
 
+&nbsp;
 ```{image} images/frequenza_critica_allpass.png
 :width: 500px
 :align: center
 ```
-
+&nbsp;
 
 ##### Riverberatore di Schroeder
 
@@ -281,10 +300,14 @@ $$
 
 L'intero riverbero di Schroeder è mostrato in figura. Può essere considerato come un unico grande filtro lineare e tempo invariante. 
 
+&nbsp;
 ![](images/schroeder.png)
+&nbsp;
 
 Nella tabella sono riportati alcuni parametri suggeriti per i quattro filtri comb e i due filtri allpass dello schema sottostante, per una frequenza di campionamento specificata di $44.1$ kHz. Questi possono essere utilizzati come punto di partenza per la sperimentazione. Si noti che i ritardi dei filtri comb e all-pass devono essere scelti in modo che siano numeri primi reciproci, cioè che non abbiano fattori comuni.
 
+&nbsp;
 ![](images/tabella_schroeder.png)
+&nbsp;
 
 ![](images/schroeder_schema.png)

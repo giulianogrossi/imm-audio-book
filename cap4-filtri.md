@@ -30,10 +30,12 @@ $$
 
 dove $ x(n) $ è l'ingresso al tempo $ n $ e $y(n)$ è l'uscita, anch'essa al tempo $n$. Nel termine $ax(n-1)$ il fattore $a$ è il coefficiente del filtro e $x(n-1)$ è l'ingresso ritardato di un campione. Un segnale digitale è semplicemente una sequenza di numeri, pertanto, qualunque sequenza di numeri appaia in ingresso $x(n)$ apparirà nella forma di $x(n-1)$ un campione dopo. I filtri in cui l'ingresso è ritardato, eventualmente scalato, e aggiunto sono anche chiamati `filtri FIR` (feedforward). Un diagramma a blocchi del filtro è mostrato in figura, dove si può vedere che il segnale passa attraverso un blocco contenente un $z^{-1}$. Questo significa un ritardo di un campione e viene chiamato ritardo unitario.  
 
+&nbsp;
 ```{image} images/FIR1.png
-:width: 300px
+:width: 400px
 :align: center
 ```
+&nbsp;
 
 Studiamo ora il comportamento che il filtro in risposta a un segnale sinusoidale, cioè quando in ingresso viene posto una sinusoide sotto forma di fasore, avente quindi modulo unitario e frequenza $\omega$,  e scritto come 
 
@@ -64,10 +66,12 @@ $$
 
 Questo è illustrato nella figura sotto. 
 
+&nbsp;
 ```{image} images/FIR1-AF.png
 :width: 500px
 :align: center
 ```
+&nbsp;
 
 Va notato che, sebbene possiamo derivare la risposta in frequenza di filtri semplici abbastanza facilmente con carta e penna, questo nella pratica non viene quasi mai fatto, specialmente per filtri più complessi. Si utilizzano invece librerie sw specializzate, come quelle scritte in Python (e mostrate nelle esercitazioni), per calcolare numericamente la risposta in frequenza. Pertanto, le nostre derivazioni qui servono solo a illustrare i concetti e a esplorare il comportamento dei filtri.
 
@@ -85,17 +89,21 @@ $$
 
 Nella figura sotto, è mostrato un filtro di ordine 3. Come si può vedere, esso comprende tre ritardi dell'ingresso, sotto forma di tre ritardi unitari in cascata. 
 
+&nbsp;
 ```{image} images/FIR3.png
-:width: 300px
+:width: 400px
 :align: center
 ```
+&nbsp;
 
 La progettazione del filtro (`filter design`) riguarda quindi la determinazione della collezione di coefficienti del filtro, $\{b_k\}$, che ci fornisce un comportamento desiderato, più spesso specificato in termini della risposta in ampiezza risultante. Di seguito un esempio di filtro con $M=40$ coefficienti, progettato mediante l'uso di libreria.
 
+&nbsp;
 ```{image} images/FIR40.png
-:width: 500px
+:width: 600px
 :align: center
 ```
+&nbsp;
 
 ##### Analisi del filtro
 
@@ -181,10 +189,12 @@ $$
 
 Un diagramma a blocchi di questo filtro è mostrato nella figura sotto. Come si può osservare, l'uscita viene retroazionata e aggiunta all'ingresso, da cui il nome feedback. Questi tipi di filtri sono anche conosciuti col nome `IIR` (`infinite impulse response`), ovvero filtri con risposta impulsiva infinita. 
 
+&nbsp;
 ```{image} images/IIR.png
-:width: 300px
+:width: 400px
 :align: center
 ```
+&nbsp;
 
 Per comprendere questo nome, consideriamo il caso in cui l'ingresso del filtro sia un impulso, cioè $x(n)=\delta(n)$. Tracciando l'impulso attraverso il filtro, possiamo vedere che l'uscita è la sequenza 
 
@@ -215,7 +225,9 @@ H(\omega) &= \frac{1}{1 -a z^{-1}} \Big|_{z=e^{j\omega}} \\
 
 Nella figura sono rappresentate la risposta in ampiezza e fase del filtro al primo ordine. Si può notare subito che la fase non è lineare e in generale non lo può essere mai per questa famiglia di filtri.
 
+&nbsp;
 ![](images/IIR_MF.png)
+&nbsp;
 
 Questo semplice filtro presenta una forma passa-basso. Rispetto al filtro FIR del primo ordine, il filtro con un polo fornisce una curva della risposta in frequenza con una pendenza maggiore. Il fatto che, per un dato ordine del filtro, i filtri IIR forniscano una risposta in frequenza più ripida (o, in generale, più complessa) è una proprietà generale che può essere considerata un vantaggio nel preferire i filtri IIR ai filtri FIR. D'altra parte, i filtri IIR non possono avere una fase perfettamente lineare. Inoltre, i filtri IIR possono produrre artefatti numerici, soprattutto nelle implementazioni a punto fisso.
 
@@ -280,7 +292,9 @@ Possiamo allora osservare:
 In figura sono rappresentati con una crocetta i poli e con un
 cerchietto gli zeri di una funzione razionale $H(z)$; nella stessa figura si mostra il modulo della risposta in frequenza del filtro con funzione di trasferimento $H(z)$.
 
+&nbsp;
 ![](images/poli_zeri.png)
+&nbsp;
 
 Per quanto riguarda la fase, si osserva che:
 
@@ -289,8 +303,6 @@ $$
 $$
 
 Essa può quindi essere ottenuta considerando separatamente i contributi $\angle (1-qe^{-j\omega})$ per ogni polo o zero $q$, sommando i contributi dovuti agli zeri e sottraendo i contributi dovuti ai poli.
-
-
 
 --- 
 
@@ -325,8 +337,9 @@ $$
 
 dove $n$  è l’indice del campione temporale, $D$  è il numero di campioni di ritardo, ed è un numero intero positivo che determina l’entità del ritardo applicato. Il ritardo di $D$ campioni implica che il segnale originale $x(n)$ apparirà all’uscita solo dopo $D$ campioni, introducendo così una latenza precisa e riproducibile. Quando $D$ non è un numero intero, il ritardo frazionario può essere realizzato tramite interpolazione, come l’interpolazione FIR, o con un filtro all-pass, che permette di ottenere ritardi intermedi mantenendo la continuità temporale del segnale. Un'applicazione utile di questo sistema e un'analisi più approfondita del suo comportamento nel tempo e in frequenza, è data nella prossima sezione dove la linea di ritardo si vede come parte costitutiva dei filtri comb che modellano i ritardi in modo più completo e aderente alla realtà della fisica acustica. Il sistema ritardo temporale assieme alla sua relazione tra segnale di ingresso e quello di uscita è illustrato in figura.
 
+&nbsp;
 ![](images/delayline.png)
-
+&nbsp;
 
 ##### Filtro comb FIR
 
@@ -338,7 +351,9 @@ $$\label{eq:eco}
 y(n)=x(n)+ax(n-D)
 $$
 
+&nbsp;
 ![](images/combFIR.png)
+&nbsp;
 
 Il ritardo $D$ rappresenta il tempo di andata e ritorno dalla sorgente a una parete riflettente e il coefficiente $a$ è una misura delle perdite di riflessione e propagazione, in modo che $|a|\leq 1$. La funzione di trasferimento e la risposta all'impulso di questo filtro sono:
 $$
@@ -359,7 +374,9 @@ $$
 
 dove $\rho = a^{\frac{1}{D}}$. La risposta in ampiezza e il pattern degli zeri sono mostrati nella figure che segue, per il caso $D = 8$. Se $a = 1$, allora $\rho = 1$, e gli zeri si trovano sulla circonferenza unitaria corrispondendo a zeri esatti nella risposta in frequenza.
 
+&nbsp;
 ![](images/combFIR_pz.png)
+&nbsp;
 
 Alle frequenze di dip $\omega_k = \frac{(2k + 1)\pi}{D}$, abbiamo $e^{j\omega_k D} = e^{j\pi} = -1$, ottenendo:
 
@@ -382,7 +399,9 @@ Quando  $a=\pm 1$ il minimo assume il valore di ampiezza zero. Il massimo, per v
 
 Nell'esempio che seguente si mostra il codice del notebook python per un filtro comb FIR con guadagno $G=0.9$, numero di campioni di ritardo $D=10$ e frequenza di campionamento $F_s=100$ Hz. In questo caso la fondamentale è $f_0=F_s/D=10$ Hz. Nella figura sono anche indicati gli zeri, in numero pari a $D$, della funzione di trasferimento con un raggio $\rho=\sqrt[D]{G}=\sqrt[10]{0.9}\approx 0.9895$. Se il filtro viene applicato a un segnale audio CD con $F_s=44100$ Hz e $D=F_s/2$ si ottiene un segnale audio dato dalla somma di se stesso con se stesso ritardato di 5 secondi. 
 
+&nbsp;
 ![](images/combFIR_esempio.png)
+&nbsp;
 
 ##### Filtro comb IIR
 
@@ -418,7 +437,9 @@ $$
 
 Una realizzazione del diagramma a blocchi è mostrata nella figura seguente. Il ritardo nel feedback causa una riverberazione dell'impulso unitario di ingresso a multipli di $D$, ovvero per $n = 0, D, 2D, \dots$. Filtri comb ricorsivi semplici come questi costituiscono i blocchi elementari di processori di riverbero più complessi, che verranno discussi ulteriormente nella prossime sezioni.
 
+&nbsp;
 ![](images/combIIR.png)
+&nbsp;
 
 La funzione di trasferimento ha poli in
 
@@ -435,8 +456,9 @@ La ripetizione degli echi ogni $D$ campioni corrisponde alla frequenza fondament
 
 Nell'esempio che seguente si mostra il codice del notebook python per un filtro comb IIR, analogo al caso FIR, con guadagno $G=0.9$, numero di campioni di ritardo $D=10$ e frequenza di campionamento $F_s=100$ Hz. Anche in questo caso la fondamentale è $f_0=F_s/D=10$ Hz. Nella figura sono invece indicati i poli, in numero pari a $D$, della funzione di trasferimento con un raggio $\rho=\sqrt[D]{G}=\sqrt[10]{0.9}\approx 0.9895$. In mode del tutto analog, se il filtro viene applicato a un segnale audio CD con $F_s=44100$ Hz e $D=F_s/2$ si ottiene un segnale audio dato dalla somma di se stesso con se stesso ritardato di 5 secondi. 
 
+&nbsp;
 ![](images/combIIR_esempio.png)
-
+&nbsp;
 
 ## Filtro risuonatore
 
@@ -454,7 +476,9 @@ $$
 H(z) = \frac{1}{(1 - p z^{-1})(1 - p^* z^{-1})}.
 $$
 
-![alt text](images/risuonatore.png)
+&nbsp;
+![](images/risuonatore.png)
+&nbsp;
 
 La magnitudine del polo è $0 < R < 1$. Insieme al polo coniugato $p^* = R e^{-j \omega_0}$, espandiamo la funzione di trasferimento come segue:
 

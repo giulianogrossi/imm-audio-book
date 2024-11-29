@@ -29,7 +29,9 @@ Un computer può memorizzare solo un numero finito di valori numerici, e tali va
 
 In termini hardware, un convertitore analogico-digitale (ADC) è un dispositivo, o chip, che converte segnali da analogici a digitali tramite campionamento e quantizzazione, mentre un convertitore digitale-analogico (DAC) converte i segnali digitali in analogici tramite ricostruzione. Nella Figura è mostrato un esempio di sistema di elaborazione audio.
 
+&nbsp;
 ![sys](images/sistema.png)
+&nbsp;
 
 Le vibrazioni nell’aria, rappresentate dal segnale analogico, vengono convertite da un segnale di pressione a uno elettrico dal microfono. Il segnale analogico dal microfono viene poi trasformato in uno digitale tramite l’ADC, dopodiché il segnale digitale può essere elaborato da un computer. Il segnale digitale elaborato può quindi essere convertito in uno analogico tramite il DAC e, infine, riconvertito in un segnale di pressione da inviare, per esempio, ad un altoparlante attivo.
 
@@ -37,7 +39,9 @@ Per quanto riguarda il motivo per cui preferiamo elaborare segnali digitali piut
 
 La rappresentazione digitale di un segnale audio analogico come sequenza di numeri è ottenuta tramite un convertitore analogico-digitale (ADC). L’ADC esegue il campionamento delle ampiezze del segnale analogico $x(t)$ su una griglia equidistante lungo l’asse orizzontale del tempo e la quantizzazione delle ampiezze in campioni fissi rappresentati da numeri $x(n)$ lungo l’asse verticale dell’ampiezza (come in figura). 
 
+&nbsp;
 ![DAFX](images/DAFX.png)
+&nbsp;
 
 I campioni sono mostrati come linee verticali con punti in alto. Il segnale analogico $x(t)$ indica l’ampiezza del segnale su un tempo continuo $t$￼in microsecondi. A seguito dell’ADC, il segnale digitale (tempo discreto e ampiezza quantizzata) è una sequenza (flusso) di campioni $x(n)$ rappresentati da numeri sull'indice di tempo discreto $n$. La distanza temporale tra due campioni consecutivi è chiamata intervallo di campionamento $T_s$ (periodo di campionamento) e il reciproco è la frequenza di campionamento $F_s$.
 
@@ -57,12 +61,14 @@ $$F_s=\frac{1}{T_s}.$$
 
 La frequenza di campionamento è misurata in Hertz (Hz). L’audio viene solitamente campionato a $44.1$ kHz e oltre, mentre la voce può essere campionata fino a $8$ kHz, il che risulta in segnali comprensibili ma certamente non di alta qualità. Nella figura, il processo di campionamento è esemplificato da un segnale continuo, $x(t)$ (blu), che viene campionato per ottenere il segnale a tempo discreto $x(n)$ (rosso).
 
+&nbsp;
 ```{image} images/sampling.png
 :alt: long
 :class: bg-primary mb-1
-:width: 350px
+:width: 400px
 :align: center
 ```
+&nbsp;
 
 Per esplorare ulteriormente il campionamento, consideriamo un esempio. Supponiamo che $x(t)$ sia una singola sinusoide di frequenza $f$ in Hertz, cioè,
 
@@ -86,30 +92,40 @@ $$F_s>2f_{max}.$$
 
 Questo è conosciuto come il `teorema di campionamento`. A volte, a seconda del campo, è attribuito e denominato in base a diverse persone, tra cui Nyquist, Shannon, Whittaker e Kotelnikov. La seconda domanda è: come possiamo sapere qual è la frequenza massima dei seni nel nostro segnale? La risposta a questa domanda è che generalmente non lo sappiamo. Invece, possiamo semplicemente assicurarci che, per una frequenza di campionamento selezionata, $F_s$, per il nostro sistema audio, rimuoveremo tutti i contenuti superiormente da $F_s/2$! Questo viene fatto con un cosiddetto `filtro anti-aliasing`, che è semplicemente un filtro passa-basso analogico con una frequenza di stop pari a $F_s/2$, il che significa che tutte le frequenze al di sopra della frequenza di stop vengono rimosse o attenuate. Questo è illustrato in figura.
 
-![aalias](images/antialiasing.png)
+&nbsp;
+![](images/antialiasing.png)
+&nbsp;
 
 ##### Aliasing
 
 Diciamo che il segnale è quindi a banda limitata. `L’aliasing` si riferisce al fenomeno che si verifica quando non rispettiamo il teorema di campionamento. Quando campioniamo a una frequenza di campionamento che è inferiore al doppio della frequenza massima ciò che accade è che le parti dello spettro al di sopra della metà della frequenza di campionamento si ripiegano attorno alla metà della frequenza di campionamento e appaiono nello spettro inferiore come immagini speculari di sorta. Poiché queste immagini speculari si mescolano con i contenuti in frequenza e non possono essere recuperate o rimosse, abbiamo distorto il nostro segnale. Ad esempio, tornando all’esempio in cui il segnale è un singolo seno di 5 Hz ma campionato a 4 Hz, il segnale campionato subirebbe aliasing risultando identico a un seno di 1 Hz!, come si nota anche dallo spettro nella figura. 
 
-![aalias](images/alias.png)
+&nbsp;
+![](images/alias.png)
+&nbsp;
 
 La frequenza $F_s/2$ è molto importante, ed è chiamata `frequenza di Nyquist`. Nella successiva figura, è invece mostrato un esempio di un segnale continuo e del segnale digitale risultante. Il segnale continuo è un seno con una frequenza di 2 Hz ed è campionato a una frequenza di 5 Hz. In quel caso, il teorema di campionamento è soddisfatto, e possiamo vedere che i campioni rappresentano bene il segnale. 
 
-![noalias](images/noalias.png)
+&nbsp;
+![](images/noalias.png)
+&nbsp;
 
 Una regola semplice che definisce quali frequenze spurie compariranno nello spettro per effetto dell'aliasing è la seguente: ogni frequenza $f\in [-F_s/2, 𝐹_s/2]+ k 𝐹_𝑠$, con  $k\in\mathbb{N}$, ha un unico valore corrispondente che si trova all'interno dell'intervallo di Nyquist $[-F_s/2, 𝐹_s/2]$ e si ottiene aggiungendo o sottraendo da $f$ un numero pari a $k$ multipli di $F_s$, fino a quando non cade all'interno dell'intervallo di Nyquist. L'operazione è un'operazione modulare come riportata in figura qui sotto.
 
+&nbsp;
 ```{image} images/mod_alias.png
 :alt: long
 :class: bg-primary mb-1
 :width: 600px
 :align: center
 ```
+&nbsp;
 
 Per riassumere le frequenze in gioco nel processo di campionamento, riportiamo in tabella di seguito le principali definizioni e in particolare la loro relazione con l'intervallo di Nyquist. 
 
-![tab](images/tabella_freq.png)
+&nbsp;
+![](images/tabella_freq.png)
+&nbsp;
 
 Nella Tabella sotto sono elencate alcune delle frequenze di campionamento audio più comuni e le loro applicazioni. Le moderne schede audio supportano solitamente un’ampia gamma di frequenze di campionamento e sono quindi piuttosto flessibili. È importante notare che, per ragioni tecniche, è spesso vantaggioso utilizzare una frequenza di campionamento più alta nella registrazione originale e durante l’elaborazione rispetto a quella che verrà utilizzata nel prodotto finale, come un CD. Accenniamo brevemente al fatto che il processo di passaggio da una frequenza di campionamento a un’altra, un’operazione comune in molti sistemi audio, si chiama ricampionamento.
 
@@ -156,16 +172,21 @@ Il quantizzatore uniforme è il sistema di quantizzazione più comune per l'audi
 
 Nella figura è illustrato il processo di conversione analogico-digitale mediante un diagramma a blocchi. Il processo comprende il filtraggio del segnale analogico tramite un filtro anti-aliasing, seguito dal campionamento del segnale. Infine, i campioni vengono quantizzati singolarmente.
 
+&nbsp;
 ![](images/ADC.png)
+&nbsp;
 
 Il filtro anti-aliasing è un filtro passa-basso che rimuove, o meglio attenua, le frequenze superiori alla metà della frequenza di campionamento. Spesso, questo causa anche una leggera attenuazione delle frequenze vicine alla metà della frequenza di campionamento. Il processo di campionamento causa quindi aliasing dei contenuti di frequenza superiori alla metà della frequenza di campionamento (se presenti), mentre la quantizzazione aggiunge rumore, il cui livello dipende dal numero di bit utilizzati. La Figura seguente mostra il risultato del campionamento (pallino giallo) e campionamento più quantizzazione uniforme a quattro livelli (pallino verde) di un segnale $x(t)$.
 
+&nbsp;
 ```{image} images/quant.png
 :alt: long
 :class: bg-primary mb-1
 :width: 1000px
 :align: center
 ```
+&nbsp;
+
 ##### Errore di quantizzazione e SNR
 
 Una volta fissata la dimensione del passo di quantizzazione $\Delta$, l'intervallo $V$ e il numero di bit $m$, possiamo definire una funzione che il quantizzatore uniforme applica per mappare i valori di ingresso $x(n)$ ai valori di uscita $y(n)$.  Ogni livello rappresenta un possibile valore di output, in modo che il segnale $x(n)$ sia mappato al livello $y(n)$ più vicino, secondo la seguente espressione:
@@ -190,12 +211,14 @@ $$
 
 Questo è illustrato nella figura precedente in cui si vede l'errore di quantizzazione per un quantizzatore uniforme di due bit (quattro livelli). La quantità di rumore è quindi determinata dalla dimensione del passo $\Delta$. Più piccolo è $\Delta$, minore sarà il rumore aggiunto al segnale. Infatti, possiamo osservare che gli errori di quantizzazione si trovano tra $-\frac{\Delta}{2}$ e $\frac{\Delta}{2}$, a causa dell'arrotondamento in {eq}`Q`. La figura seguente mostra l’errore di quantizzazione per un quantizzatore uniforme di due bit (quattro livelli).
 
+&nbsp;
 ```{image} images/erroreQ.png
 :alt: long
 :class: bg-primary mb-1
 :width: 1000px
 :align: center
 ```
+&nbsp;
 
 Nella figura seguente, invece, è mostrato un istogramma degli errori di quantizzazione per 50000 valori del segnale non periodico (frequenza non razionale $f_0=1/(2\pi 11))$
 $$
@@ -203,12 +226,14 @@ $$
 $$
 che assume valori compresi tra $-1$ e $1$. Come si nota, l'errore di quantizzazione segue una distribuzione empirica uniforme (istogramma su 50000 campioni) con una dimensione del passo di $\Delta = 0.125$. Come si può vedere, i diversi errori si verificano con frequenza approssimativamente uniforme e gli errori sono $ -\frac{\Delta}{2} \leq e(n) \leq \frac{\Delta}{2}$.
 
+&nbsp;
 ```{image} images/esempioQ.png
 :alt: long
 :class: bg-primary mb-1
 :width: 1000px
 :align: center
 ```
+&nbsp;
 
 Per analizzare ulteriormente l'effetto della quantizzazione, occorre richiamare il concetto di potenza di un segnale, che per un segnale digitale è la somma calcolata su $N$ campioni:
 
@@ -303,11 +328,15 @@ Ecco i dettagli chiave su come funziona e perché è utile:
 
 In sintesi, un ADC bipolare è ideale per applicazioni in cui il segnale analogico è bilaterale, garantendo una rappresentazione digitale precisa ed efficiente dei segnali a polarità variabile. In figura si mostra lo schema di funzionamento di un ADC caratterizzato da un full-scale range $𝑅$ diviso equamente (per un quantizzatore uniforme) in $l=2^𝑞$ livelli di quantizzazione. La spaziatura tra i livelli è chiamata `Risoluzione del quantizzatore` ed è pari a $Q=𝑅/2^𝑞$.
 
+&nbsp;
 ![bipolare](images/ADC-bipolare.png)
+&nbsp;
 
 In figura si mostra un modello di convertitore ADC Sample and Hold (S&H) a $q+1$ bit di risoluzione, che è un elemento fondamentale nei sistemi di conversione.
 
+&nbsp;
 ![SAM-HOLD.png](images/SAM-HOLD.png) 
+&nbsp;
 
 Questo modello consente di “campionare” un segnale analogico in un determinato istante di tempo e di mantenere, o “tenere”, il valore del segnale fino al campionamento successivo, rendendolo disponibile per l’ADC e garantendo una conversione precisa. Questo è essenziale perché il processo di conversione richiede un certo tempo e il segnale può variare rapidamente. In ogni ciclo di campionamento, il circuito S&H esegue due operazioni: la fase di campionamento (Sample) e la fase di mantenimento (Hold). Nella fase di campionamento (Sample) il circuito chiude un interruttore per un breve periodo, consentendo al condensatore (il componente principale per mantenere la tensione) di caricare il valore istantaneo del segnale analogico. Nella fase di mantenimento (Hold) l’interruttore si apre, isolando il condensatore dal segnale in ingresso. Il condensatore ora mantiene (o trattiene) il valore della tensione catturata finché non avviene il campionamento successivo. Le componenti principali sono:
 - Interruttore: Generalmente realizzato con un transistor MOSFET o un interruttore elettronico, che si apre e chiude per controllare il flusso del segnale al condensatore.
@@ -316,7 +345,9 @@ Questo modello consente di “campionare” un segnale analogico in un determina
 
 Lo schema del circuito  è mostrato sotto e lo scopo è quello di acquisire la tensione di ingresso in un determinato istante (campionamento) e di mantenerlo invariato all'uscita fino ad una nuova lettura.
 
+&nbsp;
 ![SAM-HOLD.png](images/S-H.png) 
+&nbsp;
 
 In sintesi, il modello Sample and Hold è cruciale per isolare e trattenere il segnale analogico prima della conversione digitale, riducendo errori di quantizzazione e migliorando la fedeltà dei dati digitali.
 
@@ -340,11 +371,15 @@ In sintesi, un DAC trasforma combinazioni di bit in livelli di tensione specific
 ##### Conversione unipolare
 Nella conversione unipolare, il `DAC Unipolare` converte i segnali digitali in livelli di tensione che si trovano esclusivamente in un intervallo positivo o zero-positivo. Questo tipo di conversione è tipico in applicazioni dove l’intervallo di tensione deve essere limitato, ad esempio tra $0$ e $V_{\text{max}}$. Il circuito di un convertitore a scala R-2R a quattro bit, tra i più diffusi anche in ambito audio, è quello di figura.
 
-![alt text](images/DAC.png)
+&nbsp;
+![](images/DAC.png)
+&nbsp;
 
 Per ottenere la tensione in uscita $V_{out}$ per una configurazione di bit specifica $b_1,\dots,b_m$ (un valore binario tra 0 e $2^m-1$), la formula è:
 
-$$V_{out}=\frac{V_{\text{ref}}}{2^m}(𝑏_0 2^{0}+𝑏_1 2^{1}+\cdots+b_{N-1}2^{N-1})=\frac{V_{\text{ref}}}{2^m}D$$
+$$
+V_{out}=\frac{V_{\text{ref}}}{2^m}(𝑏_0 2^{0}+𝑏_1 2^{1}+\cdots+b_{N-1}2^{N-1})=\frac{V_{\text{ref}}}{2^m}D
+$$
 
 dove $D\in\{0,1,\dots,2^m-1\}$.
 
@@ -368,4 +403,5 @@ A livello superiore, un file Wave consiste in un singolo chunk RIFF (”RIFF”)
 
 La struttura generale del file wave è riportata in figura.
 
+&nbsp;
 ![wav](images/WAVE.png)
