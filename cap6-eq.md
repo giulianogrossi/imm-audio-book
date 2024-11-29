@@ -163,8 +163,9 @@ $$G^2_0 < G^2_B < G^2 \text{ (boost)}$$
 $$G_2 < G^2_B < G^2_0 \text{ (cut)}$$ 
 
 &nbsp;
-![](images/boostcut.png)
+![](images/boost_cut.png)
 &nbsp;
+
 
 I filtri peakEQ e notchEQ condividono un certo numero di parametri (da qui il termine parametrico), ovvero la larghezza di banda $\Delta \omega$, la frequenza centrale $\omega_0$ e $G$ (mentre $G_B$ viene calcolato da questi), che possono essere regolati dall'utente. Queste quantità digitali sono legate a quelle analogiche secondo le relazioni:
 
