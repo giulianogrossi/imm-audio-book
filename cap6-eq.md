@@ -216,7 +216,15 @@ $$
 
 Per implementarlo, è sufficiente scegliere $\omega_0$ e calcolare $b$, che viene determinato selezionando una larghezza di banda $\Delta \omega$ desiderata. In figura sono mostrati alcuni esempi di risposte in modulo di filtri notchEQ. Questi sono rappresentati per una frequenza centrale di $\omega_0 = \pi / 2$ e per larghezze di banda variabili con $G_B^2 = 0.5$.
 
-![]()
+&nbsp;
+```{image} images/notchEQ.png
+:alt: long
+:class: bg-primary mb-1
+:width: 500px
+:align: center
+```
+&nbsp;
+
 
 Una analoga descrizione può essere data per il filtro peakEQ. Esso  amplifica il segnale a una determinata frequenza, che corrisponde alla frequenza centrale $\omega_0$ del filtro. La sua funzione di trasferimento è la seguente:
 
@@ -245,9 +253,16 @@ $$
 
 che può essere facilmente implementata una volta scelte $\Delta \omega$ e $\omega_0$, e calcolato $b$ a partire dall'espressione sopra. 
 
-In figura sono mostrati alcuni esempi di risposte in modulo per il filtro peak.
+In figura sono mostrati alcuni esempi di risposte in modulo per il filtro peak. Questi sono rappresentati per una frequenza centrale di $\omega_0 = \pi / 2$ e per larghezze di banda variabili con $G_B^2 = 0.5$.
 
-![]()
+&nbsp;
+```{image} images/peakEQ.png
+:alt: long
+:class: bg-primary mb-1
+:width: 500px
+:align: center
+```
+&nbsp;
 
 Le risposte dei filtri peakEQ sono mostrate. Sono rappresentate le risposte per una frequenza centrale di $\omega_0=\pi/2$ e per larghezze di banda variabili con $G_B^2 = 0.5$.
 
@@ -283,11 +298,6 @@ filtro due
 
 
 ::::
-
-
-
-
-
 
 ```
 
@@ -394,9 +404,13 @@ $$
 In figura sono mostrati alcuni esempi di risposte in frequenza di filtri equalizzatori parametrici per diversi valori di guadagno, $G$. I filtri mostrati hanno tutti una frequenza centrale di $\omega_0 = \pi/2$, una larghezza di banda di $\Delta \omega = \pi/4$ con $G_B$ dato dalla regola dei 3 dB.
 
 &nbsp;
-![](images/eq_filters.png)
+```{image} images/eq_filters.png
+:alt: long
+:class: bg-primary mb-1
+:width: 500px
+:align: center
+```
 &nbsp;
-
 
 ##### Filtro Shelving 
 
@@ -460,13 +474,17 @@ y(n) = \frac{G_0 + G \beta}{1 + \beta} x(n)
 - \frac{1 - \beta}{1 + \beta} y(n-1).
 $$
 
-Infine, in Fig. 10.6 sono mostrati alcuni esempi di risposte in frequenza di filtri shelving per guadagni $G$ variabili. Sono mostrati sia i filtri low-pass che high-pass. Per il filtro low-pass shelving, la frequenza di cutoff è $\omega_c = \frac{\pi}{4}$, mentre per il filtro high-pass shelving è $\omega_c = \frac{3\pi}{4}$. In entrambi i casi, il guadagno $G_C$ è dato da:
+Infine, in figura sotto sono mostrati alcuni esempi di risposte in frequenza di filtri shelving per guadagni $G$ variabili. Sono mostrati sia i filtri low-pass che high-pass. Per il filtro low-pass shelving, la frequenza di cutoff è $\omega_c = \frac{\pi}{4}$, mentre per il filtro high-pass shelving è $\omega_c = \frac{3\pi}{4}$. 
 
-$$
-G_C = \sqrt{G G_0},
-$$
 
-con $G_0 = 1$.
+&nbsp;
+```{image} images/Shelving1.png
+:alt: long
+:class: bg-primary mb-1
+:width: 500px
+:align: center
+```
+&nbsp;
 
 ---
 
@@ -505,3 +523,8 @@ $$
 un approccio utilizzato in alcune implementazioni di equalizzatori parametrici. Il fattore \(Q\) controlla la selettività del filtro rispetto alla frequenza centrale. Ciò significa che per una bassa frequenza centrale, un valore costante di \(Q\) risulterà in una larghezza di banda inferiore rispetto alle frequenze più alte. Questo è ben in linea con le proprietà del sistema uditivo umano, in particolare il modo in cui la larghezza di banda è percepita in funzione della frequenza centrale.
 
 Per concludere, osserviamo che, come già detto, i filtri progettati in base ai principi qui descritti devono essere collegati in serie. Se vengono collegati in parallelo, i filtri non daranno il risultato desiderato a causa dell'effetto della risposta di fase dei filtri. Esistono tuttavia altri tipi di filtri equalizzatori che possono essere collegati in parallelo. Inoltre, esistono anche progetti di equalizzatori FIR per l'audio, sebbene i filtri IIR qui presentati siano in genere più efficienti dal punto di vista computazionale.
+
+Nella figura seguente so mostra un EQ generale ottenuto collegando in serie (o in cascata) $M$ filtri peakEQ/notchEQ/shelving.
+
+&nbsp;
+![](images/EQ_cascata.png)
