@@ -118,7 +118,7 @@ Quando il polo e lo zero sono molto vicini, cioè $r\approx R$, la risposta in f
 
 ```{tip} Uso del filtro notch (*python*)
 
-In questo esempio si mostra il filtro notch o elimina banda in azione, mettendo in evidenza come questo sia uno strumento molto preciso in grado di agire su bande di frequenza estremamente sottili. Per rifarsi a un esempio classico, si può citare il feedback nella chitarra acustica che si presenta durante l’amplificazione. Poiché il feedback si verifica a una frequenza precisa, è necessario utilizzare filtri elimina banda, più mirati rispetto ai normali equalizzatori, per intervenire senza alterare significativamente il suono. Un altro caso è la necessità di eliminare il picco in frequenza a 50 Hz dato dalla corrente elettrica negli apparati elettronici.
+In questo esempio si mostra il filtro notch o elimina banda in azione, mettendo in evidenza come questo sia uno strumento molto preciso in grado di agire su bande di frequenza estremamente sottili. Per rifarsi a un esempio classico, si può citare il feedback nella chitarra acustica che si presenta durante l’amplificazione. Poiché il feedback si verifica a una frequenza precisa, è necessario utilizzare filtri elimina banda, più mirati rispetto ai normali equalizzatori, per intervenire senza alterare significativamente il suono. Un altro caso è la necessità di eliminare il ronzio alla frequenza di 50 Hz (o 60 Hz negli USA) e talvolta le sue armoniche dato dalla corrente elettrica negli apparati elettronici.
 
 Nel caso qui di seguito, con lo stesso spirito, si vuole invece eliminare un rumore fastidioso molto acuto, cioè alle alte frequenze non lontane dalla frequenza di Nyquist, artatamente introdotto in una clip campionata a 44.1 kHz (in figura). 
 
@@ -302,7 +302,7 @@ Per definire il `filtro equalizzatore parametrico`, si combiniamo i filtri peak 
 :header: Funzione di trasferimento filtro EQ
 :footer: 
 
-$$
+$$\label{eq:eq}
 H_{\text{eq}}(z) = G_0 H_{\text{notch}}(z) + G H_{\text{peak}}(z),
 $$
 ```
@@ -315,30 +315,46 @@ $$
 
 Questo significa che la composizione dà luogo a un sistema neutro, tale per cui i due filtri non alterano il segnale in ingresso. I filtri sono quindi detti complementari. Se scegliamo $G_0 = 0$ e $G = 1$, otteniamo un filtro peak. Viceversa, impostando $G_0 = 1$ e $G = 0$, otteniamo un filtro notch dal filtro equalizzatore parametrico. Questo fatto denota la flessibilità del filtro il quale include, come casi speciali, i filtri peak e notch.
 
-Prima di procedere alla combinazione dei due filtri, dobbiamo considerare come scegliere il parametro di guadagno $G_B$. Esistono diversi modi per farlo. Tuttavia, è utile (e comune) impostarlo in relazione a $G$ e $G_0$ come media aritmetica o media geometrica delle due, cioè:
+
+Prima di procedere alla combinazione dei due filtri, dobbiamo considerare come scegliere il parametro di guadagno $G_B$. Esistono diversi modi per farlo. Tuttavia, è utile (e comune) impostarlo in relazione a $G$ e $G_0$ ponendo $G_B$ a 3 dB sotto il picco o sopra il riferimento in caso di boosting o sopra la valle o sotto il riferimento in caso di cutting. Per il caso di boosting, possiamo interpretarlo come 3 dB al di sotto del picco, ovvero scegliere 
 
 $$
-G_B^2 = \frac{G^2 + G_0^2}{2}\quad \text{ (media aritmetica)}
+G_B^2 = \frac{G^2}{2}
 $$
 
-oppure
+in alternativa, possiamo considerarlo come 3 dB al di sopra del riferimento, ovvero 
 
 $$
-G_B^2 = G G_0\qquad \text{ (media geometrica)}.
+G_B^2 = 2G_0^2.
 $$
 
-Utilizzando il principio menzionato in precedenza per combinare i due filtri, otteniamo:
+Scelte simili emergono nel caso di cutting: possiamo interpretare 3 dB come 3 dB al di sopra del minimo, ovvero 
+ $$
+G_B^2 = 2G^2,
+$$  
+
+oppure, in alternativa, possiamo considerarlo come 3 dB al di sotto del riferimento, ovvero 
 
 $$
+G_B^2 = \frac{G_0^2}{2}.
+$$
+
+Un'altra scelta possibile per il valore di $G_B$ è la media aritmetica dei due parametri, cioè:
+
+$$
+G_B^2 = \frac{G^2 + G_0^2}{2}
+$$
+
+A partire dalla [](eq:eq), utilizzando il metodo della trasformazione bilineare per combinare i due filtri, possiamo esplicitare la funzione di trasferimento del filtro in termini dei parametri di specifica: $\{G_0, G, G_B, \omega_0, \Delta\omega\}$, ottenendo:
+
+$$\large
 H_{\text{eq}}(z) = 
 \frac{
 \frac{G_0 + G \beta}{1 + \beta} 
 - \frac{2 G_0 \cos \omega_0}{1 + \beta} z^{-1} 
 + \frac{G_0 - G \beta}{1 + \beta} z^{-2}
-}{
-1 - \frac{2 \cos \omega_0}{1 + \beta} z^{-1} 
-+ \frac{1 - \beta}{1 + \beta} z^{-2}
-}, 
+}{1 - \frac{2 \cos \omega_0}{1 + \beta} z^{-1} 
++ \frac{1 - \beta}{1 + \beta} z^{-2}}, 
 $$
 
 dove $\beta$ è ora definito come
@@ -349,20 +365,23 @@ $$
 \tan \frac{\Delta \omega}{2}. 
 $$
 
-Se $G_0^2 < G_B^2 < G^2$, abbiamo un boost alla frequenza $\omega_0$, mentre se $G^2 < G_B^2 < G_0^2$, abbiamo un cut. 
+Se $G_0^2 < G_B^2 < G^2$, abbiamo un boost alla frequenza $\omega_0$, mentre se $G^2 < G_B^2 < G_0^2$, abbiamo un cut alla medesima frequenza. In definitiva, i coefficienti del filtro riportati per esteso sono:
 
-Se utilizziamo la media aritmetica in (10.16) per la definizione di $G_B$, si può facilmente vedere che:
+\begin{align}
+&b_0=\frac{G_0 + G \beta}{1 + \beta}&
+\quad 
+&b_1=- \frac{2 G_0 \cos \omega_0}{1 + \beta}&
+\quad 
+&b_2=\frac{G_0 - G \beta}{1 + \beta}&\\
+&a_0=1&
+\quad 
+&a_1=- \frac{2 \cos \omega_0}{1 + \beta}&
+\quad 
+&a_2=\frac{1 - \beta}{1 + \beta}&
+\end{align}
 
-$$
-\frac{G_B^2 - G_0^2}{G^2 - G_B^2} = 1, 
-$$
+L'equazione alle differenze risultante è pertanto data da:
 
-in tal caso si ha che $\beta = \tan \frac{\Delta \omega}{2}$. Una volta scelti $\omega_0$ e $\Delta \omega$, è relativamente semplice calcolare i coefficienti del filtro. La differenza risultante è data da:
-
-$$
-y(n) = \frac{G_0 + G \beta}{1 + \beta} x(n) 
-- \frac{2 G_0 \cos \omega_0}{1 + \beta} x(n-1).
-$$
 
 $$
 y(n) = \frac{G_0 + G \beta}{1 + \beta} x(n) 
@@ -372,14 +391,20 @@ y(n) = \frac{G_0 + G \beta}{1 + \beta} x(n)
 - \frac{1 - \beta}{1 + \beta} y(n-2).
 $$
 
-In figura sono mostrati alcuni esempi di risposte in frequenza di filtri equalizzatori parametrici per diversi valori di guadagno, $G$. I filtri mostrati hanno tutti una frequenza centrale di $\omega_0 = \pi/2$, una larghezza di banda di $\Delta \omega = \pi/4$ con $G_B = \sqrt{G G_0}$ e $G_0 = 1$.
+In figura sono mostrati alcuni esempi di risposte in frequenza di filtri equalizzatori parametrici per diversi valori di guadagno, $G$. I filtri mostrati hanno tutti una frequenza centrale di $\omega_0 = \pi/2$, una larghezza di banda di $\Delta \omega = \pi/4$ con $G_B$ dato dalla regola dei 3 dB.
 
-![]()
+&nbsp;
+![](images/eq_filters.png)
+&nbsp;
 
 
 ##### Filtro Shelving 
 
 Per trattare le frequenze molto basse e molto alte nel segnale audio, è utile introdurre i cosiddetti filtri shelving. Questi sono filtri che presentano una risposta piatta e un guadagno regolabile rispettivamente a basse o alte frequenze. Il filtro con risposta piatta alle basse frequenze è spesso chiamato `low-pass shelving filter`, mentre quello per le alte frequenze è chiamato `high-pass shelving filter`. Questi possono essere ottenuti dal filtro equalizzatore parametrico generale in (10.17) sostituendo la frequenza centrale, $\omega_0$, con $0$ o $\pi$.
+
+&nbsp;
+![](images/shelving.png)
+&nbsp;
 
 Per il filtro `low-pass (LP) shelving`, inseriamo $\omega_0 = 0$ in (10.17). Poiché $\cos \omega_0 = 1$, otteniamo un filtro più semplice, cioè:
 
