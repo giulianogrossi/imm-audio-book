@@ -458,9 +458,7 @@ $$
 y(n) = b_0 x(n) + b_1 x(n-1) + b_2 x(n-2) + a_1 y(n-1) + a_2 y(n-2).
 $$
 
-L'unica differenza tra i vari filtri risiede nella scelta dei coefficienti.
-
-Un diagramma a blocchi della struttura del filtro che può essere utilizzata per implementare i filtri equalizzatori è mostrato in figura. 
+L'unica differenza tra i vari filtri risiede nella scelta dei coefficienti. Un diagramma a blocchi della struttura del filtro che può essere utilizzata per implementare i filtri equalizzatori è mostrato in figura. 
 
 &nbsp;
 ```{image} images/EQdiagram.png
