@@ -264,44 +264,7 @@ In figura sono mostrati alcuni esempi di risposte in modulo per il filtro peak. 
 ```
 &nbsp;
 
-Le risposte dei filtri peakEQ sono mostrate. Sono rappresentate le risposte per una frequenza centrale di $\omega_0=\pi/2$ e per larghezze di banda variabili con $G_B^2 = 0.5$.
-
-```{note} Differenza tra filtro notch e notchEQ (*python*)
-
-Nella tabella seguente si fa una comparazione diretta tra i due i due modelli di filtro notch descritti sopra: il filtro `notch risonatore` e il filtro `notchEQ equalizzatore`. Si riporta il codice python dei due filtri e l'analisi in frequenza a parità di parametri di definizione dei filtri
-
-::::{tab-set}
-:::{tab-item} notchR
-:sync: tab1
-
-filtro 1 
-:::
-
-:::{tab-item} spettro
-:sync: tab2
-filtro due 
-
-:::
-
-
-:::{tab-item}  notchEQ
-:sync: tab2
-filtro due 
-:::
-
-
-:::{tab-item} spettro
-:sync: tab2
-filtro due 
-:::
-
-
-
-::::
-
-```
-
-
+Le risposte dei filtri peakEQ mostrate in figura corrispondono a una frequenza centrale di $\omega_0=\pi/2$ e larghezze di banda variabili con $G_B^2 = 0.5$.
 
 
 ##### Filtro Equalizzatore Parametrico
@@ -324,7 +287,6 @@ H_{\text{notch}}(z) + H_{\text{peak}}(z) = 1.
 $$
 
 Questo significa che la composizione dà luogo a un sistema neutro, tale per cui i due filtri non alterano il segnale in ingresso. I filtri sono quindi detti complementari. Se scegliamo $G_0 = 0$ e $G = 1$, otteniamo un filtro peak. Viceversa, impostando $G_0 = 1$ e $G = 0$, otteniamo un filtro notch dal filtro equalizzatore parametrico. Questo fatto denota la flessibilità del filtro il quale include, come casi speciali, i filtri peak e notch.
-
 
 Prima di procedere alla combinazione dei due filtri, dobbiamo considerare come scegliere il parametro di guadagno $G_B$. Esistono diversi modi per farlo. Tuttavia, è utile (e comune) impostarlo in relazione a $G$ e $G_0$ ponendo $G_B$ a 3 dB sotto il picco o sopra il riferimento in caso di boosting o sopra la valle o sotto il riferimento in caso di cutting. Per il caso di boosting, possiamo interpretarlo come 3 dB al di sotto del picco, ovvero scegliere 
 
@@ -351,13 +313,13 @@ $$
 
 Un'altra scelta possibile per il valore di $G_B$ è la media aritmetica dei due parametri, cioè:
 
-$$
+$$\label{eq:gainB}
 G_B^2 = \frac{G^2 + G_0^2}{2}
 $$
 
 A partire dalla [](eq:eq), utilizzando il metodo della trasformazione bilineare per combinare i due filtri, possiamo esplicitare la funzione di trasferimento del filtro in termini dei parametri di specifica: $\{G_0, G, G_B, \omega_0, \Delta\omega\}$, ottenendo:
 
-$$\large
+$$\label{eq:filtereq}\large
 H_{\text{eq}}(z) = 
 \frac{
 \frac{G_0 + G \beta}{1 + \beta} 
@@ -392,7 +354,6 @@ Se $G_0^2 < G_B^2 < G^2$, abbiamo un boost alla frequenza $\omega_0$, mentre se 
 
 L'equazione alle differenze risultante è pertanto data da:
 
-
 $$
 y(n) = \frac{G_0 + G \beta}{1 + \beta} x(n) 
 - \frac{2 G_0 \cos \omega_0}{1 + \beta} x(n-1) 
@@ -412,15 +373,16 @@ In figura sono mostrati alcuni esempi di risposte in frequenza di filtri equaliz
 ```
 &nbsp;
 
+
 ##### Filtro Shelving 
 
-Per trattare le frequenze molto basse e molto alte nel segnale audio, è utile introdurre i cosiddetti filtri shelving. Questi sono filtri che presentano una risposta piatta e un guadagno regolabile rispettivamente a basse o alte frequenze. Il filtro con risposta piatta alle basse frequenze è spesso chiamato `low-pass shelving filter`, mentre quello per le alte frequenze è chiamato `high-pass shelving filter`. Questi possono essere ottenuti dal filtro equalizzatore parametrico generale in (10.17) sostituendo la frequenza centrale, $\omega_0$, con $0$ o $\pi$.
+Per trattare le frequenze molto basse e molto alte nel segnale audio, è utile introdurre i cosiddetti filtri shelving. Questi sono filtri che presentano una risposta piatta e un guadagno regolabile rispettivamente a basse o alte frequenze. Il filtro con risposta piatta alle basse frequenze è spesso chiamato `low-pass shelving filter`, mentre quello per le alte frequenze è chiamato `high-pass shelving filter`. Questi possono essere ottenuti dal filtro equalizzatore parametrico generale in [](eq:filtereq) sostituendo la frequenza centrale, $\omega_0$, con $0$ o $\pi$.
 
 &nbsp;
 ![](images/shelving.png)
 &nbsp;
 
-Per il filtro `low-pass (LP) shelving`, inseriamo $\omega_0 = 0$ in (10.17). Poiché $\cos \omega_0 = 1$, otteniamo un filtro più semplice, cioè:
+Per il filtro `low-pass (LP) shelving`, inseriamo $\omega_0 = 0$ in [](eq:filtereq). Poiché $\cos \omega_0 = 1$, otteniamo un filtro più semplice, cioè:
 
 $$
 H_\text{lp}(z) = 
@@ -430,7 +392,7 @@ H_\text{lp}(z) =
 \left( 1 - \frac{1 - \beta}{1 + \beta} z^{-1} \right),
 $$
 
-che è un filtro del primo ordine. Al posto della larghezza di banda $\Delta \omega$, ora abbiamo una singola frequenza di taglio, che chiamiamo $\omega_c$, e un corrispondente guadagno $G_C$, che sostituisce $G_B$ ma viene calcolato allo stesso modo usando (10.16). La quantità $\beta$ nelle equazioni sopra è quindi determinata da questa relazione:
+che è un filtro del primo ordine. Al posto della larghezza di banda $\Delta \omega$, ora abbiamo una singola frequenza di taglio, che chiamiamo $\omega_c$, e un corrispondente guadagno $G_C$, che sostituisce $G_B$ ma viene calcolato allo stesso modo usando la media in [](eq:gainB). La quantità $\beta$ nelle equazioni sopra è quindi determinata da questa relazione:
 
 $$
 \beta = 
@@ -500,7 +462,14 @@ L'unica differenza tra i vari filtri risiede nella scelta dei coefficienti.
 
 Un diagramma a blocchi della struttura del filtro che può essere utilizzata per implementare i filtri equalizzatori è mostrato in figura. 
 
-![]()
+&nbsp;
+```{image} images/EQdiagram.png
+:alt: long
+:class: bg-primary mb-1
+:width: 500px
+:align: center
+```
+&nbsp;
 
 Nella Tabella 1, sono elencati i coefficienti dei filtri per i vari casi insieme alla definizione appropriata di $\beta$. Se scegliamo la definizione:
 
@@ -516,11 +485,11 @@ $$
 Q = \frac{\omega_0}{\Delta \omega},
 $$
 
+un approccio utilizzato in alcune implementazioni di equalizzatori parametrici. Il fattore $Q$ controlla la selettività del filtro rispetto alla frequenza centrale. Ciò significa che per una bassa frequenza centrale, un valore costante di $Q$ risulterà in una larghezza di banda inferiore rispetto alle frequenze più alte. Questo è ben in linea con le proprietà del sistema uditivo umano, in particolare il modo in cui la larghezza di banda è percepita in funzione della frequenza centrale.
+
+&nbsp;
 ![](images/tabelle_eq.png)
-
-
-
-un approccio utilizzato in alcune implementazioni di equalizzatori parametrici. Il fattore \(Q\) controlla la selettività del filtro rispetto alla frequenza centrale. Ciò significa che per una bassa frequenza centrale, un valore costante di \(Q\) risulterà in una larghezza di banda inferiore rispetto alle frequenze più alte. Questo è ben in linea con le proprietà del sistema uditivo umano, in particolare il modo in cui la larghezza di banda è percepita in funzione della frequenza centrale.
+&nbsp;
 
 Per concludere, osserviamo che, come già detto, i filtri progettati in base ai principi qui descritti devono essere collegati in serie. Se vengono collegati in parallelo, i filtri non daranno il risultato desiderato a causa dell'effetto della risposta di fase dei filtri. Esistono tuttavia altri tipi di filtri equalizzatori che possono essere collegati in parallelo. Inoltre, esistono anche progetti di equalizzatori FIR per l'audio, sebbene i filtri IIR qui presentati siano in genere più efficienti dal punto di vista computazionale.
 

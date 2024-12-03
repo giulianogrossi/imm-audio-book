@@ -25,6 +25,7 @@ project:
     - file: cap4-filtri.md
     - file: cap5-effetti.md
     - file: cap6-eq.md
+    - file: cap7-features.md
     
 site:
   template: book-theme
