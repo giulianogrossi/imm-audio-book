@@ -73,7 +73,7 @@ Come abbiamo visto, l’equalizzazione è uno strumento imprescindibile per qual
 
 Di seguito vengono presentati, in linea teorica, i principali modelli di filtro utilizzati per questo scopo, tra cui i filtri peak e notch, l’EQ parametrico e i filtri shelving passabasso e passaalto.
 
-##### Filtri peak e notch del II ordine
+##### Filtri peak e notch (risonatore) del II ordine
 
 Nel capitolo precedente abbiamo visto il progetto del filtro risonatore utilizzando la tecnica del posizionamento di poli e zeri. L'idea base del filtro è quella di collocare una coppia di poli con raggio $R$ e angolo $\pm \omega_0$ all'interno della circonferenza unitaria, cioè 
 
@@ -149,6 +149,8 @@ A valle dell'applicazione del filtro si nota dallo spettro del segnale puntualme
 ![](images/spettro_sound3.png)
 ```
 &nbsp;
+
+##### Filtri peak e notch equalizzatori
 
 I filtri qui descritti sono semplici, offrono un'dea chiara su come il filtro opera, tuttavia la tecnica che li origina è adeguata solo nel caso di larghezza di banda ridotta, cioè quando li si utilizzano per cancellare frequenze date dal rumore puntuale in frequenza, come negli esempi precedenti. Ma diventa complicata per larghezze di picco maggiori, come quelle che vengono invece richieste negli equalizzatori audio grafici e parametrici. A differenza di quello mostrato sopra, il metodo della `trasformazione bilineare` (non discusso qui) offre un controllo preciso sulle specifiche desiderate per tali filtri. Descriviamo di seguito pertanto una famiglia di filtri notch e peak ottenuti con detta tecnica e che, combinati assieme, rivelano caratteristiche più adeguate all'equalizzazione generale.  
 
