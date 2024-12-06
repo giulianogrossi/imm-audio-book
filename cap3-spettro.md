@@ -521,13 +521,11 @@ La scelta della lunghezza e della forma della finestra dipende dai requisiti spe
 
 La quantità di sovrapposizione tra finestre consecutive può influenzare la qualità dell’analisi STFT. Finestre sovrapposte aiutano a ridurre la perdita di informazioni ai bordi delle finestre, offrendo una rappresentazione più fluida e continua delle caratteristiche tempo-frequenza del segnale audio. Il grado di sovrapposizione dipende dall'applicazione specifica, ma valori tipici variano dal 50% al 75%. Tuttavia, un aumento della sovrapposizione può comportare una maggiore complessità computazionale, poiché occorre elaborare un numero maggiore di finestre.
 
-Tutti questi aspetti sono ben riconoscibili nel seguente esempio in cui un segnale segnale sinusoidale a frequenza variabile nel tempo, viene campionato a $F_s=20$ Hz per 50 sec, producendo $n=1000$ campioni. Con una finestra di Hamming di $N=50$ campioni e sovrapposizione $H=N/2=25$ campioni, si ottiene lo spettrogramma sotto che mette in evidenza i 41 frames che risultano con questi parametri (20 per parte e uno centrale).
+Tutti questi aspetti sono ben riconoscibili nel seguente esempio, in cui un segnale sinusoidale a frequenza variabile nel tempo, viene campionato con $F_s=20$ Hz per 50 sec, producendo $n=1000$ campioni. Con una finestra di Hamming di $N=50$ e hop size $H=N/2=25$ campioni, si ottiene lo spettrogramma sotto che mette in evidenza i 41 frames definiti con questi parametri (20 per parte e uno centrale).
 
 &nbsp;
 ![alt text](images/spettro2.png)
 &nbsp;
-
-
 
 
 Per concludere, alcune impostazioni tipiche riscontrate nell'elaborazione di segnali musicali. Ad esempio, nel caso di registrazioni su CD, si ha una frequenza di campionamento di $F_s = 44100 \, \text{Hz}$. Utilizzando una lunghezza della finestra di $N = 4096$ e un hop size di $H = N/2$, questo risulta in una risoluzione temporale di $\frac{H}{F_s} \approx 46.4 \, \text{ms}$ e una risoluzione in frequenza di $\frac{F_s}{N} \approx 10.8 \, \text{Hz}$. Per ottenere una migliore risoluzione in frequenza, si può aumentare la lunghezza della finestra $N$. Questo, tuttavia, porta a una minore localizzazione temporale, riducendo la capacità della STFT di catturare fenomeni locali nel segnale.
