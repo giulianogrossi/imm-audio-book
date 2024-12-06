@@ -499,7 +499,34 @@ Continuando con l'esempio precedente, consideriamo ora una versione campionata d
 Utilizzando una lunghezza della finestra di $N = 64$ campioni e un hop size di $H = 32$ campioni, otteniamo lo spettrogramma mostrato di seguito. Nell'immagine, la tonalità codifica l'ampiezza di un coefficiente spettrale, dove colori più chiari corrispondono a valori maggiori. Tramite la formula sopra, l'$m$-esimo frame corrisponde alla posizione temporale fisica $T_m = 1 \, \text{sec}$. In altre parole, la STFT ha una risoluzione temporale di un frame per secondo. Inoltre, tramite la formula per la risoluzione in frequenza, il $k$-esimo coefficiente di Fourier corrisponde alla frequenza fisica $f_k=k/2 \,\text{Hz}$. In altre parole, si ottiene una risoluzione in frequenza di due coefficienti per Hertz. Il grafico dello spettrogramma con assi temporali e di frequenza sono mostrati in figura (sono esclusi gli estremi in cui la sovrapposizione non è completa).
 
 &nbsp;
-![](images/spettrog1.png)
+![](images/spettro1.png)
 &nbsp;
 
-Consideriamo ora alcune impostazioni tipiche riscontrate nell'elaborazione di segnali musicali. Ad esempio, nel caso di registrazioni su CD, si ha una frequenza di campionamento di $F_s = 44100 \, \text{Hz}$. Utilizzando una lunghezza della finestra di $N = 4096$ e un hop size di $H = N/2$, questo risulta in una risoluzione temporale di $\frac{H}{F_s} \approx 46.4 \, \text{ms}$ e una risoluzione in frequenza di $\frac{F_s}{N} \approx 10.8 \, \text{Hz}$. Per ottenere una migliore risoluzione in frequenza, si può aumentare la lunghezza della finestra $N$. Questo, tuttavia, porta a una minore localizzazione temporale, riducendo la capacità della STFT di catturare fenomeni locali nel segnale.
+Più in dettaglio il significato della visualizzazione grafica.
+L’asse verticale rappresenta la frequenza, mentre l’asse orizzontale rappresenta il tempo. I colori o le sfumature indicano l’ampiezza delle frequenze in ogni istante. Le aree scure rappresentano il silenzio o l’assenza di suono, mentre quelle più chiare indicano la presenza di suoni. Le interruzioni nelle aree chiare corrispondono a pause o spazi tra i suoni emessi. Analizzando la distribuzione delle aree chiare e scure, si possono distinguere i pattern del parlato, comprese le variazioni di intonazione e la tempistica dei singoli suoni.
+
+Parametri importanti nell’analisi dello spettrogramma:
+
+- **Frequenza positiva massima** $F_s/2$: in uno spettrogramma, possiamo rappresentare accuratamente frequenze fino a metà della frequenza di campionamento. Questa è nota come frequenza di Nyquist. Pertanto, nell’analisi dei segnali audio, è importante assicurarsi che la frequenza di campionamento sia sufficientemente alta da catturare i componenti di frequenza più alti di interesse.
+- **Risoluzione in frequenza** $F_s/N$: la risoluzione in frequenza è la più piccola differenza di frequenza distinguibile nell’analisi, determinata dal rapporto tra la frequenza di campionamento e la lunghezza della finestra $N$. Una finestra più ampia offre una maggiore risoluzione in frequenza, ma una risoluzione temporale ridotta, poiché richiede più tempo per essere analizzata.
+- **Ampiezza degli intervalli temporali** $N\,T_s$:
+L’ampiezza degli intervalli temporali corrisponde alla durata di ciascun segmento temporale analizzato nella STFT, determinata dal prodotto tra la lunghezza della finestra $N$ e l’intervallo tra i campioni $T_s$. Una maggiore risoluzione temporale è essenziale per catturare segnali che cambiano rapidamente, come il parlato, ma riduce la risoluzione in frequenza.
+
+L’uso della trasformata di Fourier a breve termine (STFT) per l’analisi dei segnali audio richiede attenzione a diversi fattori cruciali che influenzano la qualità dell’analisi tempo-frequenza e il compromesso tra risoluzione temporale e frequenziale.
+
+La prima è l'ampiezza della finestra di analisi: la STFT è soggetta a un compromesso tra risoluzione temporale e frequenziale, dovuto alla scelta della lunghezza e della forma della finestra, in conformità con il principio di indeterminazione della trasformata di Fourier.
+- **Analisi a banda larga (finestra stretta)**: con una finestra stretta, la STFT offre una risoluzione temporale più alta, consentendo di catturare cambiamenti rapidi nel segnale audio. Questo è particolarmente utile per analizzare suoni transitori o in rapida evoluzione, come il parlato o gli strumenti a percussione. Tuttavia, una finestra corta riduce la risoluzione in frequenza, rendendo difficile distinguere componenti di frequenza vicine.
+- **Analisi a banda stretta (finestra ampia)**: una finestra lunga offre una risoluzione in frequenza più alta, permettendo di identificare piccole differenze di frequenza nel segnale audio. Questo è utile per analizzare suoni stazionari, come note musicali sostenute o rumori costanti di fondo. Tuttavia, una finestra lunga riduce la risoluzione temporale, rendendola meno adatta per catturare eventi che cambiano rapidamente.
+
+La scelta della lunghezza e della forma della finestra dipende dai requisiti specifici dell’analisi e dal compromesso desiderato tra risoluzione temporale e frequenziale. In pratica, è spesso necessario sperimentare con diverse lunghezze e forme di finestra per trovare il miglior equilibrio per un’applicazione specifica. Inoltre, tecniche avanzate come le trasformate wavelet o i metodi di riassegnazione tempo-frequenza possono essere impiegate per migliorare la rappresentazione tempo-frequenza in scenari specifici.
+
+La quantità di sovrapposizione tra finestre consecutive può influenzare la qualità dell’analisi STFT. Finestre sovrapposte aiutano a ridurre la perdita di informazioni ai bordi delle finestre, offrendo una rappresentazione più fluida e continua delle caratteristiche tempo-frequenza del segnale audio. Il grado di sovrapposizione dipende dall'applicazione specifica, ma valori tipici variano dal 50% al 75%. Tuttavia, un aumento della sovrapposizione può comportare una maggiore complessità computazionale, poiché occorre elaborare un numero maggiore di finestre.
+
+Per concludere, alcune impostazioni tipiche riscontrate nell'elaborazione di segnali musicali. Ad esempio, nel caso di registrazioni su CD, si ha una frequenza di campionamento di $F_s = 44100 \, \text{Hz}$. Utilizzando una lunghezza della finestra di $N = 4096$ e un hop size di $H = N/2$, questo risulta in una risoluzione temporale di $\frac{H}{F_s} \approx 46.4 \, \text{ms}$ e una risoluzione in frequenza di $\frac{F_s}{N} \approx 10.8 \, \text{Hz}$. Per ottenere una migliore risoluzione in frequenza, si può aumentare la lunghezza della finestra $N$. Questo, tuttavia, porta a una minore localizzazione temporale, riducendo la capacità della STFT di catturare fenomeni locali nel segnale.
+
+Di seguito l'esempio dell'analisi spettrale completa per le note della scala di Do maggiore: Do, Re, Mi, Fa, Sol, La, Si, Do (parte ascendente) compresa di spettro e spettrogramma. Da quest'ultimo si nota il crescendo della fondamentale per ogni nota (semitoni della scala) e le relative armoniche presenti in ogni istante di tempo e per ogni semitono.
+
+
+&nbsp;
+![](images/do_major.png)
+&nbsp;
