@@ -526,7 +526,6 @@ Per concludere, alcune impostazioni tipiche riscontrate nell'elaborazione di seg
 
 Di seguito l'esempio dell'analisi spettrale completa per le note della scala di Do maggiore: Do, Re, Mi, Fa, Sol, La, Si, Do (parte ascendente) compresa di spettro e spettrogramma. Da quest'ultimo si nota il crescendo della fondamentale per ogni nota (semitoni della scala) e le relative armoniche presenti in ogni istante di tempo e per ogni semitono.
 
-
 &nbsp;
 ![](images/do_major.png)
 &nbsp;
