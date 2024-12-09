@@ -359,34 +359,74 @@ Onde stazionarie, demo!
 
 ## L'orecchio umano
 
-L’orecchio ha il compito di tradurre in stimoli nervosi le variazioni di pressione che lo colpiscono. L’orecchio umano `e divisibile in tre parti: l’orecchio esterno, l’orecchio medio
-o timpano e l’orecchio interno o labirinto.
 
+L’orecchio è uno degli organi sensoriali più sofisticati e vitali del corpo umano, e la sua funzione, pur apparentemente ovvia, merita di essere approfondita per comprendere appieno la complessità del meccanismo che ci consente di percepire i suoni. Comunemente si associa il termine “orecchio” alla sola parte esterna e visibile, il padiglione auricolare, ma in realtà questa rappresenta solo una minima porzione di un sistema ben più articolato e affascinante.
+
+L’orecchio non si limita a “sentire”, ma agisce come un trasduttore naturale, ossia un sistema capace di trasformare l’energia meccanica delle onde sonore (variazioni di pressione dell’aria provocate da sorgenti vibranti, come una voce, uno strumento musicale o il rumore di un’esplosione) in segnali elettrici interpretabili dal cervello. Questo processo non è solo una conversione fisica, ma un’interazione dinamica e complessa che consente di tradurre il mondo sonoro in percezioni e significati.
+
+Tecnicamente, l’orecchio svolge la funzione di un trasduttore energetico che trasferisce energia sonora da un punto all’altro dello spazio, trasformandola in segnali bioelettrici che viaggiano attraverso il sistema nervoso fino al cervello. Durante questo percorso, l’energia sonora subisce diverse trasformazioni:
+- Energia meccanica, captata e amplificata dal sistema uditivo esterno e medio.
+- Energia idrodinamica, attraverso la trasmissione del movimento nei liquidi presenti nell’orecchio interno.
+- Energia elettrica, generata dalle cellule ciliate della coclea e inviata al cervello tramite il nervo uditivo.
+
+L’orecchio è costituito da tre sezioni principali, ciascuna con un ruolo specifico nel processo di percezione sonora:
+1.	`Orecchio esterno`: Comprende il padiglione auricolare e il condotto uditivo esterno. Ha la funzione di raccogliere le onde sonore e convogliarle verso l’orecchio medio, amplificando alcune frequenze per favorire una migliore discriminazione del suono.
+2.	`Orecchio medio`: Contiene la membrana timpanica (timpano) e la catena ossiculare (martello, incudine e staffa). Questa sezione converte l’energia delle onde sonore in vibrazioni meccaniche, amplificandole per trasmetterle all’orecchio interno.
+3.	`Orecchio interno`: È il cuore del sistema uditivo, dove si trova la coclea, una struttura a spirale piena di liquido che ospita le cellule ciliate, responsabili della conversione delle vibrazioni in impulsi elettrici. Accanto alla funzione uditiva, l’orecchio interno è anche coinvolto nell’equilibrio grazie al sistema vestibolare.
+
+Ogni parte dell’orecchio collabora in un delicato equilibrio per garantire la percezione uditiva. Dai suoni più deboli ai rumori più intensi, il sistema uditivo si adatta e risponde con una precisione straordinaria. Questa capacità non solo ci permette di apprezzare il mondo sonoro che ci circonda, ma gioca un ruolo cruciale nella comunicazione, nella socializzazione e nella nostra sopravvivenza. Passiamo ora a esaminare più nel dettaglio la struttura e le funzioni di ciascuna componente del sistema uditivo.
+
+&nbsp;
 ![est](images/orecchio.png)
-
 &nbsp;
 
 ##### L’orecchio esterno
-Esso è costituito da una parte esterna visibile di forma ovoidale, detta padiglione, fatta di cartilagine, una media, detta conca auricolare, associata alla messa a fuoco ed all’esaltazione dei suoni, e una esterna, chiamata anche elica, associata alla separazione spaziale verticale, che ci permette di poter giudicare l’altezza di una sorgente sonora. La parte centrale spedisce i suoni al canale uditorio, detto anche meato acustico. Esso è un tubo lungo circa 2.7 cm e avente diametro pari a 0.7 cm, che termina con una membrana, la
-membrana del timpano, sensibile alle onde sonore che vanno a infrangersi su di essa e che divide proprio l’orecchio esterno da quello medio. 
 
+L’orecchio esterno rappresenta il primo passo nel complesso processo di percezione del suono. È composto dal padiglione auricolare e dal condotto uditivo esterno, che terminano nella membrana timpanica. Sebbene possa sembrare una semplice parte anatomica, l’orecchio esterno svolge funzioni essenziali per la raccolta e l’elaborazione iniziale delle onde sonore, così come per la protezione delle strutture uditive interne.
+
+Il `padiglione auricolare` è la parte visibile dell’orecchio esterno, costituito da cartilagine elastica ricoperta di pelle. Le sue principali funzioni includono:
+1.	**Raccolta delle onde sonore**. Il padiglione auricolare funge da “antenna” naturale, catturando una porzione significativa delle onde acustiche che lo raggiungono. L’efficacia di questa raccolta è proporzionale all’area del padiglione, il cui design a forma di conca amplifica alcune frequenze del suono, migliorando la sensibilità uditiva. Le onde raccolte vengono convogliate nel condotto uditivo esterno per raggiungere il timpano.
+2.	**Localizzazione della sorgente sonora**. Grazie alla particolare forma del padiglione e alla presenza di due orecchie simmetriche, il sistema uditivo è in grado di determinare con precisione la direzione da cui proviene un suono. Questo processo, noto come localizzazione sonora, sfrutta sia le differenze di intensità che di tempo di arrivo del suono tra i due orecchi, consentendo di individuare la posizione della sorgente sonora in uno spazio tridimensionale.
+3.	**Protezione della membrana timpanica**. Il padiglione auricolare, insieme al condotto uditivo, contribuisce a proteggere il timpano da possibili lesioni meccaniche. La struttura ripiegata del padiglione e l’andamento curvilineo del condotto riducono la probabilità che oggetti estranei raggiungano la membrana timpanica.
+4.	**Regolazione delle condizioni ambientali**. Il padiglione auricolare e il condotto uditivo esterno mantengono il timpano in condizioni ottimali di temperatura, umidità e lubrificazione. Questa funzione è cruciale per preservare l’elasticità e la reattività della membrana timpanica, garantendo una corretta trasmissione delle vibrazioni sonore.
+
+Il `condotto uditivo esterno` è un canale sottile, lungo circa 22-25 mm e con un diametro medio di 7,5 mm, che collega il padiglione auricolare alla membrana timpanica. Sebbene la sua funzione principale sembri essere semplicemente quella di trasportare le onde sonore verso il timpano, il condotto uditivo ha un ruolo molto più significativo.
+1.	**Risonanza acustica**. La lunghezza del condotto uditivo è un elemento chiave nel determinare le frequenze di massima sensibilità uditiva. Trattandolo come un tubo chiuso a un’estremità (il timpano) e aperto all’altra, esso entra in risonanza acustica intorno ai 2700 Hz. Tuttavia, l’interazione con altre strutture uditive sposta la regione di massima sensibilità a circa 3800 Hz, migliorando l’udito nelle frequenze più rilevanti per la comunicazione umana.
+2.	**Protezione e pulizia**. Il condotto uditivo esterno è dotato di ghiandole ceruminose che producono cerume, una sostanza che ha la funzione di intrappolare particelle di polvere e piccoli corpi estranei, impedendo loro di raggiungere il timpano. Inoltre, il cerume ha proprietà antibatteriche e aiuta a mantenere il condotto lubrificato.
+3.	**Amplificazione sonora**. Il condotto uditivo amplifica naturalmente alcune frequenze, specialmente nella gamma di 2000-4000 Hz, migliorando l’intelligibilità del parlato umano e contribuendo a una percezione più chiara dei suoni in questo intervallo.
+
+L’orecchio esterno, pur rappresentando solo la prima parte del sistema uditivo, svolge un ruolo cruciale nella raccolta e nell’elaborazione iniziale delle onde sonore. La sua progettazione evolutiva non solo ottimizza la sensibilità uditiva, ma protegge anche le delicate strutture interne. Grazie a questo sofisticato sistema, siamo in grado di percepire suoni, distinguerne la provenienza e prepararli per le successive fasi di elaborazione nell’orecchio medio e interno.
+
+&nbsp;
 ![est](images/orecchio_esterno.png)
-
 &nbsp;
 
 ##### L’orecchio medio
 
-La membrana del timpano è collegata a tre ossicini, i più piccoli del corpo umano: il martello, con cui è direttamente a contatto l’incudine, e la staﬀa, che è invece a contatto
-con il labirinto. Essi formano un sistema di leve di collegamento tra il timpano e una membrana che copre una piccola apertura presente nell’orecchio interno, chiamata finestra ovale. Queste tre ossa sono contenute in una cavità, la cassa del timpano, che comunica all’esterno attraverso un piccolo canale lungo 3-4 cm, la tromba di Eustachio, che sbocca
-poi nella faringe.
+L’orecchio medio è costituito dalla membrana timpanica, da una catena di tre ossicini (martello, incudine e staffa) e da una seconda membrana, la finestra ovale, che rappresenta l’accesso all’orecchio interno. Questa complessa struttura svolge un ruolo cruciale nella trasmissione e amplificazione delle onde sonore provenienti dall'esterno, preparandole per l’elaborazione successiva nell’orecchio interno.
 
+Il timpano è una membrana sottilissima e altamente elastica, mantenuta in tensione dal muscolo timpanico. Questa membrana entra in vibrazione quando colpita dalle onde sonore che giungono attraverso il condotto uditivo esterno. Le proprietà elastiche del timpano, combinate con un meccanismo di amplificazione, gli conferiscono una sensibilità straordinaria. Basti pensare che:
+- Una pressione sonora di appena 0,2 miliardesimi della pressione atmosferica è sufficiente a innescare una sensazione sonora.
+- A questa pressione, lo spostamento del timpano è dell’ordine di 10⁻⁹ cm, ovvero circa un decimo del raggio di un atomo di idrogeno.
+
+Gli ossicini dell’orecchio medio formano una catena articolata che trasferisce le vibrazioni del timpano alla finestra ovale, amplificando nel contempo l’energia del suono. Ecco come funziona:
+1.	Struttura e connessioni.
+	- Il martello è direttamente collegato al timpano e trasmette le vibrazioni all’incudine, con cui è articolato.
+	- L’incudine, a sua volta, comunica con la staffa, che spinge contro la membrana della finestra ovale.
+2.	Amplificazione sonora. Sebbene il sistema degli ossicini non sfrutti il principio della leva meccanica in modo significativo (il guadagno è di circa 1.3 volte), l’effettiva amplificazione della pressione sonora avviene grazie a una riduzione dell’area su cui la forza viene applicata:
+	- L'area della finestra ovale (3.2 mm²) è circa 17 volte più piccola rispetto all’area efficace del timpano (55 mm²).
+	- Questo rapporto genera un aumento della pressione di circa 22 volte (1.3 dal guadagno meccanico × 17 dalla riduzione dell’area).
+3.	Trasferimento della pressione al liquido cocleare. L’aumento di pressione è fondamentale per trasmettere efficacemente l’energia sonora ai fluidi all’interno della coclea, una struttura chiave dell’orecchio interno. Poiché i liquidi sono sostanzialmente incomprimibili, secondo il principio di Pascal la pressione esercitata sulla finestra ovale si distribuisce uniformemente attraverso tutto il fluido cocleare.
+
+Grazie a questo sofisticato sistema, l’orecchio medio è in grado di trasferire e amplificare efficacemente le onde sonore, garantendo un adattamento ottimale tra l’ambiente esterno e l’orecchio interno. Questa ingegnosa soluzione naturale è essenziale per la nostra capacità di ascolto e comprensione dei suoni.
+
+&nbsp;
 ![est](images/orecchio_medio.png)
-
 &nbsp;
 
 ##### L’orecchio interno
 
-E\' costituito da un insieme di cavità ossee scavate nell’osso temporale, dette labirinto osseo, all’interno delle quali sono presenti altre cavità più piccole, che costituiscono il labirinto membranoso e le cui pareti risultano membranose. Tra le due porzioni di labirinto è presente un liquido, la perilinfa, mentre internamente agli organi del labirinto membranoso è presente un liquido diverso, l’endolinfa. Entrambi i labirinti possono essere a loro volta
+E' costituito da un insieme di cavità ossee scavate nell’osso temporale, dette labirinto osseo, all’interno delle quali sono presenti altre cavità più piccole, che costituiscono il labirinto membranoso e le cui pareti risultano membranose. Tra le due porzioni di labirinto è presente un liquido, la perilinfa, mentre internamente agli organi del labirinto membranoso è presente un liquido diverso, l’endolinfa. Entrambi i labirinti possono essere a loro volta
 divisi in tre parti: una cavità centrale detta vestibolo, tre canali a forma anulare, detti canali semicircolari, che giocano un ruolo fondamentale nell’equilibrio, e un canale a
 forma di serpente detto coclea o chiocciola. Quest’ultima ha lo scopo di separare i suoni in diverse componenti di frequenza prima di trasmetterli ai nervi. La coclea, situata in
 basso e lateralmente rispetto al vestibolo, sviluppa al suo interno il canale cocleare, che inizia in corrispondenza del pavimento del vestibolo e si avvolge ad elica, formando circa
@@ -397,20 +437,29 @@ vibrazioni della finestra ovale, che corrisponde alla comunicazione della cassa 
 l’orecchio interno. Sulla membrana basilare, rivestita da epitelio, si differenzia l’organo spirale o del Corti, che rappresenta l’organo acustico vero e proprio, perch´e contiene
 i recettori dell’udito, e ha una struttura cellulare fatta di un doppio ordine di cellule acustiche ciliate, interne ed esterne, in numero di circa 20000.
 
+&nbsp;
 ![est](images/orecchio_interno.png)
-
 &nbsp;
 
 Dunque l’orecchio esterno focalizza e amplifica le onde sonore, che mettono in vibrazione il timpano auricolare, e le dirige verso l’orecchio medio. Nell’orecchio medio, l’energia di queste onde viene trasformata in vibrazioni meccaniche della struttura ossea dell’orecchio medio (energia cinetica). Uno dei tre ossicini della catena, la staﬀa, muovendosi avanti e indietro entro la finestra ovale della coclea trasmette l’impulso cinetico alla perilinfa in essa contenuta; attraverso l’endolinfa del condotto cocleare le onde vengono trasmesse dalla rampa vestibolare alla rampa timpanica (e quindi entrano in vibrazione anche le membrane che separano le rampe, o stanze, della coclea). 
 
+&nbsp;
 ![est](images/coclea.png)
-
 &nbsp;
 
-Il segnale arriva così alla membrana basilare, che separa la rampa vestibolare da quella timpanica, e dove si trova l’organo del Corti. Le cellule acustiche in esso contenute sono in contatto con le cellule nervose che fanno parte del nervo vestibolo cocleare. Di lì il segnale, che nella coclea viene trasdotto (l’energia cinetica diventa energia elettro-chimica), giunge all’area acustica della corteccia cerebrale, e poi al lobo temporale del cervello: qui avviene la decodificazione dell’impulso elettrico, e si giunge così alla percezione del suono.
+Il segnale arriva così alla membrana basilare, che separa la rampa vestibolare da quella timpanica, e dove si trova l’organo del Corti. Le cellule acustiche in esso contenute sono in contatto con le cellule nervose che fanno parte del nervo vestibolo cocleare. Di lì il segnale, che nella coclea viene trasdotto (l’energia cinetica diventa energia elettro-chimica), giunge all’area acustica della corteccia cerebrale, e poi al lobo temporale del cervello: qui avviene la decodificazione dell’impulso elettrico, e si giunge così alla percezione del suono. 
 
+L'organo del Corti è la fondamentale struttura anatomica alla base dell’udito, il dispositivo recettoriale deputato alla percezione dei suoni. Si trova in quella formazione spiraliforme chiamata chiocciola o coclea, che costituisce la sezione uditiva dell’orecchio interno (l'altro suo settore – il cosiddetto complesso vestibolare – provvede invece a gestire il senso dell'equilibrio). La chiocciola è un tubicino arrotolato che risulta suddiviso al proprio interno in tre compartimenti longitudinali ricolmi di liquido: superiore, intermedio e inferiore. Il piano intermedio si chiama dotto cocleare e sul suo pavimento, denominato membrana basilare, si trova per l'appunto il cruciale organo del Corti: è un sofisticato dispositivo che contiene circa 16.000 cellule ciliate uditive, che rappresentano i recettori per le stimolazioni sonore.
+
+
+L'organo del Corti è formato da cellule di sostegno e cellule acustiche. Le prime descrivono due serie cellulari lineari, allungate e leggermente ricurve, i pilastri (esterno e interno), che vanno a impiantarsi sulla citata membrana basilare, distanziati dabbasso e uniti all'apice, delimitando così uno spazio a sezione triangolare, la galleria del Corti, che percorre tutto il condotto cocleare. Medialmente ai pilastri interni si trovano, disposte su una fila, le cellule sensoriali acustiche, che si organizzano invece in tre-quattro filari lateralmente ai pilastri esterni.  Le prime sono all'incirca 3.500, dislocate per l'intera lunghezza dell'organo dell'udito, mentre le altre toccano quota 13.000. Mostrano una forma cilindrica, con la superficie apicale spessa e piatta.
+Dall'apice di ognuno di questi elementi cellulari specializzati spuntano da 20 a 100 esili propaggini chiamate stereociglia o peli acustici, le quali stringono contatti ravvicinati con una struttura flessibile sovrastante, denominata membrana tectoria, una lamina nastriforme di matrice extracellulare, costituita da mucopolisaccaridi e fasci di fibrille di collagene, che si avvolge a spirale lungo tutta estensione della coclea.
+
+Proviamo ad analizzare adesso che cosa succede quando l'orecchio viene raggiunto da un suono. Le onde sonore che si propagano nell'aria vengono captate dal padiglione auricolare, il quale provvede a raccoglierle e a convogliarle nel condotto uditivo esterno che si addentra nello spessore dell'osso temporale fino a raggiungere la sottile membrana del timpano. Questa, colpita dalle onde sonore, vibra e trasferisce i micromovimenti alla catena mobile dei tre ossicini, tesa tra la membrana timpanica e la finestra ovale, ovvero il varco che consente l'accesso al compartimento della chiocciola.
+La pressione che viene esercitata sulla finestra ovale dal moto vibratorio produce un movimento ondulatorio nel fluido presente nell'orecchio interno: significa che lo spostamento dell’aria diventa un’onda liquida. La membrana basilare comincia allora a oscillare in sincronia con l’onda pressoria e, poiché essa sostiene l'organo del Corti, anche le cellule ciliate uditive iniziano a muoversi, flettendosi avanti e indietro e dunque variando la loro posizione rispetto alla membrana tectoria in alto, che è fissa e appoggiata, come s'è detto, sopra i peli acustici. La deformazione meccanica, in avanti e indietro, delle ciglia finisce per stimolare le fibre nervose che costituiscono il nervo acustico: questo provvederà a trasmettere gli impulsi all'encefalo, alla corteccia uditiva del lobo temporale, dove i segnali nervosi verranno tradotti in sensazioni sonore. In particolare, le onde che giungono alla membrana basilare sono tali che ogni frequenza sonora stimola una specifica regione della membrana basilare: le alte frequenze attivano la base della coclea, mentre le basse frequenze stimolano l’apice.
+
+&nbsp;
 ![est](images/membrana_basilare.png)
-
 &nbsp;
 
 ##### Limitazioni dell’orecchio umano
@@ -421,10 +470,10 @@ un fattore 10. Viceversa moltiplicare l’intensità per un fattore b equivale a
 Vi è dunque una relazione stretta, anche se non un’identità, fra l’intensità del suono e la percezione di rumorosità. Il grafico seguente, che si deve a Fletcher e Munson, mostra attraverso una serie di curve il rapporto, per tutte le frequenze udibili, tra la pressione acustica e la corrispondente “rumorosità” percepita dall'orecchio, per vari gradi d’intensità, dalla soglia di udibilità a quella del dolore. L’unità di misura per la sensazione che recepiamo (cioè per la rumorosità) è il phon. L’ascoltatore regola il livello del segnale fino a quando lo si giudica di intensità pari a un’intensità standard di 1000 Hz. Il livello
 del phon è definito come livello di pressione del segnale di 1000 Hz della stessa intensità.
 
+&nbsp;
 ![est](images/soglia_udito.png)
-
 &nbsp;
 
-Le curve di questo grafico sono chiamate curve isofone.
+Le curve di questo grafico sono chiamate curve isofoniche.
 
 ![est](images/curve_isofoniche.png)
