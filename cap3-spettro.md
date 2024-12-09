@@ -366,7 +366,7 @@ Si considerino il segnale esponenziale negativo $x_a(t)=Ae^{-\alpha t} u(t)$, co
 ![exp](images/exp.png)
 &nbsp;
 
-E\' evidente che lo spettro $|X_a(f)|$ non è limitato e ha energia in tutte le frequenza $-\infty<f<+\infty$, benché abbia un decadimento esponenziale che rende le frequenze meno rilevanti in bande via via sempre più lontane dallo zero.
+E\' evidente che lo spettro $|X_a(f)|$ non è limitato e ha energia in tutte le frequenza $-\infty<f<+\infty$, benché mostri un profilo di decadimento (o andamento) iperbolico che rende le frequenze meno rilevanti in bande via via sempre più lontane dallo zero.
 
 Per determinare la trasformata di Fourier di $x_a(t)$ mediante tecniche di analisi digitale è necessario campionare la funzione $x_a(t)$. Il risultato del campionamento è illustrato nella sottostante figura. Il segnale campionato, con frequenza $F_s$ risulta:
 
