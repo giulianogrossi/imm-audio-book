@@ -118,7 +118,7 @@ Vediamo un esempio di applicazione del banco di filtri Mel allo spettrogramma di
 Poiché lo spettrogramma è in forma matriciale, per ottenere lo spettrogramma Mel occorre passare in forma matriciale anche il banco di filtri triangolari Mel. Quelle che segue è un esempio di filtro con 6 bin in scala Mel, cioè $\#\text{bin\_mels}=6$, e 513 bin, cioè $\#\text{bin\_freqs}=513$, in scala di Hz e mostrato tramite un'immagine, i cui pixel hanno valori coerenti con quelli degli spettrogrammi. 
 
 &nbsp;
-![](images/mel-filtro6bin.png)
+![](images/mel-filtrobin6.png)
 &nbsp;
 
 Infine si ottiene lo spettrogramma Mel attraverso la moltiplicazione della matrice del filtro $M$ con lo spettrogramma $S$, con dimensioni rispettivamente:
@@ -140,7 +140,7 @@ $$
 \text{Mel spectrogram} = M\,S\in \mathbb{R}^{6\times 143}
 $$
 
-e mostrato in figura 
+e mostrato in figura.
 
 &nbsp;
 ![](images/mel-mat6.png)
