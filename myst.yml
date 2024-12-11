@@ -26,6 +26,7 @@ project:
     - file: cap5-effetti.md
     - file: cap6-eq.md
     - file: cap7-features.md
+    - file: cap8-classificazione.md
     
 site:
   template: book-theme

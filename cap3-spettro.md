@@ -1,4 +1,4 @@
-Spettro del segnale audio
+Spettro del segnale audio 
 ====
 
 ---
