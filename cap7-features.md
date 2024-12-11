@@ -121,9 +121,6 @@ Poiché lo spettrogramma è in forma matriciale, per ottenere lo spettrogramma M
 ![](images/mel-filtro6bin.png)
 &nbsp;
 
-
-
-
 Infine si ottiene lo spettrogramma Mel attraverso la moltiplicazione della matrice del filtro $M$ con lo spettrogramma $S$, con dimensioni rispettivamente:
 
 $$
@@ -152,7 +149,7 @@ e mostrato in figura
 L'intero processo è sintetizzato nella seguente immagine.
 
 &nbsp;
-![alt text](image-1.png)
+![alt text](images/mel-all.png)
 &nbsp;
 
 Se si aumenta il numero di bin nella scala Mel si ottiene maggior risoluzione proprio in quella scala di frequenze, come il caso sottostante in cui si considerano 120 bin Mel e si mostrano in sequenza il filtro e lo spettrogramma Mel, rispettivamente.
