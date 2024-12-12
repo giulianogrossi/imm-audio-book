@@ -68,7 +68,7 @@ $$
 ![MEL.png](images/mel_freq.png)
 &nbsp;
 
-Il banco di filtri Mel viene descritto come una sequenza di filtri triangolari (a forma isoscele) ognuno dei quali è costruito su 3 valori di frequenza contigui: della terna i due estremi rappresentano la base e quello centrale il vertice. Va aggiunto ogni coppia di triangoli, e quindi le bande corrispondenti, sono sovrapposti al 50%, come mostra la figura. Notare altresì che i valori riportati dell'asse orizzontale superiore e quello inferiore riportano le sequenze di frequenze Mel e Hz, rispettivamente ed elencate sopra. 
+Il banco di filtri Mel viene descritto come una sequenza di filtri triangolari ognuno dei quali è costruito su 3 valori di frequenza contigui: della terna i due estremi rappresentano la base e quello centrale il vertice. Va aggiunto ogni coppia di triangoli, e quindi le bande corrispondenti, sono sovrapposti al 50%, come mostra la figura. Notare altresì che i valori riportati dell'asse orizzontale superiore e quello inferiore riportano le sequenze di frequenze Mel e Hz, rispettivamente ed elencate sopra. 
 
 &nbsp;
 ![alt text](images/mel_bins.png)
@@ -85,21 +85,17 @@ $$
 \end{align*}
 $$
 
-con il vincolo di normalizzazione per cui il valore di $H_m(f(m))=1$ per la frequenza centrale $f(m)$ del filtro triangolare. 
+con il vincolo di normalizzazione $\sum_k H_m(k)=1$ per ogni filtro triangolare che agisce sull'$m$-sima banda, come mostra la figura. 
+
+&nbsp;
+![alt text](images/mel_normaliz.png)
+&nbsp;
 
 L'azione di ogni singolo filtro del banco è quella di catturare l'energia data dallo spettro di potenza $S(k)$ di un frame del segnale che insiste nella banda di frequenze corrispondente. La figura sotto mostra - a titolo di esempio - il terzo filtro del banco in azione: si vede che il prodotto del filtro con lo spettro, cioè $H_3(k)S(k)$, svolge proprio il ruolo inteso, ossia quello di preservare l'energia in banda e tagliare quella complementare.
 
 &nbsp;
 ![alt text](images/mel_filtro3_azione.png)
 &nbsp;
-
-
-
-
-
-
-
-
 
 ### Lo spettrogramma Mel
 
@@ -167,12 +163,53 @@ Se si aumenta il numero di bin nella scala Mel si ottiene maggior risoluzione pr
 ## Mel Frequency Cepstral Coefficient (MFCC)
 
 
-### Il processo di estrazione di MFCC
-MFCC è una delle feature più comunemente usate in una varietà di applicazioni, in particolare nell'elaborazione del segnale vocale come l'analisi del segnale audio, il riconoscimento vocale e l'identificazione di genere. MFCC possono essere calcolati conducendo cinque passi consecutivi, vale a dire preprocessing e miglioramento del segnale, il calcolo dello spettro di potenza, applicazione di un banco filtri MEL agli spettri di potenza ottenuti, calcolo del logaritmo dello spetto filtrato e infine applicando il DCT .La seguente figura illustra i processi del calcolo MFCC.
+### Cepstrum
 
-![MFCC-implem.png](images/MFCC-implem.png)
+Il `cepstrum` è un concetto fondamentale nell’elaborazione dei segnali, particolarmente utile per analizzare segnali audio e vocali. Nasce come trasformazione che permette di separare le informazioni relative alla componente spettrale del segnale (come ampiezza e frequenza) da quelle che riguardano la periodicità di tali componenti, rendendolo uno strumento versatile per l’analisi dei segnali non stazionari. Il cepstrum si ottiene applicando una trasformazione logaritmica e una trasformazione inversa a un segnale trasformato tramite la Fourier Transform. I passaggi principali sono:
+1.	**Calcolo dello spettro**: si parte dal segnale nel dominio del tempo e si calcola la sua trasformata di Fourier ￼, ottenendo lo spettro di ampiezza e fase del segnale.
+2.	**Logaritmo dello spettro di ampiezza**: si prende il logaritmo del modulo dello spettro ￼. Questo step converte le moltiplicazioni nel dominio delle frequenze in somme, semplificando la separazione delle componenti spettrali.
+3.	**Trasformata inversa**: si applica una trasformata inversa di Fourier al logaritmo dello spettro. Il risultato è il cepstrum, un segnale nel dominio chiamato “quefrenziale” (in modo scherzoso, dal termine “frequenza”).
 
-#### A. Pre-emphasis (preprocessing)
+La `quefrency` è un concetto introdotto nel contesto del cepstrum, e rappresenta una sorta di “tempo” o scala nel dominio quefrenziale, analogo ma non identico al dominio temporale o a quello delle frequenze. Il termine “quefrency” è un gioco di parole derivato dalla parola “frequency” (frequenza), con una permutazione delle lettere. È usato per indicare una nuova dimensione interpretativa nel dominio del cepstrum, che non rappresenta né una frequenza né un tempo in senso stretto, ma una misura della periodicità delle variazioni spettrali.
+
+In termini formali il cepstrum viene calcolato come segue:
+
+![](images/def_cepstrum.png)￼
+
+dove $c(n)$ è il cepstrum, $\mathcal{F}$ è la trasformata di Fourier e $x(n)$ è il segnale originale. Il processo di calcolo nei suoi vari stadi è descritto in figura.
+
+&nbsp;
+![alt text](image-3.png)
+&nbsp;
+
+Il cepstrum può essere interpretato come una rappresentazione del segnale che mette in evidenza i suoi elementi periodici:
+- Bassa quefrency: rappresenta variazioni lente nello spettro, come l’inviluppo spettrale. Per esempio, nella voce umana, queste componenti sono legate alle caratteristiche del tratto vocale.
+- Alta quefrency: evidenzia variazioni rapide, come la periodicità dei segnali armonici. Ad esempio, nella voce umana, queste componenti corrispondono alla frequenza fondamentale della voce (pitch). In parole semplici, il cepstrum permette di distinguere tra le componenti del segnale relative alla struttura generale (come il timbro) e quelle legate alla periodicità o al tono.
+
+Il cepstrum trova applicazione in vari campi, tra cui:
+1.	Analisi della voce: separare le informazioni sulla frequenza fondamentale (pitch) e il filtro rappresentato dal tratto vocale; l'estrazione di parametri come i Mel-Frequency Cepstral Coefficients (MFCC), ampiamente usati in sistemi di riconoscimento vocale.
+2.	Elaborazione audio: analisi della struttura armonica di segnali musicali e rimozione di echi o riverberi (deconvoluzione).
+3.	Diagnostica meccanica: identificazione di difetti in macchine rotanti attraverso l’analisi della periodicità delle vibrazioni.
+
+Per comprendere il cepstrum intuitivamente, immagina di analizzare il canto di un uccello: lo spettro ci dice quali frequenze sono presenti nel canto (ad esempio, le armoniche); il cepstrum ci dice ogni quanto tempo queste frequenze si ripetono, evidenziando il “ritmo” del canto, separandolo dal “timbro”.
+
+
+### Il processo di estrazione degli MFCC
+
+MFCC è una delle feature più comunemente usate in una varietà di applicazioni, in particolare nell'elaborazione del segnale vocale come l'analisi del segnale audio, il riconoscimento vocale e l'identificazione di genere. MFCC possono essere calcolati conducendo cinque passi consecutivi, vale a dire preprocessing e miglioramento del segnale, il calcolo dello spettro di potenza, applicazione di un banco filtri MEL agli spettri di potenza ottenuti, calcolo del logaritmo dello spetto filtrato e infine applicando il DCT. I passi per il calcolo degli MFCC sono i seguenti:
+1. Pre-elaborazione del segnale
+2. Framing e finestratura
+3. Trasformata di Fourier (FFT)
+4. Mappatura sulla scala Mel
+5. Logaritmo dell’energia
+6. Trasformata discreta del coseno (DCT)
+8. Delta e Delta-Delta (opzionale)
+
+&nbsp;
+![alt text](images/MFCC-diagram.png)
+&nbsp;
+
+#### 1. Pre-emphasis (preprocessing)
  
 La pre-enfasi si riferisce al filtro che enfatizza le frequenze più elevate. Il suo scopo è bilanciare lo spettro dei suoni espressi che hanno un ripido decadimento nella regione ad alta frequenza (a volte viene soppressa durante processi di elaborazione o cattura del segnale). Per esempio, un segnale vocale se registrato con un microfono ad una certa distanza arriva a perdere +6dB/ottava rispetto al vero spettro del tratto vocale. Pertanto, la pre-enfasi rimuove alcuni degli effetti glottali dai parametri del tratto vocale. Il filtro pre-enfasi più comunemente usato è dato dalla seguente funzione di trasferimento
 
@@ -182,18 +219,23 @@ $$
 
 che rappresenta un filtro passa-alto a cui vengono spesso associati i coefficienti $[1, -0.97]$.
 
-#### B. Framing (windowing) del segnale
+#### 2. Framing (windowing) del segnale
+
 L'idea alla base della partizione in "frame" del segnale raw è quella di avere segmenti brevi in cui il segnale tende ad essere più stazionario al fine di avere proprietà acustiche stabili. Per quanto riguarda il segnale vocale, il periodo di 20-30 ms è riferito come segmento quasi stazionario (QSS) dal momento che il tempo tra due eventi glottali è di circa 20 ms. In aggiunta, la sovrapposizione di frame di 10 ms consentono di catturare meglio le feature temporali del segnale vocale. In generale, le finestre di Hanning e Hamming sono tra le più usate. Queste finestre possono migliorare le armoniche, e la riduzione dell'effetto di bordo durante il calcolo della DFT sul segnale. La figura seguente illustra le finestre rettangolari di Hamming e Hanning in entrambi i domini temporali e di frequenza.
 
-#### C. Spettro di potenza
-Lo spettro di potenza può essere descritto come la distribuzione della potenza dei componenti alle varie frequenze di cui è composto il segnale.Tradizionalmente, la trasformata discreta di Fourier (DFT) viene utilizzata per calcolare lo spettro di potenza. Lo spettro di potenza di ciascun frame $x(n)$ è ottenuto elevando al quadrato il valore assoluto della risposta in frequenza della DFT, cioè:
+#### 3. Spettro di potenza
+
+Lo spettro di potenza può essere descritto come la distribuzione della potenza dei componenti alle varie frequenze di cui è composto il segnale. Tradizionalmente, la trasformata discreta di Fourier (DFT) viene utilizzata per calcolare lo spettro di potenza. Lo spettro di potenza di ciascun frame $x(n)$ è ottenuto elevando al quadrato il valore assoluto della risposta in frequenza della DFT, cioè:
 
 $$
-|X(k)|^2=\left|\sum \limits _{n=0}^{N-1} {x\left ({n }\right)} e^{-j\frac{2\pi}{N}nk}\right|^2 \quad k=1,2,3\ldots N-1\tag{1}
+|X(k)|^2=\left|\sum \limits _{n=0}^{N-1} {x\left ({n }\right)} e^{-j\frac{2\pi}{N}nk}\right|^2 \qquad k=1,2,3\ldots N-1
 $$
 
+#### 4. Banco di filtri Mel
 
-#### E. Discrete Cosine Transform (DCT)
+#### 5. Logaritmo dello spettro
+
+#### 6. Discrete Cosine Transform (DCT)
 
 La DCT esprime una sequenza finita di punti dati dalla somma di funzioni coseno oscillanti a frequenze diverse, multiple di una frequenza base. Nel processo MFCC, la DCT viene applicata a valle del banco di filtri Mel per selezionare la maggior parte dei coefficienti utili a catturare l'informazione massima nelle log ampiezze spettrali dei blocchi filtrati. La DCT è calcolata dall'equazione seguente:
 
