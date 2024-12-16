@@ -162,6 +162,16 @@ Se si aumenta il numero di bin nella scala Mel si ottiene maggior risoluzione pr
 ---
 ## Mel Frequency Cepstral Coefficient (MFCC)
 
+Il concetto di `Mel-Frequency Cepstral Coefficients` (`MFCC`) può essere descritto in modo intuitivo come una rappresentazione compatta delle caratteristiche principali di un segnale audio, particolarmente utile per riconoscere suoni, come il parlato, imitando in parte il funzionamento del sistema uditivo umano. Siamo infatti più sensibili a differenze di frequenza nelle gamme basse rispetto alle gamme alte e per questa ragione gli MFCC usano la scala Mel di frequenze. Gli MFCC hanno anche lo scopo di ridurre la complessità, infatti non conservano tutte le informazioni del segnale audio: anziché rappresentare ogni dettaglio del suono, estraggono solo i tratti essenziali, eliminando quelli meno importanti per l’elaborazione, come variazioni molto sottili e rumori irrilevanti. Ecco come funziona intuitivamente.
+
+-	Suddivisione in parti piccole: un suono complesso, come una parola, viene diviso in piccoli segmenti temporali (frame), che è un po' come spezzare una frase in singole sillabe.
+- Identificazione delle frequenze principali: per ogni segmento, viene analizzata l’energia presente a diverse frequenze, identificando quelle più significative. È un po’ come guardare una canzone con un equalizzatore audio e notare quali frequenze “spiccano” di più.
+- Compressione delle informazioni: per rendere i dati più gestibili, le frequenze vengono raggruppate in bande e convertite usando una scala logaritmica (simile a come il nostro orecchio interpreta l’intensità del suono).
+- Decorrelazione: infine, un’operazione matematica (la trasformata discreta del coseno, o DCT) viene applicata per rendere i dati meno correlati tra loro. È come trasformare un’immagine in bianco e nero, dove si mantengono solo le forme essenziali eliminando i dettagli ridondanti.
+
+Gli MFCC possono essere visti come un “riassunto” del suono in ogni piccolo intervallo temporale. Questo riassunto conserva le informazioni chiave necessarie per distinguere suoni diversi, come le caratteristiche della voce umana o di un particolare strumento musicale. Per esempio, quando ascoltiamo una parola, gli MFCC codificano i suoni delle vocali e delle consonanti in modo tale che un sistema di riconoscimento vocale possa capire cosa è stato detto.
+Quando analizziamo una melodia, aiutano a identificare il tipo di strumento che la sta suonando. In sintesi, gli MFCC rappresentano il “DNA” del suono, distillando il segnale audio in una forma più compatta e rappresentativa, ottimizzata per l’analisi e il riconoscimento.
+
 
 ### Cepstrum
 
@@ -196,7 +206,7 @@ Per comprendere il cepstrum intuitivamente, immagina di analizzare il canto di u
 
 ### Il processo di estrazione degli MFCC
 
-MFCC è una delle feature più comunemente usate in una varietà di applicazioni, in particolare nell'elaborazione del segnale vocale come l'analisi del segnale audio, il riconoscimento vocale e l'identificazione di genere. MFCC possono essere calcolati conducendo cinque passi consecutivi, vale a dire preprocessing e miglioramento del segnale, il calcolo dello spettro di potenza, applicazione di un banco filtri MEL agli spettri di potenza ottenuti, calcolo del logaritmo dello spetto filtrato e infine applicando il DCT. I passi per il calcolo degli MFCC sono i seguenti:
+Gli MFCC possono essere calcolati conducendo i seguenti passi consecutivi:
 1. Pre-elaborazione del segnale
 2. Framing e finestratura
 3. Trasformata di Fourier (FFT)
@@ -204,6 +214,8 @@ MFCC è una delle feature più comunemente usate in una varietà di applicazioni
 5. Logaritmo dell’energia
 6. Trasformata discreta del coseno (DCT)
 8. Delta e Delta-Delta (opzionale)
+
+La figura ne mostra la relazione funzionale.
 
 &nbsp;
 ![alt text](images/MFCC-diagram.png)
@@ -217,7 +229,11 @@ $$
 H(z) = 1 − bz^{−1} 
 $$
 
-che rappresenta un filtro passa-alto a cui vengono spesso associati i coefficienti $[1, -0.97]$.
+che rappresenta un filtro passa-alto a cui vengono spesso associati i coefficienti $[1, 0.97]$ e che si traduce nella seguente equazione alle differenze:
+
+$$
+y(n)=x(n)-bx(n-1).
+$$
 
 #### 2. Framing (windowing) del segnale
 
@@ -233,7 +249,22 @@ $$
 
 #### 4. Banco di filtri Mel
 
+In questa fase si applica il banco di filtri Mel e in seguito si calcola l'energia contenuta in ciascun filtro triangolare sommando i valori della densità spettrale (ottenuta dalla FFT) pesati dal filtro:
+
+$$
+E_m = \sum_{k} |X(k)|^2 \cdot H_m(k)
+$$
+
 #### 5. Logaritmo dello spettro
+La compressione logaritmica è una trasformazione che si applica ai valori energetici ottenuti dopo il passaggio attraverso i filtri triangolari sulla scala Mel. Questo step è cruciale per avvicinare la rappresentazione del segnale audio al modo in cui l’udito umano percepisce i suoni.
+
+Dati i valori di energia  $E_m$  calcolati per ciascun filtro triangolare, si applica il logaritmo naturale per ottenere i valori compressi:
+
+$$
+\hat{E}_m = \log(E_m + \epsilon),
+$$
+
+dove $E_m$  è l’energia associata al filtro $m$ ed $\epsilon$  è una costante positiva molto piccola per evitare problemi con il logaritmo di zero (valori nulli).
 
 #### 6. Discrete Cosine Transform (DCT)
 
