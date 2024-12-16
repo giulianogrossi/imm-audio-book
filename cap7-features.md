@@ -235,11 +235,15 @@ $$
 y(n)=x(n)-bx(n-1).
 $$
 
-#### 2. Framing (windowing) del segnale
+#### 2. Framing (windowing) del segnale 
 
-L'idea alla base della partizione in "frame" del segnale raw è quella di avere segmenti brevi in cui il segnale tende ad essere più stazionario al fine di avere proprietà acustiche stabili. Per quanto riguarda il segnale vocale, il periodo di 20-30 ms è riferito come segmento quasi stazionario (QSS) dal momento che il tempo tra due eventi glottali è di circa 20 ms. In aggiunta, la sovrapposizione di frame di 10 ms consentono di catturare meglio le feature temporali del segnale vocale. In generale, le finestre di Hanning e Hamming sono tra le più usate. Queste finestre possono migliorare le armoniche, e la riduzione dell'effetto di bordo durante il calcolo della DFT sul segnale. La figura seguente illustra le finestre rettangolari di Hamming e Hanning in entrambi i domini temporali e di frequenza.
+L'idea alla base della partizione in frame del segnale raw è quella di avere segmenti brevi in cui il segnale tende ad essere più stazionario al fine di avere proprietà acustiche stabili. Per quanto riguarda il segnale vocale, il periodo di 20-30 ms è riferito come segmento quasi stazionario (QSS) dal momento che il tempo tra due eventi glottali è di circa 20 ms. In aggiunta, la sovrapposizione di frame di 10 ms consentono di catturare meglio le feature temporali del segnale vocale. In generale, le finestre di Hanning e Hamming sono tra le più usate. Queste finestre possono migliorare le armoniche, e la riduzione dell'effetto di bordo durante il calcolo della DFT sul segnale. La figura sotto rappresenta bene questa operazione per il calcolo dello spettro di potenza a livello di frame.
 
-#### 3. Spettro di potenza
+&nbsp;
+![alt text](images/MFCC-1.png)
+&nbsp;
+
+#### 3. Spettro di potenza del segnale 
 
 Lo spettro di potenza può essere descritto come la distribuzione della potenza dei componenti alle varie frequenze di cui è composto il segnale. Tradizionalmente, la trasformata discreta di Fourier (DFT) viene utilizzata per calcolare lo spettro di potenza. Lo spettro di potenza di ciascun frame $x(n)$ è ottenuto elevando al quadrato il valore assoluto della risposta in frequenza della DFT, cioè:
 
@@ -247,29 +251,64 @@ $$
 |X(k)|^2=\left|\sum \limits _{n=0}^{N-1} {x\left ({n }\right)} e^{-j\frac{2\pi}{N}nk}\right|^2 \qquad k=1,2,3\ldots N-1
 $$
 
-#### 4. Banco di filtri Mel
+Complessivamente questo passaggio, applicato a tutti i frame temporali, implica calcolare lo spettrogramma come mostrato nelle sezioni precedenti e riassunto qui in figura. Quello che si ottiene alla fine di questo passo è lo spettrogramma completo per l'intero segnale, finestra su finestra e la sua rappresentazione matriciale.
 
-In questa fase si applica il banco di filtri Mel e in seguito si calcola l'energia contenuta in ciascun filtro triangolare sommando i valori della densità spettrale (ottenuta dalla FFT) pesati dal filtro:
+&nbsp;
+![alt text](images/MFCC-2.png)
+&nbsp;
+
+#### 4. Spettrogramma Mel
+
+Lo spettro Mel si ottiene facendo passare il segnale trasformato mediante Fourier attraverso l'insieme di filtri passa-banda chiamati Mel-filter bank. Per il calcolo degli MFCC, i filtri sono generalmente implementati nel dominio della frequenza. Lo spettro Mel dello spettro in modulo si ottiene moltiplicando il modulo dello spettro per ciascuno dei filtri triangolari ponderati sulla scala Mel. Questo passaggio è fondamentale per avvicinare la rappresentazione del segnale alle caratteristiche dell’udito umano e per estrarre informazioni pertinenti alla successiva fase di calcolo degli MFCC. In questa fase si applica il banco di filtri Mel e in seguito si calcola l'energia contenuta in ciascun filtro triangolare sommando i valori della densità spettrale (ottenuta dalla FFT) pesati dal filtro:
 
 $$
-E_m = \sum_{k} |X(k)|^2 \cdot H_m(k)
+s(m)=\sum_{k=0}^{N-1} |X(k)|^2 \cdot H_m(k),\quad\qquad 0\leq m\leq M-1.
 $$
+
+dove $M$ è il numero totale di filtri. $H_m(k)$ è il peso attribuito al $k$-esimo intervallo di spettro energetico che contribuisce alla medesima banda in uscita. Nella figura è rappresentato il passaggio centrale con uso del banco di filtri passa-banda triangolari.
+
+&nbsp;
+![alt text](images/MFCC-3.png)
+&nbsp;
 
 #### 5. Logaritmo dello spettro
-La compressione logaritmica è una trasformazione che si applica ai valori energetici ottenuti dopo il passaggio attraverso i filtri triangolari sulla scala Mel. Questo step è cruciale per avvicinare la rappresentazione del segnale audio al modo in cui l’udito umano percepisce i suoni.
-
-Dati i valori di energia  $E_m$  calcolati per ciascun filtro triangolare, si applica il logaritmo naturale per ottenere i valori compressi:
+La compressione logaritmica è una trasformazione che si applica ai valori energetici ottenuti dopo il passaggio attraverso i filtri triangolari sulla scala Mel. Questo step è cruciale per avvicinare la rappresentazione del segnale audio al modo in cui l’udito umano percepisce i suoni. Dati i valori di energia  $s(m)$ calcolati per ciascun filtro triangolare, si applica il logaritmo naturale per ottenere i valori compressi:
 
 $$
-\hat{E}_m = \log(E_m + \epsilon),
+\hat{s}(m) = \log(s(m) + \epsilon),
 $$
 
-dove $E_m$  è l’energia associata al filtro $m$ ed $\epsilon$  è una costante positiva molto piccola per evitare problemi con il logaritmo di zero (valori nulli).
+dove $s(m)$ è l’energia associata al filtro $m$ ed $\epsilon$  è una costante positiva molto piccola per evitare problemi con il logaritmo di zero (valori nulli).
+
+&nbsp;
+![alt text](images/MFCC-5.png)
+&nbsp;
+
 
 #### 6. Discrete Cosine Transform (DCT)
+
+In molti casi i livelli di energia nelle bande adiacenti tendono a essere correlati. Applicando la DCT ai coefficienti di frequenza di Mel trasformati, si ottiene un insieme di coefficienti cepstrali. Prima di calcolare la DCT, lo spettro di Mel viene solitamente rappresentato su una scala di log (come mostrato sopra). In questo modo si ottiene un segnale nel dominio cepstrale con un picco di quefrequenza corrispondente all'altezza del segnale e un numero di formanti che rappresentano i picchi di bassa quefrequenza. Poiché la maggior parte delle informazioni del segnale è rappresentata dai primi coefficienti MFCC, il sistema può essere reso robusto estraendo solo quei coefficienti, ignorando o troncando le componenti DCT di ordine superiore.
 
 La DCT esprime una sequenza finita di punti dati dalla somma di funzioni coseno oscillanti a frequenze diverse, multiple di una frequenza base. Nel processo MFCC, la DCT viene applicata a valle del banco di filtri Mel per selezionare la maggior parte dei coefficienti utili a catturare l'informazione massima nelle log ampiezze spettrali dei blocchi filtrati. La DCT è calcolata dall'equazione seguente:
 
 $$
-X(k)=\sum_{n=0}^{N-1} x_{n} \cos\left({2\pi jnk}/ N\right),\quad k=1,2,3\ldots N-1
+c(n)=\sum_{n=0}^{N-1} \hat{s}(m) \cos\left({2\pi jnk}/ N\right),\qquad n=1,2,\dots, C-1
 $$
+
+dove $c(n)$ sono i coefficienti cepstrali e $C$ è il numero di MFCC. I sistemi MFCC tradizionali utilizzano solo 8-13 coefficienti cepstrali. Il coefficiente zeresimo viene spesso escluso perché rappresenta la log-energia media del segnale di ingresso. Tutto questo è sintetizzato nella figura.
+
+&nbsp;
+![alt text](images/MFCC-6.png)
+&nbsp;
+
+Dal punto di vista matriciale quello che si ottiene è rappresentato in figura.
+
+&nbsp;
+![alt text](images/MFCC-7.png)
+&nbsp;
+
+Alla fine alcune considerazioni sull'uso degli MFCC in generale nelle applicazioni audio, comprese quelle basate su apprendimento di feature per i task classici come il riconoscimento e la classificazione.
+
+&nbsp;
+![alt text](images/MFCC-8.png)
+&nbsp;
