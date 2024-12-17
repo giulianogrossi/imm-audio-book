@@ -98,7 +98,7 @@ Questo è conosciuto come il `teorema di campionamento`. A volte, a seconda del 
 
 ##### Aliasing
 
-Diciamo che il segnale è quindi a banda limitata. `L’aliasing` si riferisce al fenomeno che si verifica quando non rispettiamo il teorema di campionamento. Quando campioniamo a una frequenza di campionamento che è inferiore al doppio della frequenza massima ciò che accade è che le parti dello spettro al di sopra della metà della frequenza di campionamento si ripiegano attorno alla metà della frequenza di campionamento e appaiono nello spettro inferiore come immagini speculari di sorta. Poiché queste immagini speculari si mescolano con i contenuti in frequenza e non possono essere recuperate o rimosse, abbiamo distorto il nostro segnale. Ad esempio, tornando all’esempio in cui il segnale è un singolo seno di 5 Hz ma campionato a 4 Hz, il segnale campionato subirebbe aliasing risultando identico a un seno di 1 Hz!, come si nota anche dallo spettro nella figura. 
+Diciamo che il segnale è quindi a banda limitata. `L’aliasing` si riferisce al fenomeno che si verifica quando non rispettiamo il teorema di campionamento. Quando campioniamo a una frequenza di campionamento che è inferiore al doppio della frequenza massima ciò che accade è che le parti dello spettro al di sopra della metà della frequenza di campionamento si ripiegano attorno alla metà della frequenza di campionamento e appaiono nello spettro inferiore come immagini speculari disorte. Poiché queste immagini speculari si mescolano con i contenuti in frequenza e non possono essere recuperate o rimosse, abbiamo distorto il nostro segnale. Ad esempio, tornando all’esempio in cui il segnale è un singolo seno di 5 Hz ma campionato a 4 Hz, il segnale campionato subirebbe aliasing risultando identico a un seno di 1 Hz!, come si nota anche dallo spettro nella figura. 
 
 &nbsp;
 ![](images/alias.png)
@@ -121,7 +121,7 @@ Una regola semplice che definisce quali frequenze spurie compariranno nello spet
 ```
 &nbsp;
 
-Per riassumere le frequenze in gioco nel processo di campionamento, riportiamo in tabella di seguito le principali definizioni e in particolare la loro relazione con l'intervallo di Nyquist. 
+Per riassumere le frequenze in gioco nel processo di campionamento, riportiamo nella tabella di seguito le principali definizioni e in particolare la loro relazione con l'intervallo di Nyquist. 
 
 &nbsp;
 ![](images/tabella_freq.png)
@@ -147,7 +147,7 @@ Nella Tabella sotto sono elencate alcune delle frequenze di campionamento audio 
 
 Come discusso, un segnale analogico misurato in un dato istante, ad esempio $n T_s$, può, in linea di principio, assumere qualsiasi valore. Tuttavia, abbiamo a disposizione solo un numero finito di bit e quindi un numero finito di valori diversi per rappresentare una misurazione in un computer. Di conseguenza, dobbiamo mappare questo numero infinito di valori su un numero finito di valori. Questo processo è chiamato `quantizzazione`.  Un modo semplice di quantizzare consiste nel prefissare un un insieme finito di $l$ valori numerici $\{x_1,\dots,x_l\}$ e di associare ad ogni valore campionato $x(n)$, che tipicamente rappresenta una tensione, il valore numerico $x_k$ che è più vicino a $x(n)$. Il passo ulteriore è quello della codifica dei valori dell'insieme $\{x_1,\dots,x_l\}$ in parole binarie di $m$ bit, con risoluzione dipendente dal numero $m$ di bit impiegati.
 
-Se i segnali che prendiamo in considerazione hanno ampiezze comprese tra $-V/2$ e $V/2$, la quantizzazione può essere ottenuta dividendo l'insieme $\left[-V/2,V/2\right]$ in $l$ intervalli, detti `livelli` ed attribuendo ad ogni campione $x(n)\in\left[-V/2,V/2\right]$ il centro del livello in cui $x(n)$ cade.  Detti $\{x_1,\dots,x_l\}$ i centri dei vari livelli, l'operazione di quantizzazione può essere allora descritta dalla funzione $\mathcal{Q}$ che ad ogni $x(n)$ associa il centro più vicino:
+Se i segnali che prendiamo in considerazione hanno ampiezze comprese tra $-V/2$ e $V/2$, la quantizzazione può essere ottenuta dividendo l'insieme $\left[-V/2,V/2\right]$ in $l$ intervalli, detti `livelli` ed attribuendo ad ogni campione $x(n)\in\left[-V/2,V/2\right]$ il centro del livello in cui $x(n)$ cade.  Dati $\{x_1,\dots,x_l\}$ i centri dei vari livelli, l'operazione di quantizzazione può essere allora descritta dalla funzione $\mathcal{Q}$ che ad ogni $x(n)$ associa il centro più vicino:
 
 $$
 y(n)=\mathcal{Q}[x(n)]=\underset{x_i\in \{x_1,\dots,x_l\}}{\arg\min}|x(n)-x_i|.
@@ -393,7 +393,7 @@ A livello superiore, un file Wave consiste in un singolo chunk RIFF (”RIFF”)
 
 `Numero di canali` – Tipicamente, un file avrà 1 canale (mono) o 2 canali (stereo). Un file audio surround 5.1 avrà 6 canali.
 
-`Frequenza di campionamento` – Il numero di frame campione che si verificano ogni secondo. Un valore tipico è 44.100, lo stesso di un CD audio.
+`Frequenza di campionamento` – Il numero di frame campione che si verificano ogni secondo. Un valore tipico è 44.100Hz, lo stesso di un CD audio.
 
 `Bit per campione` – Per i dati PCM interi, i valori tipici sono 8, 16 o 32. Se il formato del campione non richiede questo campo, dovrebbe essere impostato a 0.
 
