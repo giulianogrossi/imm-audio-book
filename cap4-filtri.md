@@ -22,7 +22,7 @@ Riassumendo, nel Digital Audio Signal Processing (DASP), il filtraggio è uno de
 
 ## Filtri FIR (feedforward)
 
-I filtri digitali si presentano sotto forma delle cosiddette `equazioni alle differenze`, equazione cioè che implicano la moltiplicazione e l'addizione di un certo numero di versioni ritardate dell'ingresso e dell'uscita. Un semplice esempio di equazione alle differenze è
+I filtri digitali si presentano sotto forma delle cosiddette `equazioni alle differenze`, equazioni cioè che implicano la moltiplicazione e l'addizione di un certo numero di versioni ritardate dell'ingresso e dell'uscita. Un semplice esempio di equazione alle differenze è
 
 $$\label{eq:fir}
 y(n) = x(n) + a x(n-1)
@@ -181,7 +181,7 @@ Possiamo vedere questo seguendo i numeri, in ordine, attraverso il diagramma a b
 
 ## Filtri IIR
 
-Filtri più potenti dei filtri FIR considerato finora possono essere costruiti con l'uso della retroazione (feedback), in cui non solo versioni ritardate dell'ingresso ma anche dell'uscita vengono utilizzate. Un semplice esempio di filtro che impiega la retroazione è dato da
+Filtri più potenti dei filtri FIR considerati finora possono essere costruiti con l'uso della retroazione (feedback), in cui non solo versioni ritardate dell'ingresso ma anche dell'uscita vengono utilizzate. Un semplice esempio di filtro che impiega la retroazione è dato da
 
 $$\label{eq:IIR}
 y(n) = ay(n-1)+x(n) 
@@ -464,13 +464,13 @@ Nell'esempio che seguente si mostra il codice del notebook python per un filtro 
 
 Un picco nella risposta in frequenza di un filtro (o di un sistema meccanico) è chiamato `risonanza`. Di seguito, esamineremo come progettare un `filtro di risonanza`, o `risuonatore`, ovvero un filtro che produce una tale risonanza. Con le nozioni date sui filtri, possiamo costruire un tale picco ipotizzando di utilizzare un filtro a retroazione e posizionando i suoi poli nelle vicinanze del cerchio unitario, con un angolo corrispondente alla frequenza in cui desideriamo avere il picco.
 
-La frequenza al centro di tale picco è chiamata `frequenza centrale` e la larghezza del picco è detta `larghezza di banda`. La risposta in frequenza desiderata per tale filtro è mostrata in figura, con frequenza centrale $\omega_0$ e larghezza di banda $B$. Supponiamo di utilizzare una coppia di poli con raggio $R$ e angolo $\pm \omega_0$, cioè i poli sono
+La frequenza al centro di tale picco è chiamata `frequenza centrale` e la larghezza del picco è detta `larghezza di banda`. La risposta in frequenza desiderata per tale filtro è mostrata in figura, con frequenza centrale $\omega_0$ e larghezza di banda $B$. Supponiamo di utilizzare una coppia di poli con raggio $R$ e angolo $\pm \omega_0$, cioè i poli sono:
 
 $$
 p = R e^{j \omega_0} \quad \text{e} \quad p^* = R e^{-j \omega_0}
 $$
 
-dove $^*$ indica il complesso coniugato. La posizione dei poli è mostrata figura. La funzione di trasferimento per un filtro del secondo ordine è quindi:
+dove $^*$ indica il complesso coniugato. La posizione dei poli è mostrata in figura. La funzione di trasferimento per un filtro del secondo ordine è quindi:
 
 $$
 H(z) = \frac{1}{(1 - p z^{-1})(1 - p^* z^{-1})}.
@@ -493,7 +493,7 @@ $$
 a_1 = -2 R \cos \omega_0, \quad a_2 = R^2.
 $$
 
-Il guadagno $G$ può essere fissato in modo da normalizzare il filtro a 1 in $\omega_0$, cioè $|H(\omega_0)| = 1$, che porta a definire 
+Il guadagno $G$ può essere fissato in modo da normalizzare il filtro a $1$ in $\omega_0$, cioè $|H(\omega_0)| = 1$, che porta a definire 
 
 $$
 G = \frac{1 - R}{1 - 2R \cos(2 \omega_0) + R^2}
