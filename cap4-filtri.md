@@ -5,7 +5,7 @@ Filtri audio
 
 ## Introduzione
 
-La forma più semplice di elaborazione audio è il filtraggio, e con i filtri è possibile fare molte cose interessanti con i segnali audio. In questo capitolo, esploreremo cosa sono i filtri, cosa fanno e forniremo alcuni esempi di filtri relativamente semplici. Quelli che comunemente chiamiamo filtri sono, tecnicamente, filtri lineari e invarianti nel tempo. Lineare significa che i filtri obbediscono a proprietà associate alla linearità dei sistemi, mentre invariante nel tempo implica che i filtri non cambiano nel tempo, il che ci consente di analizzarli più facilmente e di comprenderli indipendentemente dal tempo. Un filtro digitale è quindi un qualsiasi sistema lineare e invariante nel tempo che opera su segnali discreti. Un sistema di questo tipo è completamente descritto dalla sua risposta impulsiva o dalla sua funzione di trasferimento (razionale). Affronteremo il problema di progettare risposte impulsive o funzioni di trasferimento che soddisfino specifiche nel dominio del tempo o della frequenza. Esistono anche filtri non invarianti nel tempo, di cui vedremo alcuni esempi sotto forma di effetti audio.
+La forma più semplice di elaborazione audio è il filtraggio, e con i filtri è possibile fare molte cose interessanti con i segnali audio. In questo capitolo, esploreremo cosa sono i filtri, cosa fanno e forniremo alcuni esempi di filtri relativamente semplici. Quelli che comunemente chiamiamo filtri sono, tecnicamente, filtri lineari e invarianti nel tempo. Lineari significa che i filtri obbediscono a proprietà associate alla linearità dei sistemi, mentre invariante nel tempo implica che i filtri non cambiano nel tempo, il che ci consente di analizzarli più facilmente e di comprenderli indipendentemente dal tempo. Un filtro digitale è quindi un qualsiasi sistema lineare e invariante nel tempo che opera su segnali discreti. Un sistema di questo tipo è completamente descritto dalla sua risposta impulsiva o dalla sua funzione di trasferimento (razionale). Affronteremo il problema di progettare risposte impulsive o funzioni di trasferimento che soddisfino specifiche nel dominio del tempo o della frequenza. Esistono anche filtri non invarianti nel tempo, di cui vedremo alcuni esempi sotto forma di effetti audio.
 
 Tradizionalmente, i filtri digitali sono stati classificati in due grandi famiglie: quelli la cui funzione di trasferimento non ha il denominatore e quelli la cui funzione di trasferimento ha il denominatore. Poiché i filtri della prima famiglia ammettono una realizzazione in cui l’uscita è una combinazione lineare di un numero finito di campioni di ingresso, sono talvolta chiamati filtri non ricorsivi. Per questi sistemi, è più consueto e corretto riferirsi alla risposta impulsiva, che ha un numero finito di campioni non nulli, definendoli quindi filtri a risposta impulsiva finita (FIR). D’altra parte, i filtri della seconda famiglia ammettono solo realizzazioni ricorsive, il che significa che il segnale di uscita viene sempre calcolato utilizzando campioni precedenti di se stesso. La risposta impulsiva di questi filtri è infinitamente lunga, giustificando il nome di filtri a risposta impulsiva infinita (IIR). Un modo tradizionale di modellare le due famiglie di filtri digitali FIR e IIR è sotto forma di equazioni alle differenze, che nella forma che tratteremo qui, sono per l'appunto somme di versioni ritardate dell’ingresso e dell'uscita. Ognuna di queste versioni ritardate viene scalata da un numero reale chiamato coefficiente del filtro. 
 
@@ -22,7 +22,7 @@ Riassumendo, nel Digital Audio Signal Processing (DASP), il filtraggio è uno de
 
 ## Filtri FIR (feedforward)
 
-I filtri digitali si presentano sotto forma delle cosiddette `equazioni alle differenze`, equazione cioè che implicano la moltiplicazione e l'addizione di un certo numero di versioni ritardate dell'ingresso e dell'uscita. Un semplice esempio di equazione alle differenze è
+I filtri digitali si presentano sotto forma delle cosiddette `equazioni alle differenze`, equazioni cioè che implicano la moltiplicazione e l'addizione di un certo numero di versioni ritardate dell'ingresso e dell'uscita. Un semplice esempio di equazione alle differenze è
 
 $$\label{eq:fir}
 y(n) = x(n) + a x(n-1)
@@ -181,7 +181,7 @@ Possiamo vedere questo seguendo i numeri, in ordine, attraverso il diagramma a b
 
 ## Filtri IIR
 
-Filtri più potenti dei filtri FIR considerato finora possono essere costruiti con l'uso della retroazione (feedback), in cui non solo versioni ritardate dell'ingresso ma anche dell'uscita vengono utilizzate. Un semplice esempio di filtro che impiega la retroazione è dato da
+Filtri più potenti dei filtri FIR considerati finora possono essere costruiti con l'uso della retroazione (feedback), in cui non solo versioni ritardate dell'ingresso ma anche dell'uscita vengono utilizzate. Un semplice esempio di filtro che impiega la retroazione è dato da
 
 $$\label{eq:IIR}
 y(n) = ay(n-1)+x(n) 
@@ -308,7 +308,7 @@ Essa può quindi essere ottenuta considerando separatamente i contributi $\angle
 
 ## Filtri Comb
 
-I suoni, propagando nell’aria, entrano in contatto con superfici e oggetti di vario genere, e questa interazione produce fenomeni fisici come riflessione, rifrazione e diffrazione. Un fenomeno semplice e molto importante è la riflessione del suono su una superficie piana. A causa di una riflessione di questo tipo, l’ascoltatore riceve due copie ritardate dello stesso segnale. Se il ritardo è superiore a circa cento millisecondi, la seconda copia viene percepita come un eco distinto; se invece il ritardo è inferiore a circa dieci millisecondi, l’effetto di una singola riflessione è percepito come una colorazione spettrale. Questo fenomeno è ben rappresentato da un tipo specifico di filtro chiamato filtro comb e dal suo inverso. Il filtro comb costituisce la base per molti effetti audio che verranno trattati in dettaglio più avanti in questa dispensa, come l’effetto eco, il chorus e il flanger. Inoltre, i filtri comb sono componenti fondamentali per strutture più complesse, come i riverberatori artificiali, i pitch estimator e i sintetizzatori.
+I suoni, propagandosi nell’aria, entrano in contatto con superfici e oggetti di vario genere, e questa interazione produce fenomeni fisici come riflessione, rifrazione e diffrazione. Un fenomeno semplice e molto importante è la riflessione del suono su una superficie piana. A causa di una riflessione di questo tipo, l’ascoltatore riceve due copie ritardate dello stesso segnale. Se il ritardo è superiore a circa cento millisecondi, la seconda copia viene percepita come un eco distinto; se invece il ritardo è inferiore a circa dieci millisecondi, l’effetto di una singola riflessione è percepito come una colorazione spettrale. Questo fenomeno è ben rappresentato da un tipo specifico di filtro chiamato filtro comb e dal suo inverso. Il filtro comb costituisce la base per molti effetti audio che verranno trattati in dettaglio più avanti in questa dispensa, come l’effetto eco, il chorus e il flanger. Inoltre, i filtri comb sono componenti fondamentali per strutture più complesse, come i riverberatori artificiali, i pitch estimator e i sintetizzatori.
 
 In un filtro comb, una versione ritardata e scalata dell’uscita viene sommata all’ingresso per produrre una nuova uscita. Se il ritardo è sufficientemente ampio, si ottiene un numero infinito di echi dell’ingresso originale; se invece è ridotto, l’uscita non viene percepita come echi. La risposta in frequenza del filtro comb ricorda i denti di un pettine, da cui il nome. La sua risposta all’impulso è diversa da zero solo a intervalli regolari, determinati dal ritardo, mentre la scalatura definisce se i valori diversi da zero (gli echi) aumentano, decadono o rimangono costanti nel tempo. Se gli echi decadono lentamente o restano costanti, la risposta all’impulso appare e suona periodica, con un’altezza determinata dal ritardo. In questo modo, possiamo generare suoni di qualsiasi altezza desiderata stimolando un filtro comb e regolando il ritardo. Introduciamo qui il filtro comb come prima cosa, il suo stretto parente, l’inverso del filtro comb, e mostreremo come il filtro comb possa essere utilizzato per sintetizzare suoni simili a quelli prodotti da strumenti a corde pizzicate. 
 
@@ -470,7 +470,7 @@ $$
 p = R e^{j \omega_0} \quad \text{e} \quad p^* = R e^{-j \omega_0}
 $$
 
-dove $^*$ indica il complesso coniugato. La posizione dei poli è mostrata figura. La funzione di trasferimento per un filtro del secondo ordine è quindi:
+dove $^*$ indica il complesso coniugato. La posizione dei poli è mostrata in figura. La funzione di trasferimento per un filtro del secondo ordine è quindi:
 
 $$
 H(z) = \frac{1}{(1 - p z^{-1})(1 - p^* z^{-1})}.
@@ -493,7 +493,7 @@ $$
 a_1 = -2 R \cos \omega_0, \quad a_2 = R^2.
 $$
 
-Il guadagno $G$ può essere fissato in modo da normalizzare il filtro a 1 in $\omega_0$, cioè $|H(\omega_0)| = 1$, che porta a definire 
+Il guadagno $G$ può essere fissato in modo da normalizzare il filtro a $1$ in $\omega_0$, cioè $|H(\omega_0)| = 1$, che porta a definire 
 
 $$
 G = \frac{1 - R}{1 - 2R \cos(2 \omega_0) + R^2}
