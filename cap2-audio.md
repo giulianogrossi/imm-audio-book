@@ -96,9 +96,11 @@ Questo è conosciuto come il `teorema di campionamento`. A volte, a seconda del 
 ![](images/antialiasing.png)
 &nbsp;
 
+In questo modo otteniamo un segnale che è quindi a banda limitata.
+
 ##### Aliasing
 
-Diciamo che il segnale è quindi a banda limitata. `L’aliasing` si riferisce al fenomeno che si verifica quando non rispettiamo il teorema di campionamento. Quando campioniamo a una frequenza di campionamento che è inferiore al doppio della frequenza massima ciò che accade è che le parti dello spettro al di sopra della metà della frequenza di campionamento si ripiegano attorno alla metà della frequenza di campionamento e appaiono nello spettro inferiore come immagini speculari di sorta. Poiché queste immagini speculari si mescolano con i contenuti in frequenza e non possono essere recuperate o rimosse, abbiamo distorto il nostro segnale. Ad esempio, tornando all’esempio in cui il segnale è un singolo seno di 5 Hz ma campionato a 4 Hz, il segnale campionato subirebbe aliasing risultando identico a un seno di 1 Hz!, come si nota anche dallo spettro nella figura. 
+ `L’aliasing` si riferisce al fenomeno che si verifica quando non rispettiamo il teorema di campionamento. Quando campioniamo a una frequenza di campionamento che è inferiore al doppio della frequenza massima ciò che accade è che le parti dello spettro al di sopra della metà della frequenza di campionamento si ripiegano attorno alla metà della frequenza di campionamento e appaiono nello spettro inferiore come immagini speculari di sorta. Poiché queste immagini speculari si mescolano con i contenuti in frequenza e non possono essere recuperate o rimosse, abbiamo distorto il nostro segnale. Ad esempio, tornando all’esempio in cui il segnale è un singolo seno di 5 Hz ma campionato a 4 Hz, il segnale campionato subirebbe aliasing risultando identico a un seno di 1 Hz!, come si nota anche dallo spettro nella figura. 
 
 &nbsp;
 ![](images/alias.png)
