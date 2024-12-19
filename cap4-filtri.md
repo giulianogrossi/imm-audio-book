@@ -460,9 +460,9 @@ Nell'esempio che seguente si mostra il codice del notebook python per un filtro 
 ![](images/combIIR_esempio.png)
 &nbsp;
 
-## Filtro risuonatore
+## Filtro risonatore
 
-Un picco nella risposta in frequenza di un filtro (o di un sistema meccanico) è chiamato `risonanza`. Di seguito, esamineremo come progettare un `filtro di risonanza`, o `risuonatore`, ovvero un filtro che produce una tale risonanza. Con le nozioni date sui filtri, possiamo costruire un tale picco ipotizzando di utilizzare un filtro a retroazione e posizionando i suoi poli nelle vicinanze del cerchio unitario, con un angolo corrispondente alla frequenza in cui desideriamo avere il picco.
+Un picco nella risposta in frequenza di un filtro (o di un sistema meccanico) è chiamato `risonanza`. Di seguito, esamineremo come progettare un `filtro di risonanza`, o `risonatore`, ovvero un filtro che produce una tale risonanza. Con le nozioni date sui filtri, possiamo costruire un tale picco ipotizzando di utilizzare un filtro a retroazione e posizionando i suoi poli nelle vicinanze del cerchio unitario, con un angolo corrispondente alla frequenza in cui desideriamo avere il picco.
 
 La frequenza al centro di tale picco è chiamata `frequenza centrale` e la larghezza del picco è detta `larghezza di banda`. La risposta in frequenza desiderata per tale filtro è mostrata in figura, con frequenza centrale $\omega_0$ e larghezza di banda $B$. Supponiamo di utilizzare una coppia di poli con raggio $R$ e angolo $\pm \omega_0$, cioè i poli sono:
 

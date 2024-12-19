@@ -5,7 +5,7 @@ Equalizzazione
 
 ## Introduzione
 
-L'equalizzazione audio si riferisce al processo di modellazione delle frequenze di un segnale audio. Con l'equalizzatore è possibile utilizzare dei filtri per aumentare o ridurre selettivamente determinate frequenze al fine di ottenere il suono desiderato. Il processo di equalizzazione è sia una scienza che un'arte: un'attenta regolazione può eliminare i rumori indesiderati, aggiungere ariosità e chiarezza alle voci, enfatizzare il suono di una grancassa o ridurre la confusione causata da più strumenti che si scontrano nella stessa gamma di frequenze. Inoltre, l'equalizzazione può essere utilizzata per effetti creativi, come l'emulazione del suono distinto di una telefonata nella voce. La versatilità dell'equalizzatore è vastissima ed esploreremo alcune sue applicazioni proprio a partire dai sistemi che la metto in atto, cioè il filtri equalizzatori.
+L'equalizzazione audio si riferisce al processo di modellazione delle frequenze di un segnale audio. Con l'equalizzatore è possibile utilizzare dei filtri per aumentare o ridurre selettivamente determinate frequenze al fine di ottenere il suono desiderato. Il processo di equalizzazione è sia una scienza che un'arte: un'attenta regolazione può eliminare i rumori indesiderati, aggiungere ariosità e chiarezza alle voci, enfatizzare il suono di una grancassa o ridurre la confusione causata da più strumenti che si scontrano nella stessa gamma di frequenze. Inoltre, l'equalizzazione può essere utilizzata per effetti creativi, come l'emulazione del suono distinto di una telefonata nella voce. La versatilità dell'equalizzatore è vastissima ed esploreremo alcune sue applicazioni proprio a partire dai sistemi che la mettono in atto, cioè il filtri equalizzatori.
 
 Gli equalizzatori (EQ) sono onnipresenti negli apparecchi audio, che si tratti di un semplice controllo dei toni su uno stereo, un equalizzatore grafico multibanda hi-fi, una banda di equalizzazione parametrica in un pedale per chitarra, oppure si tratti di sistemi audio analogici, digitali, domestici, automobilistici, pubblici o di registrazione/mixaggio in studio.
 Sebbene basati sugli stessi principi, gli equalizzatori hanno scopi diversi a seconda del contesto. Nei sistemi di riproduzione, gli equalizzatori servono a cancellare eventuali effetti di filtraggio indesiderati dovuti all'attrezzatura coinvolta (altoparlanti, amplificatori, ecc.) o all'acustica della stanza. I musicisti utilizzano gli equalizzatori per modellare il proprio suono, ovvero come parte di un'espressione musicale. Gli equalizzatori sono costruiti utilizzando filtri lineari tempo-invarianti (a condizione che i controlli non vengano modificati). Esistono due tipi di equalizzatori: `grafici` e `parametrici`. 
@@ -81,13 +81,13 @@ $$
 p = R e^{j \omega_0} \quad \text{e} \quad p^* = R e^{-j \omega_0}
 $$
 
-dove $^*$ indica il complesso coniugato. Una leggera generalizzazione del filtro a risonatore consiste nel posizionare anche una coppia di zeri vicino ai poli lungo le stesse direzioni dei poli, cioè in corrispondenza delle posizioni:
+dove $^*$ indica il complesso coniugato. Una leggera generalizzazione del filtro risonatore consiste nel posizionare anche una coppia di zeri vicino ai poli lungo le stesse direzioni dei poli, cioè in corrispondenza delle posizioni:
 
 $$
 \rho=r e^{j \omega_0} \quad \text{e} \quad \rho^* = r e^{-j \omega_0}
 $$
 
-dove $r$ è ristretto al range $0 \leq r \leq 1$. La funzione di trasferimento (cella del secondo ordine, dato la grado dei polinomi coinvolti) diventa così:
+dove $r$ è ristretto al range $0 \leq r \leq 1$. La funzione di trasferimento (cella del secondo ordine, dato il grado dei polinomi coinvolti) diventa così:
 
 \begin{align}
 H(z) &= \frac{(1 - \rho z^{-1})(1 - \rho^* z^{-1})}{(1 - p z^{-1})(1 - p^* z^{-1})}\\
